@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "BigNoodleFont";
+  src: url("fonts/BigNoodleToo.ttf") format('ttf');
+  }
+
+@font-face {
+  font-family: "BigNoodleFont";
+  src: url("fonts/BigNoodleToo.woff") format('woff');
+  }
+
+body {
+    font-family: BigNoodleFont;
+    font-size: 350%;
+    background-color: #584F4A;
+}
+
+div {
+    color: #FAA02E;
+}

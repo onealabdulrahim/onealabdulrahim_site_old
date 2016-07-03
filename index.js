@@ -1,27 +1,34 @@
+/*
+Oneal Abdulrahim
+All soundbytes property of Blizzard Entertainment
+The script below is open to use by all, no citation required
+
+Please send all feedback to onealabdul@gmail.com
+*/
+
+// Global variables because I'm bad
 var Longitude;
 var highNoonTime;
 var timeToStr;
 var timer = setInterval(findHighNoon, 1000);
-
-var wellItsHighNoonMP3 = new Audio("sfx/well its high noon somewhere.mp3");
-var justiceAintMP3 = new Audio("sfx/justice aint gonna.mp3");
-var andThatsHowMP3 = new Audio("sfx/and thats how.mp3");
-var didSomeoneCallMP3 = new Audio("sfx/did someone call.mp3");
-var drawMP3 = new Audio("sfx/draw.mp3");
-var easyMP3 = new Audio("sfx/easy.mp3");
-var howdyMP3 = new Audio("sfx/howdy.mp3");
-var imYourHuckleberryMP3 = new Audio("sfx/im your huckleberry.mp3");
-var likeShootingFishMP3 = new Audio("sfx/like shooting fish.mp3");
-var likeSittingDucksMP3 = new Audio("sfx/like sitting ducks.mp3");
-var toReaperQuoteMP3 = new Audio("sfx/toReaperQuote.mp3");
-
 var itsHighNoonMP3 = new Audio("sfx/mccree.ogg");
 var playOfTheGameMP3 = new Audio("sfx/potg.ogg");
+var quotes = [];
 
-var quotes = [justiceAintMP3, andThatsHowMP3, didSomeoneCallMP3, drawMP3, easyMP3, howdyMP3, imYourHuckleberryMP3, likeShootingFishMP3, likeSittingDucksMP3, toReaperQuoteMP3, wellItsHighNoonMP3];
+// Loads sound files (all 152 except the ULTSOUND and POTG music)
+for (i = 0; i <= 152; i++) {
+    quotes.push(new Audio("sfx/" + i + ".mp3"));
+}
 
-wellItsHighNoonMP3.play();
+// Well, it's high noon somewhere in the world...
+quotes[142].play();
 
+/*
+    Returns a Date object with the local high noon of the user,
+    I have used information from http://suncalc.net/ to approximate this.
+    
+    Firefox does some weird things, so if your time changes, blame Mozilla
+*/
 function findLocalHighNoon(longitude, timeZone) {
     "use strict";
     var finalTime = (longitude - (timeZone * 15)) / 15 + 0.123;
@@ -42,20 +49,32 @@ function findLocalHighNoon(longitude, timeZone) {
     return result;
 }
 
+/*
+    Ensures the browser supports geolocation. If not, the code lets you know to get good and not use Opera
+*/
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setLocationInfo);
     } else {
-        document.getElementById("highNoonText").innerHTML = ("Geolocation is not supported by this browser.");
+        document.getElementById("highNoonText").innerHTML = ("Geolocation is not supported by this browser :-(");
     }
 }
 
+/*
+    Uses the passed in navigator object to record and save longitude global variable, moves on to findHighNoon();
+*/
 function setLocationInfo(position) {
     "use strict";
     Longitude = position.coords.longitude;
     findHighNoon();
 }
 
+/*
+    Finds and prints the difference in time between now and high noon time. Counts down using repeater method.
+    If it's during the high noon minute, moves to high noon method.
+    
+    TODO: "It's almost high noon..."
+*/
 function findHighNoon() {
     var currentTime = new Date();
     var timeZone = currentTime.getTimezoneOffset() / -60;
@@ -87,9 +106,13 @@ function findHighNoon() {
     }
 }
 
+/*
+    Performs actions necessary to notify user of high noon time, calls countdown method to re-check time.
+    When it's high noon, let the user know by playing a sound file of the ult, printing it, and playing McCree quotes.
+*/
 function itsHighNoon() {
     document.getElementById("notHighNoonText").innerHTML = ("");
-    document.getElementById("highNoonText").innerHTML = ("It's HIGH NOON!!! " + timeToStr);
+    document.getElementById("highNoonText").innerHTML = ("🔫 It's HIGH NOON!!! 🔫 " + timeToStr);
     
     itsHighNoonMP3.play();
     playOfTheGameMP3.play();
@@ -97,12 +120,16 @@ function itsHighNoon() {
     var timeNow = new Date();
     
     if (timeNow.getSeconds() % 9 == 0 && timeNow.getSeconds() % 10 != 0) {
-        quotes[Math.floor(Math.random() * 10)].play();
+        quotes[Math.floor(Math.random() * (152 + 1))].play();
     }
     
     countdownToHN();
 }
 
+/*
+    Performs actions necessary to notify user of current time, calls countdown method to re-check time.
+    When it's not high noon, let the user know by printing it and the current time, and playing McCree quotes.
+*/
 function itsNotHighNoon() {
     document.getElementById("highNoonText").innerHTML = ("");
     document.getElementById("notHighNoonText").innerHTML = ("It's not high noon! The current time: " + timeToStr);
@@ -111,13 +138,16 @@ function itsNotHighNoon() {
     
     var timeNow = new Date();
     
-    if (timeNow.getSeconds() % 9 == 0 && timeNow.getSeconds() % 10 != 0) {
-        quotes[Math.floor(Math.random() * 10)].play();
+    if (timeNow.getSeconds() % 24 == 0 && timeNow.getSeconds() % 10 != 0) {
+        quotes[Math.floor(Math.random() * (152 + 1))].play();
     }
     
     countdownToHN();
 }
 
+/*
+    Prints the difference in time remaining until high noon time, with conditionals to ensure proper verbiage.
+*/
 function countdownToHN() {
     document.getElementById("title").innerHTML = ("Time until HIGH NOON: </br>");
     var timeUntil = getTimeRemaining(highNoonTime);
@@ -145,6 +175,9 @@ function countdownToHN() {
     timer = setInterval(findHighNoon, 1000);
 }
 
+/*
+    Calculates the time remaining by returning a reusable object containing hours, minutes, and seconds data.
+*/
 function getTimeRemaining(endTime) {
     var t = Date.parse(endTime) - Date.parse(new Date());
     var seconds = Math.floor((t / 1000) % 60);

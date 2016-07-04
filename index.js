@@ -45,7 +45,7 @@ function findLocalHighNoon(longitude, timeZone) {
     }
     
     var hours = Math.floor(finalTime);
-    var mins = (finalTime - hours) * 60;
+    var mins = Math.ceil((finalTime - hours) * 1000);
     
     var result = new Date();
     result.setHours(hours);

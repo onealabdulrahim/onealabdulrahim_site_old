@@ -16,22 +16,27 @@ var playOfTheGameMP3 = new Audio("sfx/potg.ogg");
 var quotes = [];
 
 // Loads sound files (all 152 except the ULTSOUND and POTG music)
-for (i = 0; i <= 152; i++) {
+for (i = 1; i <= 152; i++) {
     quotes.push(new Audio("sfx/" + i + ".mp3"));
 }
 
 // Well, it's high noon somewhere in the world...
-quotes[142].play();
+quotes[141].play();
 
 /*
     Returns a Date object with the local high noon of the user,
-    I have used information from http://suncalc.net/ to approximate this.
-    
-    Firefox does some weird things, so if your time changes, blame Mozilla
+    I have used information from http://courses.education.illinois.edu/satex/sp96/noon-project/noontime.html
+    to approximate this.
 */
 function findLocalHighNoon(longitude, timeZone) {
     "use strict";
-    var finalTime = (longitude - (timeZone * 15)) / 15 + 0.123;
+    
+    if (timeZone > 0) {
+        var finalTime = ((-(Math.floor(longitude) + (longitude - Math.floor(longitude)) * 60 + 0)) - (-(timeZone * 15))) / 15 + 0.123;
+    } else {
+        var finalTime = ((Math.floor(longitude) + (longitude - Math.floor(longitude)) * 60 + 0) - (timeZone * 15)) / 15 + 0.123;
+    }
+    
     
     if (finalTime > 0) {
         finalTime += 12;
@@ -39,8 +44,8 @@ function findLocalHighNoon(longitude, timeZone) {
         finalTime = 12 - finalTime;
     }
     
-    var hours = finalTime;
-    var mins = finalTime * 100 % hours;
+    var hours = Math.floor(finalTime);
+    var mins = (finalTime - hours) * 60;
     
     var result = new Date();
     result.setHours(hours);

@@ -13,15 +13,10 @@ var timeToStr;
 var timer = setInterval(findHighNoon, 1000);
 var itsHighNoonMP3 = new Audio("sfx/mccree.ogg");
 var playOfTheGameMP3 = new Audio("sfx/potg.ogg");
-var quotes = [];
 
-// Loads sound files (all 152 except the ULTSOUND and POTG music)
-for (i = 1; i <= 152; i++) {
-    quotes.push(new Audio("sfx/" + i + ".mp3"));
-}
-
+var MP3142 = new Audio("sfx/142.mp3");
 // Well, it's high noon somewhere in the world...
-quotes[141].play();
+MP3142.play();
 
 /*
     Returns a Date object with the local high noon of the user,
@@ -61,7 +56,7 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setLocationInfo);
     } else {
-        document.getElementById("highNoonText").innerHTML = ("Geolocation is not supported by this browser :-(");
+        document.getElementById("title").innerHTML = ("Location data is not supported with this browser :-(");
     }
 }
 
@@ -125,7 +120,10 @@ function itsHighNoon() {
     var timeNow = new Date();
     
     if (timeNow.getSeconds() % 9 == 0 && timeNow.getSeconds() % 10 != 0) {
-        quotes[Math.floor(Math.random() * (152 + 1))].play();
+        var soundByte = new Audio("sfx/" + (Math.floor(Math.random() * (152 + 1))) + ".mp3");
+        if (MP3142.paused) {
+            soundByte.play();
+        }
     }
     
     countdownToHN();
@@ -144,7 +142,10 @@ function itsNotHighNoon() {
     var timeNow = new Date();
     
     if (timeNow.getSeconds() % 24 == 0 && timeNow.getSeconds() % 10 != 0) {
-        quotes[Math.floor(Math.random() * (152 + 1))].play();
+        var soundByte = new Audio("sfx/" + (Math.floor(Math.random() * (152 + 1))) + ".mp3");
+        if (MP3142.paused) {
+            soundByte.play();
+        }
     }
     
     countdownToHN();

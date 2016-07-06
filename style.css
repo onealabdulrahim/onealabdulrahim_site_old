@@ -26,3 +26,23 @@ div {
     margin-top:1%;
     margin-bottom:1%;
 }
+
+footer {
+    margin-top:10%;
+}
+
+a:link {
+    color: #FAA02E;
+}
+
+a:visited {
+    color: #FAA02E;
+}
+
+a:hover {
+    color: #222222;
+}
+
+a:active {
+    color: #888888;
+}

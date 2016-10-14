@@ -3,6 +3,56 @@
 @import url(font-dejavu.css);
 @import "https://fonts.googleapis.com/css?family=Raleway:100,300,600";
 
+/* Loading animations */
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    0% {opacity: 0;}
+    50% {opacity: 0.25}
+    100% {opacity: 1;}
+}
+
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    opacity:0;  /* make things invisible upon start */
+    -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+    
+    -webkit-animation-fill-mode: backword;
+    -webkit-animation-name: fadeIn;
+}
+    
+
+
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
 		padding: 0;
@@ -1660,43 +1710,14 @@
 		}
 
         h1 {
+            -webkit-animation-delay: 2s; /* Chrome, Safari, Opera */
+            animation-delay: 2s;
             animation: fadein 4s;
             -moz-animation: fadein 4s; /* Firefox */
             -webkit-animation: fadein 4s; /* Safari and Chrome */
             -o-animation: fadein 4s; /* Opera */
         }
-        @keyframes fadein {
-            from {
-                opacity:0;
-            }
-            to {
-                opacity:1;
-            }
-        }
-        @-moz-keyframes fadein { /* Firefox */
-            from {
-                opacity:0;
-            }
-            to {
-                opacity:1;
-            }
-        }
-        @-webkit-keyframes fadein { /* Safari and Chrome */
-            from {
-                opacity:0;
-            }
-            to {
-                opacity:1;
-            }
-        }
-        @-o-keyframes fadein { /* Opera */
-            from {
-                opacity:0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+        
 
 	h2 {
 		font-size: 1.75em;
@@ -1931,6 +1952,15 @@
 		-ms-justify-content: space-between;
 		justify-content: space-between;
 	}
+        
+        .flex {
+            -webkit-animation-delay: 5s; /* Chrome, Safari, Opera */
+            animation-delay: 5s;
+            animation: fadein 5s;
+            -moz-animation: fadein 5s; /* Firefox */
+            -webkit-animation: fadein 5s; /* Safari and Chrome */
+            -o-animation: fadein 5s; /* Opera */
+        }
 
 		.flex.flex-2 article {
 			width: 47%;
@@ -2787,6 +2817,13 @@
 			font-size: 1em;
 		}
 
+        #header .logo {
+            animation: fadein 4s;
+            -moz-animation: fadein 4s; /* Firefox */
+            -webkit-animation: fadein 4s; /* Safari and Chrome */
+            -o-animation: fadein 4s; /* Opera */
+        }
+
 		#header a {
 			-moz-transition: color 0.2s ease-in-out;
 			-webkit-transition: color 0.2s ease-in-out;
@@ -2871,6 +2908,13 @@
 		}
 
 	}
+    
+    #nav {
+            animation: fadein 4s;
+            -moz-animation: fadein 4s; /* Firefox */
+            -webkit-animation: fadein 4s; /* Safari and Chrome */
+            -o-animation: fadein 4s; /* Opera */
+        }
 
 	#navPanel {
 		-moz-transform: translatex(20em);
@@ -2974,6 +3018,12 @@
 		text-align: center;
 		border-top: 0.5em solid #500000;
 	}
+        #banner {
+            animation: fadein 1s;
+            -moz-animation: fadein 1s; /* Firefox */
+            -webkit-animation: fadein 1s; /* Safari and Chrome */
+            -o-animation: fadein 1s; /* Opera */
+        }
 
 		#banner h1 {
 			font-size: 3.5em;
@@ -2982,6 +3032,11 @@
 			line-height: 1em;
 			margin: 0 0 0.5em 0;
 			padding: 0;
+            
+            animation: fadein 3s;
+            -moz-animation: fadein 3s; /* Firefox */
+            -webkit-animation: fadein 3s; /* Safari and Chrome */
+            -o-animation: fadein 3s; /* Opera */
 		}
 
 		#banner p {

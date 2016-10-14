@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'DejaVu';
+  src: url('fonts/DejaVuSansExtraLight.eot');
+  src: url('fonts/DejaVuSansExtraLight.woff2') format('woff2'),
+       url('fonts/DejaVuSansExtraLight.woff') format('woff'),
+       url('fonts/DejaVuSansExtraLight.ttf') format('truetype'),
+       url('fonts/DejaVuSansExtraLight.svg#DejaVuSans-ExtraLight') format('svg'),
+       url('fonts/DejaVuSansExtraLight.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}

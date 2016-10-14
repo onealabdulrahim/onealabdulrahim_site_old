@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "BigNoodleFont";
+  src: url("fonts/BigNoodleToo.ttf") format('ttf');
+  }
+
+@font-face {
+  font-family: "BigNoodleFont";
+  src: url("fonts/BigNoodleToo.woff") format('woff');
+  }
+
+body {
+    font-family: BigNoodleFont;
+    font-size: 350%;
+    background-color: #584F4A;
+    margin-top:1%;
+    margin-bottom:1%;
+}
+
+p {
+    margin-top:3%;
+    margin-bottom:3%;
+}
+
+div {
+    color: #FAA02E;
+    margin-top:1%;
+    margin-bottom:1%;
+}
+
+footer {
+    margin-top:10%;
+}
+
+a:link {
+    color: #FAA02E;
+}
+
+a:visited {
+    color: #FAA02E;
+}
+
+a:hover {
+    color: #222222;
+}
+
+a:active {
+    color: #888888;
+}

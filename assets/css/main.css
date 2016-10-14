@@ -1954,12 +1954,12 @@
 	}
         
         .flex {
-            -webkit-animation-delay: 5s; /* Chrome, Safari, Opera */
-            animation-delay: 5s;
-            animation: fadein 5s;
-            -moz-animation: fadein 5s; /* Firefox */
-            -webkit-animation: fadein 5s; /* Safari and Chrome */
-            -o-animation: fadein 5s; /* Opera */
+            -webkit-animation-delay: 2s; /* Chrome, Safari, Opera */
+            animation-delay: 2s;
+            animation: fadein 2s;
+            -moz-animation: fadein 2s; /* Firefox */
+            -webkit-animation: fadein 2s; /* Safari and Chrome */
+            -o-animation: fadein 2s; /* Opera */
         }
 
 		.flex.flex-2 article {
@@ -2991,7 +2991,6 @@
 				font-style: normal;
 				font-weight: normal;
 				text-transform: none !important;
-				content: '\f00d';
 				width: 3em;
 				height: 3em;
 				line-height: 3em;
@@ -3033,10 +3032,10 @@
 			margin: 0 0 0.5em 0;
 			padding: 0;
             
-            animation: fadein 3s;
-            -moz-animation: fadein 3s; /* Firefox */
-            -webkit-animation: fadein 3s; /* Safari and Chrome */
-            -o-animation: fadein 3s; /* Opera */
+            animation: fadein 2s;
+            -moz-animation: fadein 2s; /* Firefox */
+            -webkit-animation: fadein 2s; /* Safari and Chrome */
+            -o-animation: fadein 2s; /* Opera */
 		}
 
 		#banner p {

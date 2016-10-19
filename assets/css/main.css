@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url(font-awesome.min.css);
 @import url(font-dejavu.css);
+@import url(font-dejavuserif.css);
 @import "https://fonts.googleapis.com/css?family=Raleway:100,300,600";
 
 /* Loading animations */
@@ -1629,7 +1630,7 @@
 
 	body, input, select, textarea {
 		color: #332C2C;
-		font-family: DejaVu;
+		font-family: DejaVuSerif;
 		font-size: 13pt;
 		font-weight: 300;
 		line-height: 1.65;
@@ -1708,15 +1709,6 @@
 			color: inherit;
 			text-decoration: none;
 		}
-
-        h1 {
-            -webkit-animation-delay: 2s; /* Chrome, Safari, Opera */
-            animation-delay: 2s;
-            animation: fadein 4s;
-            -moz-animation: fadein 4s; /* Firefox */
-            -webkit-animation: fadein 4s; /* Safari and Chrome */
-            -o-animation: fadein 4s; /* Opera */
-        }
         
 
 	h2 {
@@ -1954,12 +1946,12 @@
 	}
         
         .flex {
-            -webkit-animation-delay: 2s; /* Chrome, Safari, Opera */
-            animation-delay: 2s;
-            animation: fadein 2s;
-            -moz-animation: fadein 2s; /* Firefox */
-            -webkit-animation: fadein 2s; /* Safari and Chrome */
-            -o-animation: fadein 2s; /* Opera */
+            -webkit-animation-delay: 3s; /* Chrome, Safari, Opera */
+            animation-delay: 3s;
+            animation: fadein 4s;
+            -moz-animation: fadein 3s; /* Firefox */
+            -webkit-animation: fadein 3s; /* Safari and Chrome */
+            -o-animation: fadein 3s; /* Opera */
         }
 
 		.flex.flex-2 article {
@@ -2817,13 +2809,6 @@
 			font-size: 1em;
 		}
 
-        #header .logo {
-            animation: fadein 4s;
-            -moz-animation: fadein 4s; /* Firefox */
-            -webkit-animation: fadein 4s; /* Safari and Chrome */
-            -o-animation: fadein 4s; /* Opera */
-        }
-
 		#header a {
 			-moz-transition: color 0.2s ease-in-out;
 			-webkit-transition: color 0.2s ease-in-out;
@@ -2909,12 +2894,6 @@
 
 	}
     
-    #nav {
-            animation: fadein 4s;
-            -moz-animation: fadein 4s; /* Firefox */
-            -webkit-animation: fadein 4s; /* Safari and Chrome */
-            -o-animation: fadein 4s; /* Opera */
-        }
 
 	#navPanel {
 		-moz-transform: translatex(20em);
@@ -3017,12 +2996,6 @@
 		text-align: center;
 		border-top: 0.5em solid #500000;
 	}
-        #banner {
-            animation: fadein 1s;
-            -moz-animation: fadein 1s; /* Firefox */
-            -webkit-animation: fadein 1s; /* Safari and Chrome */
-            -o-animation: fadein 1s; /* Opera */
-        }
 
 		#banner h1 {
 			font-size: 3.5em;
@@ -3031,11 +3004,6 @@
 			line-height: 1em;
 			margin: 0 0 0.5em 0;
 			padding: 0;
-            
-            animation: fadein 2s;
-            -moz-animation: fadein 2s; /* Firefox */
-            -webkit-animation: fadein 2s; /* Safari and Chrome */
-            -o-animation: fadein 2s; /* Opera */
 		}
 
 		#banner p {
@@ -3047,7 +3015,7 @@
 		@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
 
 			#banner {
-				background-attachment: scroll;
+				background-attachment: fixed;
 			}
 
 		}
@@ -3063,7 +3031,7 @@
 		@media screen and (max-width: 980px) {
 
 			#banner {
-				background-attachment: scroll;
+				background-attachment: fixed;
 			}
 
 		}
@@ -3072,6 +3040,7 @@
 
 			#banner {
 				padding: 8em 1.5em 6em 1.5em;
+				background-attachment: fixed;
 			}
 
 				#banner h1 {
@@ -3087,6 +3056,7 @@
 		@media screen and (max-width: 480px) {
 
 			#banner {
+				background-attachment: scroll;
 				padding: 6em 1.5em 4em 1.5em;
 			}
 

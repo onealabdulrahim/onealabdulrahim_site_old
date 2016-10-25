@@ -1556,7 +1556,7 @@
 	@media screen and (max-width: 480px) {
 
 		html, body {
-			min-width: 320px;
+			min-width: 240px;
 		}
 
 	}
@@ -1605,7 +1605,7 @@
 		@media screen and (max-width: 980px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 11pt;
 			}
 
 		}
@@ -1613,7 +1613,7 @@
 		@media screen and (max-width: 736px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 9pt;
 			}
 
 		}
@@ -1621,7 +1621,7 @@
 		@media screen and (max-width: 480px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 9pt;
 			}
 
 		}
@@ -1843,11 +1843,9 @@
 		@media screen and (max-width: 480px) {
 
 			section.wrapper, article.wrapper {
-				text-align: center;
 			}
 
 				section.wrapper article, article.wrapper article {
-					text-align: center;
 				}
 
 		}
@@ -2831,7 +2829,7 @@
 
 		#header {
 			top: 1em;
-			min-width: 320px;
+			min-width: 240px;
 		}
 
 	}

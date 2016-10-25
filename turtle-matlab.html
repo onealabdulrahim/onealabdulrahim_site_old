@@ -63,7 +63,154 @@
 								</tbody>
 							</table>
 							<p>Okay, so this is not very complicated, or so it seems. We must first make the foundation of our Turtle object. Think about the properties it will need to have. An aspect of object oriented programming is considering the characteristics of your class; they must be general enough to describe all instances of the class but specific enough to differentiate it from other types. You must also consider default values of these properties, or more simply, "where should we start if someone wants to make a Turtle?". Let's implement this basic class definition in MATLAB.</p>
-							<script src="https://gist.github.com/anonymous/76d6d04c3012f77933b487749917a494.js"></script>
+							<div id="gist40933988" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+			<div id="file-turtle-m" class="file">
+				
+			
+			<div itemprop="text" class="blob-wrapper data type-matlab">
+				<table class="highlight tab-size js-file-line-container" data-tab-size="8">
+				<tbody><tr>
+					<td id="file-turtle-m-L1" class="blob-num js-line-number" data-line-number="1"></td>
+					<td id="file-turtle-m-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">classdef</span> <span class="pl-en">Turtle</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L2" class="blob-num js-line-number" data-line-number="2"></td>
+					<td id="file-turtle-m-LC2" class="blob-code blob-code-inner js-file-line">	<span class="pl-c">% TURTLE Turtle with a pen</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L3" class="blob-num js-line-number" data-line-number="3"></td>
+					<td id="file-turtle-m-LC3" class="blob-code blob-code-inner js-file-line">	<span class="pl-c">%        An implementation of iterative drawings</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L4" class="blob-num js-line-number" data-line-number="4"></td>
+					<td id="file-turtle-m-LC4" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">properties</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L5" class="blob-num js-line-number" data-line-number="5"></td>
+					<td id="file-turtle-m-LC5" class="blob-code blob-code-inner js-file-line">		<span class="pl-c">% coordinates</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L6" class="blob-num js-line-number" data-line-number="6"></td>
+					<td id="file-turtle-m-LC6" class="blob-code blob-code-inner js-file-line">		x</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L7" class="blob-num js-line-number" data-line-number="7"></td>
+					<td id="file-turtle-m-LC7" class="blob-code blob-code-inner js-file-line">		y</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L8" class="blob-num js-line-number" data-line-number="8"></td>
+					<td id="file-turtle-m-LC8" class="blob-code blob-code-inner js-file-line">		<span class="pl-c">% direction of turtle, in degrees based on unit circle</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L9" class="blob-num js-line-number" data-line-number="9"></td>
+					<td id="file-turtle-m-LC9" class="blob-code blob-code-inner js-file-line">		heading</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L10" class="blob-num js-line-number" data-line-number="10"></td>
+					<td id="file-turtle-m-LC10" class="blob-code blob-code-inner js-file-line">		<span class="pl-c">% pen status</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L11" class="blob-num js-line-number" data-line-number="11"></td>
+					<td id="file-turtle-m-LC11" class="blob-code blob-code-inner js-file-line">		pen_on_paper</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L12" class="blob-num js-line-number" data-line-number="12"></td>
+					<td id="file-turtle-m-LC12" class="blob-code blob-code-inner js-file-line">		<span class="pl-c">% wait time (lower the faster)</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L13" class="blob-num js-line-number" data-line-number="13"></td>
+					<td id="file-turtle-m-LC13" class="blob-code blob-code-inner js-file-line">		<span class="pl-k">wait</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L14" class="blob-num js-line-number" data-line-number="14"></td>
+					<td id="file-turtle-m-LC14" class="blob-code blob-code-inner js-file-line">		<span class="pl-c">% current pen object that turtle is holding</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L15" class="blob-num js-line-number" data-line-number="15"></td>
+					<td id="file-turtle-m-LC15" class="blob-code blob-code-inner js-file-line">		pen</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L16" class="blob-num js-line-number" data-line-number="16"></td>
+					<td id="file-turtle-m-LC16" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">end</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L17" class="blob-num js-line-number" data-line-number="17"></td>
+					<td id="file-turtle-m-LC17" class="blob-code blob-code-inner js-file-line">    </td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L18" class="blob-num js-line-number" data-line-number="18"></td>
+					<td id="file-turtle-m-LC18" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">methods</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L19" class="blob-num js-line-number" data-line-number="19"></td>
+					<td id="file-turtle-m-LC19" class="blob-code blob-code-inner js-file-line">		<span class="pl-c">% Default constructor</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L20" class="blob-num js-line-number" data-line-number="20"></td>
+					<td id="file-turtle-m-LC20" class="blob-code blob-code-inner js-file-line">		<span class="pl-c">% Initializes default values, (0, 0) facing --&gt; East</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L21" class="blob-num js-line-number" data-line-number="21"></td>
+					<td id="file-turtle-m-LC21" class="blob-code blob-code-inner js-file-line">		<span class="pl-k">function</span> <span class="pl-v">obj</span> = <span class="pl-en">Turtle</span>()</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L22" class="blob-num js-line-number" data-line-number="22"></td>
+					<td id="file-turtle-m-LC22" class="blob-code blob-code-inner js-file-line">			<span class="pl-c">% make a new Turtle</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L23" class="blob-num js-line-number" data-line-number="23"></td>
+					<td id="file-turtle-m-LC23" class="blob-code blob-code-inner js-file-line">			obj.x = <span class="pl-c1">0</span>;</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L24" class="blob-num js-line-number" data-line-number="24"></td>
+					<td id="file-turtle-m-LC24" class="blob-code blob-code-inner js-file-line">			obj.y = <span class="pl-c1">0</span>;</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L25" class="blob-num js-line-number" data-line-number="25"></td>
+					<td id="file-turtle-m-LC25" class="blob-code blob-code-inner js-file-line">			obj.heading = <span class="pl-c1">0</span>;</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L26" class="blob-num js-line-number" data-line-number="26"></td>
+					<td id="file-turtle-m-LC26" class="blob-code blob-code-inner js-file-line">			obj.pen_on_paper = <span class="pl-c1">true</span>;</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L27" class="blob-num js-line-number" data-line-number="27"></td>
+					<td id="file-turtle-m-LC27" class="blob-code blob-code-inner js-file-line">			obj.pen = Pen();</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L28" class="blob-num js-line-number" data-line-number="28"></td>
+					<td id="file-turtle-m-LC28" class="blob-code blob-code-inner js-file-line">			obj.wait = <span class="pl-c1">0.25</span>;</td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L29" class="blob-num js-line-number" data-line-number="29"></td>
+					<td id="file-turtle-m-LC29" class="blob-code blob-code-inner js-file-line">		<span class="pl-k">end</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L30" class="blob-num js-line-number" data-line-number="30"></td>
+					<td id="file-turtle-m-LC30" class="blob-code blob-code-inner js-file-line">	<span class="pl-k">end</span></td>
+				</tr>
+				<tr>
+					<td id="file-turtle-m-L31" class="blob-num js-line-number" data-line-number="31"></td>
+					<td id="file-turtle-m-LC31" class="blob-code blob-code-inner js-file-line"><span class="pl-k">end</span></td>
+				</tr>
+			</tbody></table>
+			
+			</div>
+			
+			</div>
+			
+			</div>
+			
+				</div>
+				<div class="gist-meta">
+					<a href="https://gist.github.com/anonymous/76d6d04c3012f77933b487749917a494/raw/b7f61ac365dd8f4328890cf76cb84b10183d2fca/Turtle.m" style="float:right">view raw</a>
+					<a href="https://gist.github.com/anonymous/76d6d04c3012f77933b487749917a494#file-turtle-m">Turtle.m</a>
+				</div>
+				</div>
+			</div>
 							<p>Now, we have a foundation Turtle object that can make some drawings for us. The next thing to do is to implement some helper functions. These methods are short (well, hopefully short) algorithms that will assist you in moving the turtle around, making shapes, changing the pen color, or even change direction. Let's consider what and how many member functions we need.</p>
 							<table class="alt">
 								<thead>

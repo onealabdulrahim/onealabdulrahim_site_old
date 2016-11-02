@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Python Workshop Solutions</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+        
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="../assets/icons/manifest.json">
+        <link rel="mask-icon" href="../assets/icons/safari-pinned-tab.svg" color="#700000">
+        <link rel="shortcut icon" href="../assets/icons/favicon.ico">
+        <meta name="msapplication-config" content="../assets/icons/browserconfig.xml">
+        <meta name="theme-color" content="#6d6d6d">
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="../index.html" class="logo">The O'Nealio Blog</a>
+					<nav id="nav">
+						<a href="../HighNoon/HighNoon.html">Looking for High Noon?</a>
+						<a href="py.html">Python Worskhop Solutions</a>
+						<a href="updates.html">Blog Updates</a>
+						<a href="contact.html">Contact</a>
+					</nav>
+					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+				</div>
+			</header>
+			
+			<section id="main" class="wrapper">
+				<div class="inner">
+					<header class="align-center">
+						<h2>IEEE TAMU Python Workshop Solutions</h2>
+						<p>Last updated: 2 November 2016</p>
+					</header>
+					
+					<h2>Workshop 1</h2>
+					<p>intro_1.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Gets two numbers from the user, and returns the second value</span>
+<span style="color: #a31515">    subtracted from the first &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># Get two integers from the user</span>
+firstNumber = int(input(<span style="color: #a31515">&quot;First number? &quot;</span>)) <span style="color: #008000"># conversion from str -&gt; int</span>
+secondNumber = int(input(<span style="color: #a31515">&quot;Second number? &quot;</span>))
+
+<span style="color: #008000"># find their difference</span>
+result = firstNumber - secondNumber
+
+<span style="color: #008000"># print the result (convert int -&gt; str)</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;The answer is &quot;</span>, result)
+</pre></div>
+					</p>
+					
+					<p>intro_2.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Gets two numbers from the user, and returns the second value</span>
+<span style="color: #a31515">    subtracted from the first, multiplied by 3 &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># Get two integers from the user</span>
+firstNumber = int(input(<span style="color: #a31515">&quot;First number? &quot;</span>)) <span style="color: #008000"># conversion from str -&gt; int</span>
+secondNumber = int(input(<span style="color: #a31515">&quot;Second number? &quot;</span>))
+
+<span style="color: #008000"># find their difference, multiply by 3</span>
+<span style="color: #008000"># order of operations is important!</span>
+result = (firstNumber - secondNumber) * 3
+
+<span style="color: #008000"># print the result (convert int -&gt; str)</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;The answer is &quot;</span>, result)
+</pre></div>
+					</p>
+					
+					
+					<p>intro_3.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Gets two numbers from the user, and returns the remainder</span>
+<span style="color: #a31515">    of dividing the second number by the first (Hint: %) &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># Get two integers from the user</span>
+firstNumber = int(input(<span style="color: #a31515">&quot;First number? &quot;</span>)) <span style="color: #008000"># conversion from str -&gt; int</span>
+secondNumber = int(input(<span style="color: #a31515">&quot;Second number? &quot;</span>))
+
+<span style="color: #008000"># using our remainder operator, modulus</span>
+result = firstNumber % secondNumber
+
+<span style="color: #008000"># print the result (convert int -&gt; str)</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;The answer is &quot;</span>, result)
+</pre></div>
+
+					</p>
+					
+					<p>intro_4.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Determines if a number entered by the user is even or odd&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># you will never stop using this technique once you&#39;ve learned it!</span>
+<span style="color: #008000"># it&#39;s really powerful</span>
+
+<span style="color: #008000"># get user input</span>
+x = int(input(<span style="color: #a31515">&quot;A number to check for odd/even: &quot;</span>))
+
+<span style="color: #008000"># use modulus to get the remainder when divided by 2</span>
+<span style="color: #008000"># every even number by definition can be split by 2</span>
+result = x % 2
+
+<span style="color: #008000"># we could use an if statement here but we haven&#39;t learned that yet!</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;result: &quot;</span>, result, <span style="color: #a31515">&quot;\nIf the result is 0, then the number is even. If it is 1, the number is odd.&quot;</span>)
+</pre></div>
+</p>
+					
+					<p>intro_5.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Gets a number from the user, and returns a string</span>
+<span style="color: #a31515">    of the next three multiples of that number multiplied by three&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># get user input</span>
+x = int(input(<span style="color: #a31515">&quot;Enter a number: &quot;</span>))
+
+<span style="color: #008000"># just being verbose to be as clear as possible</span>
+<span style="color: #008000"># is that a contradiction?</span>
+x1 = x * 3
+x2 = x * 3 * 3
+x3 = x * 3 * 3 * 3
+
+<span style="color: #008000"># print formatting is crucial</span>
+<span style="color: #008000"># prints items in order, with a space in between automatically</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;Multiples of&quot;</span>, x, <span style="color: #a31515">&quot;:&quot;</span>, x1, <span style="color: #a31515">&quot;,&quot;</span>, x2, <span style="color: #a31515">&quot;,&quot;</span>, x3, <span style="color: #a31515">&quot;!&quot;</span>)
+</pre></div>
+</p>
+					<p>intro_challenge.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Read in two numbers from the user,</span>
+<span style="color: #a31515">    and swap the contents of these numbers &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># get two numbers from the user</span>
+num1 = int(input(<span style="color: #a31515">&quot;First number = &quot;</span>))
+num2 = int(input(<span style="color: #a31515">&quot;Second number = &quot;</span>))
+
+<span style="color: #008000"># we need to hold the contents of the first number</span>
+temp = num1
+
+<span style="color: #008000"># go ahead and swap the first number</span>
+num1 = num2
+
+<span style="color: #008000"># retrieve our stored value of the first number</span>
+num2 = temp
+
+<span style="color: #008000"># they are now swapped</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;Num1 is now:&quot;</span>, num1, <span style="color: #a31515">&quot;\nNum2 is now:&quot;</span>, num2)
+
+
+<span style="color: #008000"># BONUS: You don&#39;t need to know this... but</span>
+<span style="color: #008000"># a fancier way of doing this (and efficient, but rather low level)</span>
+
+<span style="color: #008000"># let&#39;s swap them back without using temp</span>
+
+num1 = num1 ^ num2
+num2 = num1 ^ num2
+num1 = num1 ^ num2
+
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;\nUsing XOR to sawp them back...\nNum1 is now:&quot;</span>, num1, <span style="color: #a31515">&quot;\nNum2 is now:&quot;</span>, num2)
+</pre></div>
+</p>
+					<h2>Workshop 2</h2>
+					<h2>Workshop 3</h2>
+					<h2>Workshop 4</h2>
+					
+					
+				</div>
+			</section>
+			
+			
+			
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="flex">
+						<div class="copyright">
+							&copy; Oneal Abdulrahim
+						</div>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1556,7 +1556,7 @@
 	@media screen and (max-width: 480px) {
 
 		html, body {
-			min-width: 240px;
+			min-width: 10px;
 		}
 
 	}
@@ -2398,7 +2398,7 @@
 				margin-left: -1em;
 				padding: 0;
 				table-layout: fixed;
-				width: calc(100% + 1em);
+				width: 100%;
 			}
 
 				ul.actions.fit li {
@@ -3007,7 +3007,7 @@
 
 			#banner {
 				background-attachment: scroll;
-				padding: 6em 1.5em 4em 1.5em;
+				padding: 6em 1em 4em 1em;
 			}
 
 		}

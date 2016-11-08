@@ -151,7 +151,7 @@ num1 = num1 ^ num2
 num2 = num1 ^ num2
 num1 = num1 ^ num2
 
-<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;\nUsing XOR to sawp them back...\nNum1 is now:&quot;</span>, num1, <span style="color: #a31515">&quot;\nNum2 is now:&quot;</span>, num2)
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;\nUsing XOR to swap them back...\nNum1 is now:&quot;</span>, num1, <span style="color: #a31515">&quot;\nNum2 is now:&quot;</span>, num2)
 </pre></div>
 </p>				
 
@@ -287,6 +287,100 @@ tileColumn = (tile - 1) % width + 1
 	<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;This is an inside tile&quot;</span>)
 </pre></div>
 </p>
+					<p>looping_1.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Write a loop that prints all odd integers from 0 to a user picked limit.</span>
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:		output:		domain:</span>
+<span style="color: #a31515">3				1 3 		Positive Integers</span>
+<span style="color: #a31515">0							Zero (border case)</span>
+<span style="color: #a31515">-5							We won&#39;t deal with these either, lol &#39;&#39;&#39;</span>
+
+
+<span style="color: #008000"># Getting a number from the user</span>
+num = int(input(<span style="color: #a31515">&quot;Enter a number:&quot;</span>))
+
+<span style="color: #008000"># Start at 1, step by 2, go until just below (num + 1)</span>
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, num + 1, 2):
+	<span style="color: #0000ff">print</span>(i)
+
+<span style="color: #a31515">&#39;&#39;&#39; A more naive solution:</span>
+<span style="color: #a31515">for i in num:</span>
+<span style="color: #a31515">	if i % 2 == 1:</span>
+<span style="color: #a31515">		print(i) &#39;&#39;&#39;</span>
+</pre></div>
+</p>
+					<p>looping_2.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Write a loop that returns the sum of the next ten numbers of a seed number.</span>
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:		output:		domain:</span>
+<span style="color: #a31515">4		99 		Positive Integers</span>
+<span style="color: #a31515">0		55		Zero (border case)</span>
+<span style="color: #a31515">-5		0		Negative numbers &#39;&#39;&#39;</span>
+
+
+<span style="color: #008000"># Getting a number from the user</span>
+num = int(input(<span style="color: #a31515">&quot;Enter a number:&quot;</span>))
+
+sum = 0
+
+<span style="color: #008000"># Start at number, go until ten more than number</span>
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(num, num + 11):
+	sum += i
+	
+<span style="color: #0000ff">print</span>(sum)
+</pre></div>
+</p>
+					<p>looping_3.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Write a loop that prints out every natural number that is divisible by 7 and less than 30.</span>
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:		output:				domain:</span>
+<span style="color: #a31515">none			0 7 14 21 28 		divisible by 7 and less than 30&#39;&#39;&#39;</span>
+
+
+<span style="color: #008000"># don&#39;t need any input, which makes this practically a calculator</span>
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0, 30):
+	<span style="color: #0000ff">if</span> i % 7 == 0:
+		<span style="color: #0000ff">print</span>(i)
+</pre></div>
+</p>
+					<p>looping_challenge.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Write a loop that prints out the Fibonacci number entered by the user.</span>
+<span style="color: #a31515">This is the OEIS sequence # A000045</span>
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:		output:				domain:</span>
+<span style="color: #a31515">3				0 1 1 				third term of Fibonacci sequence</span>
+<span style="color: #a31515">0									zeroth term as we define it, is null&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># get user input</span>
+term = int(input(<span style="color: #a31515">&quot;Enter a term:&quot;</span>))
+
+<span style="color: #008000"># initial conditions</span>
+a = 0
+b = 1
+
+<span style="color: #008000"># iterate over sequence until term-th term</span>
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0, term):
+	<span style="color: #0000ff">print</span>(a)
+	
+	<span style="color: #008000"># a is the next term</span>
+	<span style="color: #008000"># this is definition of fibonacci: F(n) = (n-1) + (n-2)</span>
+	a = a + b
+	<span style="color: #008000"># swap the terms (remember this?)</span>
+	a, b = b, a
+	<span style="color: #a31515">&#39;&#39;&#39;</span>
+<span style="color: #a31515">	you can also swap them like this:</span>
+<span style="color: #a31515">	c = a</span>
+<span style="color: #a31515">	a = b</span>
+<span style="color: #a31515">	b = c</span>
+<span style="color: #a31515">	</span>
+<span style="color: #a31515">	OR:</span>
+<span style="color: #a31515">	a = a ^ b</span>
+<span style="color: #a31515">	b = a ^ b</span>
+<span style="color: #a31515">	a = a ^ b</span>
+<span style="color: #a31515">	&#39;&#39;&#39;</span>
+</pre></div>
+</p>
+					
+
+
+
+
 					<h2>Workshop 3</h2>
 					<h2>Workshop 4</h2>
 					

@@ -13,6 +13,7 @@ var timeToStr;
 var timer = setInterval(findHighNoon, 1000);
 var itsHighNoonMP3 = new Audio("sfx/mccree.ogg");
 var playOfTheGameMP3 = new Audio("sfx/potg.ogg");
+var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
 var MP3142 = new Audio("sfx/142.mp3");
 // Well, it's high noon somewhere in the world...
@@ -53,6 +54,9 @@ function findLocalHighNoon(longitude, timeZone) {
     Ensures the browser supports geolocation. If not, the code lets you know to get good and not use Opera
 */
 function getLocation() {
+	if (isChrome) {
+		document.getElementById("title").innerHTML = ("As of Chrome 50, HTML5 location is not supported over HTTP. I'm working on it. For now, accept the invalid certificate error when loading https://onealio.com/p/HighNoon.html");
+	}
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setLocationInfo);
     } else {

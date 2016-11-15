@@ -380,8 +380,69 @@ b = 1
 
 
 
+					<a name="ws3"></a>
+					<a href="#ws3"><h2>Workshop 3</h2></a>
+						<p>funcs_1.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Use the print formatter to print π (3.141592653589793) to the 8th decimal.&#39;&#39;&#39;</span>
+<span style="color: #008000"># going to use Python&#39;s math library</span>
+<span style="color: #0000ff">import</span> math
 
-					<h2>Workshop 3</h2>
+<span style="color: #008000"># easy enough</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;{:1.8f}&#39;</span>.format(math.pi))
+</pre></div></p>
+						<p>funcs_2.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Write a function that returns two given strings in alphabetical order.&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># think about how we compare characters and their hidden ascii value!</span>
+<span style="color: #0000ff">def</span> alphabetizeMe(string1, string2):
+    <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0, len(string1)):
+    	<span style="color: #0000ff">if</span> string1[i] &lt; string2[i]:
+    		<span style="color: #0000ff">return</span> <span style="color: #a31515">&#39;{0} {1}&#39;</span>.format(string1, string2)
+    	<span style="color: #0000ff">elif</span> string2[i] &lt; string1[i]:
+    		<span style="color: #0000ff">return</span> <span style="color: #a31515">&#39;{0} {1}&#39;</span>.format(string2, string1)
+
+<span style="color: #008000"># it&#39;s possible that there is a more elegant solution</span>
+<span style="color: #0000ff">print</span>(alphabetizeMe(<span style="color: #a31515">&#39;rocks&#39;</span>, <span style="color: #a31515">&#39;oneal&#39;</span>))
+</pre></div></p>
+						<p>funcs_3.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Write a function that sings the song &quot;99 Bottles of Beer&quot; with n number of bottles to start&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># we implement this iteratively</span>
+<span style="color: #0000ff">def</span> singBottles(bottles):
+	<span style="color: #0000ff">for</span> n <span style="color: #0000ff">in</span> range(bottles, -1, -1):
+		<span style="color: #0000ff">if</span> n == 0:
+			<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;{:^100}&#39;</span>.format(<span style="color: #a31515">&#39;No more bottles of beer on the wall, no more bottles of beer.&#39;</span>))
+			<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;{:^100}&#39;</span>.format(<span style="color: #a31515">&#39;Go to the store and buy some more, {0} bottles of beer on the wall.&#39;</span>.format(bottles)))
+		<span style="color: #0000ff">else</span>:
+			<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;{:^100}&#39;</span>.format(<span style="color: #a31515">&#39;{0} bottles of beer on the wall, {0} bottles of beer. &#39;</span>.format(n, n - 1)))
+			<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;{:^100}&#39;</span>.format(<span style="color: #a31515">&#39;Take one down and pass it around, {1} bottles of beer on the wall.&#39;</span>.format(n, n - 1)))
+					  
+
+<span style="color: #008000"># recursively!</span>
+<span style="color: #0000ff">def</span> recSingBottles(bottles):
+	<span style="color: #0000ff">if</span> bottles == 0:
+		<span style="color: #0000ff">return</span> <span style="color: #a31515">&#39;\nNo more bottles of beer on the wall, no more bottles of beer.&#39;</span>.format(bottles)
+	<span style="color: #0000ff">return</span> <span style="color: #a31515">&#39;\n{0} bottles of beer on the wall, {0} bottles of beer. &#39;</span> \
+		   <span style="color: #a31515">&#39;\nTake one down and pass it around, {1} bottles of beer on the wall.&#39;</span>.format(bottles, bottles - 1) \
+		   + recSingBottles(bottles - 1)
+	
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;Iterative implementation:&#39;</span>)
+singBottles(3)
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;\n\nRecursive implementation (any differences?):\n&#39;</span>, recSingBottles(3))
+</pre></div>
+</p>
+						<p>funcs_challenge.py<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Write a function that determines whether a given string </span>
+<span style="color: #a31515">   is a palindrome (can be read the same forwards and backwards)&#39;&#39;&#39;</span>
+
+<span style="color: #0000ff">def</span> isPalindrome(testString):
+	result = <span style="color: #a31515">&#39;&#39;</span>
+	<span style="color: #008000"># careful about structure of loop</span>
+	<span style="color: #0000ff">for</span> n <span style="color: #0000ff">in</span> range(len(testString) -1, -1, -1):
+		result += testString[n]
+	<span style="color: #0000ff">return</span> testString == result
+	
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;is racecar a palindrome?&#39;</span>, isPalindrome(<span style="color: #a31515">&#39;racecar&#39;</span>))
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;is Niagara, O Roar Again! a palindome?&#39;</span>, isPalindrome(<span style="color: #a31515">&#39;niagaraoroaragain&#39;</span>))
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;is hello a palindrome?&#39;</span>, isPalindrome(<span style="color: #a31515">&#39;hello&#39;</span>))
+</pre></div>
+</p>
 					<h2>Workshop 4</h2>
 					
 					

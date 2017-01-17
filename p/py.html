@@ -459,8 +459,80 @@ singBottles(3)
 <span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;is hello a palindrome?&#39;</span>, isPalindrome(<span style="color: #a31515">&#39;hello&#39;</span>))
 </pre></div>
 </p>
-					<h2>Workshop 4</h2>
-					
+
+
+
+
+
+                    <a name="ws4"></a>
+					<a href="#ws4"><h2>Workshop 4</h2></a>
+						<p>file_io.py</p><!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">from</span> Student <span style="color: #0000ff">import</span> *
+
+<span style="color: #008000"># open file for reading and writing</span>
+<span style="color: #a31515">&#39;&#39;&#39;</span>
+<span style="color: #a31515">my_file = open(&quot;data.txt&quot;)</span>
+<span style="color: #a31515">my_data = my_file.read()</span>
+<span style="color: #a31515">print(my_data)</span>
+<span style="color: #a31515">my_file.close()</span>
+<span style="color: #a31515">&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># less error prone, using &quot;with&quot; keyword</span>
+<span style="color: #a31515">&#39;&#39;&#39;</span>
+<span style="color: #a31515">with open(&#39;data.txt&#39;, &#39;r+&#39;) as file:</span>
+<span style="color: #a31515">    data = []</span>
+<span style="color: #a31515">    for i in file:</span>
+<span style="color: #a31515">        data.append(i)</span>
+
+<span style="color: #a31515">print(data)</span>
+<span style="color: #a31515">&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># dead easy</span>
+
+data = open(<span style="color: #a31515">&#39;data.txt&#39;</span>).read().splitlines()
+students = []
+<span style="color: #0000ff">for</span> line <span style="color: #0000ff">in</span> data:
+    info = line.rsplit(<span style="color: #a31515">&#39; &#39;</span>, 2)
+    current_student = Student(info[0], info[1], info[2])
+    students.append(current_student)
+
+<span style="color: #0000ff">for</span> student <span style="color: #0000ff">in</span> students:
+    <span style="color: #0000ff">print</span>(student.get_classification())
+</pre></div>
+						<div></div>
+						<p>Student.py</p><!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">CURRENT_YEAR = 2017
+
+<span style="color: #0000ff">class</span> <span style="color: #2b91af">Student</span>:    
+    <span style="color: #0000ff">def</span> __init__(self, name = <span style="color: #a31515">&quot;Foo&quot;</span>, class_year = 1901, school = <span style="color: #a31515">&quot;Texas A&amp;M&quot;</span>):
+        self.name = name
+        self.class_year = class_year
+        self.school = school
+    
+    <span style="color: #0000ff">def</span> get_classification(self):
+        age = int(self.class_year) - CURRENT_YEAR
+        switch = {
+         -1: <span style="color: #a31515">&quot;Senior&quot;</span>,
+          0: <span style="color: #a31515">&quot;Senior&quot;</span>,
+          1: <span style="color: #a31515">&quot;Junior/Senior&quot;</span>,
+          2: <span style="color: #a31515">&quot;Sophomore/Junior&quot;</span>,
+          3: <span style="color: #a31515">&quot;Freshman/Sophomore&quot;</span>,
+          4: <span style="color: #a31515">&quot;Freshman&quot;</span>
+        }
+    
+        <span style="color: #0000ff">return</span> self.name + <span style="color: #a31515">&quot; is a &quot;</span> + switch.get(age, <span style="color: #a31515">&quot;invalid age&quot;</span>) \
+                         + <span style="color: #a31515">&quot; at &quot;</span> + self.school
+
+    <span style="color: #0000ff">def</span> __str__(self):
+        <span style="color: #0000ff">return</span> self.name + <span style="color: #a31515">&quot;, class of &quot;</span> + str(self.class_year) \
+                         + <span style="color: #a31515">&quot;, attending &quot;</span> + self.school
+</pre></div>
+						<div></div>
+						<p>data.txt</p><!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">Oneal 2019 TAMU
+William 2018 TAMU
+Stephanie 2018 TAMU
+Charles 2020 SHSU
+Hana 2016 UH
+</pre></div>
+
 					
 				</div>
 			</section>

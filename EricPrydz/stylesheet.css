@@ -1,0 +1,24 @@
+@font-face {
+	font-family: 'Terminus';
+	src: url('res/TerminusTTF.eot');
+	src: url('res/TerminusTTF.eot?#iefix') format('embedded-opentype'),
+		url('res/TerminusTTF.woff2') format('woff2'),
+		url('res/TerminusTTF.woff') format('woff'),
+		url('res/TerminusTTF.ttf') format('truetype'),
+		url('res/TerminusTTF.svg#TerminusTTF') format('svg');
+	font-weight: 500;
+	font-style: normal;
+}
+
+body {
+	text-align: center;
+	font-family: terminus;
+	font-size: 650%;
+    color: #00ff6c;
+	background: #000 url("res/ep5.png") no-repeat center top;
+}
+
+div {
+    margin-top:1%;
+    margin-bottom:1%;
+}

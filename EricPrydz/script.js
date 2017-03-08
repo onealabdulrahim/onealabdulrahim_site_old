@@ -12,7 +12,7 @@ var end = new Date('03/30/2017 9:0 PM');
         if (distance < 0) {
 
             clearInterval(timer);
-            document.getElementById('time').innerHTML = 'EXPIRED!';
+            document.getElementById('time').innerHTML = 'Here comes the musical journey!';
 
             return;
         }

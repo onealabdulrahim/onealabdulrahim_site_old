@@ -13,11 +13,11 @@ var timeToStr;
 var timer = setInterval(findHighNoon, 1000);
 var itsHighNoonMP3 = new Audio("sfx/mccree.ogg");
 var playOfTheGameMP3 = new Audio("sfx/potg.ogg");
-var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
 var MP3142 = new Audio("sfx/142.mp3");
 // Well, it's high noon somewhere in the world...
 MP3142.play();
+
 
 /*
     Returns a Date object with the local high noon of the user,
@@ -26,11 +26,11 @@ MP3142.play();
 */
 function findLocalHighNoon(longitude, timeZone) {
     "use strict";
-    
+
     if (timeZone > 0) {
-        var finalTime = ((-(Math.floor(longitude) + (longitude - Math.floor(longitude)) * 60 + 0)) - (-(timeZone * 15))) / 15 + 0.123;
+        var finalTime = (-longitude - (-timeZone * 15)) / 15 + 0.123;
     } else {
-        var finalTime = ((Math.floor(longitude) + (longitude - Math.floor(longitude)) * 60 + 0) - (timeZone * 15)) / 15 + 0.123;
+        var finalTime = (longitude - (timeZone * 15)) / 15 + 0.123;
     }
     
     
@@ -44,6 +44,7 @@ function findLocalHighNoon(longitude, timeZone) {
     var mins = Math.ceil((finalTime - hours) * 60);
     
     var result = new Date();
+    
     result.setHours(hours);
     result.setMinutes(mins);
     result.setSeconds(0);
@@ -54,13 +55,8 @@ function findLocalHighNoon(longitude, timeZone) {
     Ensures the browser supports geolocation. If not, the code lets you know to get good and not use Opera
 */
 function getLocation() {
-	if (isChrome) {
-		document.getElementById("title").innerHTML = ("As of Chrome 50, HTML5 location is not supported over HTTP. I'm working on it. For now, accept the invalid certificate error when loading https://onealio.com/p/HighNoon.html");
-	}
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(setLocationInfo);
-    } else {
-        document.getElementById("title").innerHTML = ("Location data is not supported with this browser :-(");
     }
 }
 
@@ -83,30 +79,57 @@ function findHighNoon() {
     var currentTime = new Date();
     var timeZone = currentTime.getTimezoneOffset() / -60;
     highNoonTime = findLocalHighNoon(Longitude, timeZone);
-    
-    if (currentTime.getMinutes() < 10) {
-        if (currentTime.getSeconds() < 10) {
-            timeToStr = currentTime.getHours() + ":0" + currentTime.getMinutes() + ":0" + currentTime.getSeconds();
+
+    if (Longitude != undefined) {
+        if (currentTime.getMinutes() < 10) {
+            if (currentTime.getSeconds() < 10) {
+                timeToStr = currentTime.getHours() + ":0" + currentTime.getMinutes() + ":0" + currentTime.getSeconds();
+            } else {
+                timeToStr = currentTime.getHours() + ":0" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
+            }
+        } else if (currentTime.getSeconds() < 10) {
+            timeToStr = currentTime.getHours() + ":" + currentTime.getMinutes() + ":0" + currentTime.getSeconds();
         } else {
-            timeToStr = currentTime.getHours() + ":0" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
+            timeToStr = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
         }
-    } else if (currentTime.getSeconds() < 10) {
-        timeToStr = currentTime.getHours() + ":" + currentTime.getMinutes() + ":0" + currentTime.getSeconds();
-    } else {
-        timeToStr = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
-    }
     
-    if (highNoonTime.getMinutes() < 10) {
-        document.getElementById("whatTimeIsHN").innerHTML = ("High noon in your location is at: " + highNoonTime.getHours() + ":0" + highNoonTime.getMinutes() + " (GMT " + timeZone.toString() + ")</br>");
+        if (highNoonTime.getMinutes() < 10) {
+            document.getElementById("whatTimeIsHN").innerHTML = ("High noon in your location is at: " + highNoonTime.getHours() + ":0" + highNoonTime.getMinutes() + " (GMT " + timeZone.toString() + ")</br>");
+        } else {
+            document.getElementById("whatTimeIsHN").innerHTML = ("High noon in your location is at: " + highNoonTime.getHours() + ":" + highNoonTime.getMinutes() + " (GMT " + timeZone.toString() + ")</br>");
+        }
+
+        var minMinute = highNoonTime.getMinutes();
+        var maxMinute= highNoonTime.getMinutes();
+        var minHour= highNoonTime.getHours();
+        var maxHour= highNoonTime.getHours();
+
+        if (highNoonTime.getMinutes() - 15 < 0) {
+            minMinute = Math.abs((highNoonTime.getMinutes() - 15)) % 60;
+            minHour = Math.abs((highNoonTime.getHours() - 1)) % 24;
+        } else {
+            minMinute = highNoonTime.getMinutes() - 15;
+        }
+        
+        if (highNoonTime.getMinutes() + 15 >= 60) {
+            maxMinute = (highNoonTime.getMinutes() + 15) % 60;
+            maxHour = (highNoonTime.getHours + 1) % 24;
+        } else {
+            maxMinute = minMinute + 30;
+        }
+
+        // There's a 15 minute tolerance before and after high noon time. That's 30 minutes of observance.
+        if ((currentTime.getHours() >= minHour && currentTime.getMinutes() >= minMinute && currentTime.getHours() <= maxHour && currentTime.getMinutes() <= maxMinute)) {
+            itsHighNoon();
+        } else {
+            itsNotHighNoon();
+        }
     } else {
-        document.getElementById("whatTimeIsHN").innerHTML = ("High noon in your location is at: " + highNoonTime.getHours() + ":" + highNoonTime.getMinutes() + " (GMT " + timeZone.toString() + ")</br>");
-    }
-    
-    
-    if (currentTime.getHours() === highNoonTime.getHours() && currentTime.getMinutes() === highNoonTime.getMinutes()) {
-        itsHighNoon();
-    } else {
-        itsNotHighNoon();
+        document.getElementById("title").innerHTML = ("Waiting on longitude information... Default: GMT -6 (#Houston)");
+        clearInterval(timer);
+        timer = setInterval(findHighNoon, 5000);
+        Longitude = -87.6298; // Chicago
+        timeZone = -6;
     }
 }
 
@@ -116,7 +139,7 @@ function findHighNoon() {
 */
 function itsHighNoon() {
     document.getElementById("notHighNoonText").innerHTML = ("");
-    document.getElementById("highNoonText").innerHTML = ("🔫 It's HIGH NOON!!! 🔫 " + timeToStr);
+    document.getElementById("highNoonText").innerHTML = ("🌵 🔫 🤠 It's HIGH NOON!!! 🌵 🔫 🤠 " + timeToStr);
     
     itsHighNoonMP3.play();
     playOfTheGameMP3.play();
@@ -159,7 +182,7 @@ function itsNotHighNoon() {
     Prints the difference in time remaining until high noon time, with conditionals to ensure proper verbiage.
 */
 function countdownToHN() {
-    document.getElementById("title").innerHTML = ("Time until HIGH NOON: </br>");
+    document.getElementById("title").innerHTML = ("Time until exact HIGH NOON: </br>");
     var timeUntil = getTimeRemaining(highNoonTime);
     
     if (timeUntil.hours === 1) {

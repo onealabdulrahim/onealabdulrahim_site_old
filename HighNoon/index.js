@@ -52,13 +52,30 @@ function findLocalHighNoon(longitude, timeZone) {
 }
 
 /*
-    Ensures the browser supports geolocation. If not, the code lets you know to get good and not use Opera
+    Ensures the browser supports geolocation. If not, the code lets you know
 */
 function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(setLocationInfo);
+    if (!navigator.geolocation) {
+        document.getElementById("title").innerHTML = "Failed to get location!";
+        return;
     }
-}
+
+    function success(position) {
+        Longitude = position.coords.longitude;
+        console.log("Reached");
+        findHighNoon();
+    }
+
+    function error() {
+        document.getElementById("title").innerHTML = "Using default location (GMT -6) #Houston";
+        clearInterval(timer);
+        timer = setInterval(findHighNoon, 5000);
+        Longitude = -87.6298; // Chicago
+        timeZone = -6;
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
 
 /*
     Uses the passed in navigator object to record and save longitude global variable, moves on to findHighNoon();
@@ -124,12 +141,6 @@ function findHighNoon() {
         } else {
             itsNotHighNoon();
         }
-    } else {
-        document.getElementById("title").innerHTML = ("Waiting on longitude information... Default: GMT -6 (#Houston)");
-        clearInterval(timer);
-        timer = setInterval(findHighNoon, 5000);
-        Longitude = -87.6298; // Chicago
-        timeZone = -6;
     }
 }
 

@@ -7,7 +7,7 @@ Please send all feedback to onealabdul@gmail.com
 */
 
 jQuery(document).ready(function($) {  
-    
+
 $(window).load(function(){
 	$('#preloader').fadeOut('slow',function(){$(this).remove();});
 });
@@ -201,9 +201,9 @@ function itsNotHighNoon() {
     Prints the difference in time remaining until high noon time, with conditionals to ensure proper verbiage.
 */
 function countdownToHN() {
-    var image_x = document.getElementById('spinner');
-    if (image_x != null || image_x != undefined) {
-        image_x.parentNode.removeChild(image_x);
+    var spinner = document.getElementById('spinner');
+    if (spinner != null || spinner != undefined) {
+        spinner.parentNode.removeChild(spinner);
     }
 
     document.getElementById("title").innerHTML = ("Time until exact HIGH NOON: </br>");

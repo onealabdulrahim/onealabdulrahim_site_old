@@ -55,13 +55,13 @@ a:active {
     height: 2em;
 
     -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
+       -moz-border-radius: 50%;
+            border-radius: 50%;
  
     -webkit-animation: spin 2s infinite linear;
-    -moz-animation: spin 2s infinite linear;
-    -o-animation: spin 2s infinite linear;
-    animation: spin 2s infinite linear;
+       -moz-animation: spin 2s infinite linear;
+         -o-animation: spin 2s infinite linear;
+            animation: spin 2s infinite linear;
 }
  
 @-webkit-keyframes spin {

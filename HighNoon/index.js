@@ -150,7 +150,7 @@ function findHighNoon() {
 */
 function itsHighNoon() {
     document.getElementById("notHighNoonText").innerHTML = ("");
-    document.getElementById("highNoonText").innerHTML = ("🌵 🔫 🤠 It's HIGH NOON!!! 🌵 🔫 🤠 " + timeToStr);
+    document.getElementById("highNoonText").innerHTML = ("🔫 It's HIGH NOON!!! 🔫" + timeToStr);
     
     itsHighNoonMP3.play();
     playOfTheGameMP3.play();

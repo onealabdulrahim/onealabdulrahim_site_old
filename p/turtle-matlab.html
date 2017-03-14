@@ -1,73 +1,94 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>O'Nealio: Turtle Graphics in MATLAB</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-        
-        
-        <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
-        <link rel="manifest" href="../assets/icons/manifest.json">
-        <link rel="mask-icon" href="../assets/icons/safari-pinned-tab.svg" color="#700000">
-        <link rel="shortcut icon" href="../assets/icons/favicon.ico">
-        <meta name="msapplication-config" content="../assets/icons/browserconfig.xml">
-        <meta name="theme-color" content="#444444">
-	</head>
-	<body class="subpage">
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="../index.html" class="logo">The O'Nealio Blog</a>
-					<nav id="nav">
-						<a href="../EricPrydz/eric-prydz.html">Eric Prydz Countdown</a>
-						<a href="../HighNoon/HighNoon.html">High Noon</a>
-						<a href="pyworkshop.html">Python Worskhop</a>
-						<a href="updates.html">Blog Updates</a>
-						<a href="contact.html">Contact</a>
-					</nav>
-					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-				</div>
+<head>
+	<title>O'Nealio: Turtle Graphics in MATLAB</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+
+
+	<link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="../assets/icons/manifest.json">
+	<link rel="mask-icon" href="../assets/icons/safari-pinned-tab.svg" color="#700000">
+	<link rel="shortcut icon" href="../assets/icons/favicon.ico">
+	<meta name="msapplication-config" content="../assets/icons/browserconfig.xml">
+	<meta name="theme-color" content="#444444">
+</head>
+
+<body class="subpage">
+
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="../index.html" class="logo">The O'Nealio Blog</a>
+			<nav id="nav">
+				<a href="../EricPrydz/eric-prydz.html">Eric Prydz Countdown</a>
+				<a href="../HighNoon/HighNoon.html">High Noon</a>
+				<a href="workshops.html">Workshops</a>
+				<a href="updates.html">Blog Updates</a>
+				<a href="contact.html">Contact</a>
+			</nav>
+			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+		</div>
+	</header>
+
+	<!-- Three -->
+	<section id="three" class="wrapper">
+		<div class="inner">
+			<header class="align-center">
+				<h2>Turtle Graphics in MATLAB</h2>
+				<p>Friday, September 30, 2016</p>
 			</header>
-
-		<!-- Three -->
-			<section id="three" class="wrapper">
-				<div class="inner">
-					<header class="align-center">
-						<h2>Turtle Graphics in MATLAB</h2>
-						<p>Friday, September 30, 2016</p>
-					</header>
-					<p>The general term "Turtle Graphics" refers to an easy way to introduce not just the synthesis of simple computer graphics, but also object oriented concepts of programming languages. The general idea involves the drawing of lines to make shapes, graphs, and images with different colors, sizes, and widths. In a simpler sense, imagine a turtle (the animal) holding a pen, and moving while the pen is held down. This allows for a mark to be made in the fashion of a line, creating a portion of a drawing. Scaling this up, you can make aesthetically pleasing computer graphics using advanced algorithms, or you can go back to the drawings you made while you were picking your nose in second grade.</p>
-					<div class="flex">
-						<article>
-							<div class="image fit">
-								<img src="../images/turtle/spiral.png" alt="Spiral" />
-							</div>
-							<p>Though many packages for Turtle exist for many programming languages, even in MATLAB, I felt it would be useful for me to implement a simple version of these iterative drawings. I always say to make test cases, but in this case, it is easier to just think about what our output should look like. For instance, here are some input values we can give our Turtle to do, and the expected output.</p></article>
-							<table class="alt">
-								<thead>
-									<tr>
-										<th>Possible Inputs</th>
-										<th>Expected Output</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Turtle ➞ drawSquare</td>
-										<td><div class="image fit"><img src="../images/turtle/test-case1.png" alt="Square" /></div></td>
-									</tr>
-									<tr>
-										<td>Turtle ➞ drawPolygon(7 sides)</td>
-										<td><div class="image fit"><img src="../images/turtle/test-case2.png" alt="Heptagon" /></div></td>
-									</tr>
-								</tbody>
-							</table>
-							<p>Okay, so this is not very complicated, or so it seems. We must first make the foundation of our Turtle object. Think about the properties it will need to have. An aspect of object oriented programming is considering the characteristics of your class; they must be general enough to describe all instances of the class but specific enough to differentiate it from other types. You must also consider default values of these properties, or more simply, "where should we start if someone wants to make a Turtle?". Let's implement this basic class definition in MATLAB.</p>
-							<p>
-	<!-- HTML generated using hilite.me --><div style="margin: auto; background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">classdef</span> Turtle
+			<p>The general term "Turtle Graphics" refers to an easy way to introduce not just the synthesis of simple computer graphics,
+				but also object oriented concepts of programming languages. The general idea involves the drawing of lines to make shapes,
+				graphs, and images with different colors, sizes, and widths. In a simpler sense, imagine a turtle (the animal) holding
+				a pen, and moving while the pen is held down. This allows for a mark to be made in the fashion of a line, creating a
+				portion of a drawing. Scaling this up, you can make aesthetically pleasing computer graphics using advanced algorithms,
+				or you can go back to the drawings you made while you were picking your nose in second grade.</p>
+			<div class="flex">
+				<article>
+					<div class="image fit">
+						<img src="../images/turtle/spiral.png" alt="Spiral" />
+					</div>
+					<p>Though many packages for Turtle exist for many programming languages, even in MATLAB, I felt it would be useful for
+						me to implement a simple version of these iterative drawings. I always say to make test cases, but in this case, it
+						is easier to just think about what our output should look like. For instance, here are some input values we can give
+						our Turtle to do, and the expected output.</p>
+				</article>
+				<table class="alt">
+					<thead>
+						<tr>
+							<th>Possible Inputs</th>
+							<th>Expected Output</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Turtle ➞ drawSquare</td>
+							<td>
+								<div class="image fit"><img src="../images/turtle/test-case1.png" alt="Square" /></div>
+							</td>
+						</tr>
+						<tr>
+							<td>Turtle ➞ drawPolygon(7 sides)</td>
+							<td>
+								<div class="image fit"><img src="../images/turtle/test-case2.png" alt="Heptagon" /></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>Okay, so this is not very complicated, or so it seems. We must first make the foundation of our Turtle object. Think
+					about the properties it will need to have. An aspect of object oriented programming is considering the characteristics
+					of your class; they must be general enough to describe all instances of the class but specific enough to differentiate
+					it from other types. You must also consider default values of these properties, or more simply, "where should we start
+					if someone wants to make a Turtle?". Let's implement this basic class definition in MATLAB.</p>
+				<p>
+					<!-- HTML generated using hilite.me -->
+					<div style="margin: auto; background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+						<pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">classdef</span> Turtle
 	<span style="color: #888888">% TURTLE Turtle with a pen</span>
 	<span style="color: #888888">% An implementation of iterative drawings</span>
 	<span style="color: #008800; font-weight: bold">properties</span>
@@ -98,38 +119,59 @@
 		<span style="color: #008800; font-weight: bold">end</span>
 	<span style="color: #008800; font-weight: bold">end</span>
 <span style="color: #008800; font-weight: bold">end</span>
-</pre></div>
-							</p>
-							<p>Now, we have a foundation Turtle object that can make some drawings for us. The next thing to do is to implement some helper functions. These methods are short (well, hopefully short) algorithms that will assist you in moving the turtle around, making shapes, changing the pen color, or even change direction. Let's consider what and how many member functions we need.</p>
-							<table class="alt">
-								<thead>
-									<tr>
-										<th>Possible Member Functions</th>
-										<th>Expected Behavior</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>moveForward to (distance)</td>
-										<td><p>Using the distance formula, find:</p><p class="tab">1.) The new x point after moving distance</p><p class="tab">2.) The new y point after moving distance</p><p>Then, draw a line from the first to final point.</p></td>
-									</tr>
-									<tr>
-										<td>rotate orientation to (angle)</td>
-										<td><p>Add or subtract the angle value in degrees.</p><p>But be careful: check:</p><p class="tab">Is the new angle more than 360?</p><p class="tab">If so, roll over to 0 and add the difference</p></td>
-									</tr>
-									<tr>
-										<td>draw a triangle with side (length)</td>
-										<td><p>Do this three times:</p><p class="tab">1.) Draw a line with given length (maybe use moveForward?)</p><p class="tab">2.) Turn 120 degrees</p></td>
-									</tr>
-								</tbody>
-							</table>
-							<p>And we can continue. You can see how math formulas can come in useful here, like the distance formula and properties of basic geometric shapes. You can see some of my methods at the end of the page. Here are some Turtle creations!</p>
-						</article>
-						<div class="image fit">
-								<img src="../images/turtle/turtle.gif" alt="Turtle" />
-						</div>
-						<p>
-<!-- HTML generated using hilite.me --><div style="margin: auto; background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">% ... above is class declaration</span>
+</pre>
+					</div>
+				</p>
+				<p>Now, we have a foundation Turtle object that can make some drawings for us. The next thing to do is to implement some
+					helper functions. These methods are short (well, hopefully short) algorithms that will assist you in moving the turtle
+					around, making shapes, changing the pen color, or even change direction. Let's consider what and how many member functions
+					we need.</p>
+				<table class="alt">
+					<thead>
+						<tr>
+							<th>Possible Member Functions</th>
+							<th>Expected Behavior</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>moveForward to (distance)</td>
+							<td>
+								<p>Using the distance formula, find:</p>
+								<p class="tab">1.) The new x point after moving distance</p>
+								<p class="tab">2.) The new y point after moving distance</p>
+								<p>Then, draw a line from the first to final point.</p>
+							</td>
+						</tr>
+						<tr>
+							<td>rotate orientation to (angle)</td>
+							<td>
+								<p>Add or subtract the angle value in degrees.</p>
+								<p>But be careful: check:</p>
+								<p class="tab">Is the new angle more than 360?</p>
+								<p class="tab">If so, roll over to 0 and add the difference</p>
+							</td>
+						</tr>
+						<tr>
+							<td>draw a triangle with side (length)</td>
+							<td>
+								<p>Do this three times:</p>
+								<p class="tab">1.) Draw a line with given length (maybe use moveForward?)</p>
+								<p class="tab">2.) Turn 120 degrees</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>And we can continue. You can see how math formulas can come in useful here, like the distance formula and properties
+					of basic geometric shapes. You can see some of my methods at the end of the page. Here are some Turtle creations!</p>
+				</article>
+				<div class="image fit">
+					<img src="../images/turtle/turtle.gif" alt="Turtle" />
+				</div>
+				<p>
+					<!-- HTML generated using hilite.me -->
+					<div style="margin: auto; background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+						<pre style="margin: 0; line-height: 125%"><span style="color: #888888">% ... above is class declaration</span>
 
 <span style="color: #888888">% Moves the turtle in the direction of the heading by a distance</span>
 <span style="color: #008800; font-weight: bold">function</span><span style="color: #bbbbbb"> </span>obj =<span style="color: #bbbbbb"> </span><span style="color: #0066BB; font-weight: bold">forward</span>(obj,distance)<span style="color: #bbbbbb"></span>
@@ -181,26 +223,28 @@
         obj = obj.penDown();
     <span style="color: #008800; font-weight: bold">end</span>
 <span style="color: #008800; font-weight: bold">end</span>
-</pre></div>
-			</p>
-			</section>
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<div class="flex">
-						<div class="copyright">
-							&copy; Oneal Abdulrahim
-						</div>
+</pre>
 					</div>
+				</p>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<div class="flex">
+				<div class="copyright">
+					&copy; Oneal Abdulrahim
 				</div>
-			</footer>
+			</div>
+		</div>
+	</footer>
 
-		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/skel.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/skel.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
 
-	</body>
+</body>
+
 </html>

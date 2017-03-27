@@ -1,0 +1,660 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>O'Nealio: 101 Workshop Solutions</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+
+
+	<link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="../assets/icons/manifest.json">
+	<link rel="mask-icon" href="../assets/icons/safari-pinned-tab.svg" color="#700000">
+	<link rel="shortcut icon" href="../assets/icons/favicon.ico">
+	<meta name="msapplication-config" content="../assets/icons/browserconfig.xml">
+	<meta name="theme-color" content="#444444">
+</head>
+
+<body class="subpage">
+
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="../index.html" class="logo">The O'Nealio Blog</a>
+			<nav id="nav">
+				<a href="../EricPrydz/eric-prydz.html">Eric Prydz Countdown</a>
+				<a href="../HighNoon/HighNoon.html">High Noon</a>
+				<a href="workshops.html">Workshops</a>
+				<a href="../p/updates.html">Blog Updates</a>
+				<a href="../p/contact.html">Contact</a>
+			</nav>
+			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+		</div>
+	</header>
+
+	<section id="main" class="wrapper">
+		<div class="inner">
+			<header class="align-center">
+				<h2>Programming 101 Workshop Solutions</h2>
+				<p>Last updated: 27 March 2017</p>
+			</header>
+			<a name="ws1"></a>
+			<a href="#ws1">
+				<h2>Workshop 1</h2>
+			</a>
+			<p>intro_1.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Gets two numbers from the user, and returns the second value</span>
+<span style="color: #a31515">    subtracted from the first &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># Get two integers from the user</span>
+firstNumber = int(input(<span style="color: #a31515">&quot;First number? &quot;</span>)) <span style="color: #008000"># conversion from str -&gt; int</span>
+secondNumber = int(input(<span style="color: #a31515">&quot;Second number? &quot;</span>))
+
+<span style="color: #008000"># find their difference</span>
+result = firstNumber - secondNumber
+
+<span style="color: #008000"># print the result (convert int -&gt; str)</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;The answer is &quot;</span>, result)
+</pre>
+				</div>
+			</p>
+
+			<p>intro_2.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Gets two numbers from the user, and returns the second value</span>
+<span style="color: #a31515">    subtracted from the first, multiplied by 3 &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># Get two integers from the user</span>
+firstNumber = int(input(<span style="color: #a31515">&quot;First number? &quot;</span>)) <span style="color: #008000"># conversion from str -&gt; int</span>
+secondNumber = int(input(<span style="color: #a31515">&quot;Second number? &quot;</span>))
+
+<span style="color: #008000"># find their difference, multiply by 3</span>
+<span style="color: #008000"># order of operations is important!</span>
+result = (firstNumber - secondNumber) * 3
+
+<span style="color: #008000"># print the result (convert int -&gt; str)</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;The answer is &quot;</span>, result)
+</pre>
+				</div>
+			</p>
+
+
+			<p>intro_3.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Gets two numbers from the user, and returns the remainder</span>
+<span style="color: #a31515">    of dividing the second number by the first (Hint: %) &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># Get two integers from the user</span>
+firstNumber = int(input(<span style="color: #a31515">&quot;First number? &quot;</span>)) <span style="color: #008000"># conversion from str -&gt; int</span>
+secondNumber = int(input(<span style="color: #a31515">&quot;Second number? &quot;</span>))
+
+<span style="color: #008000"># using our remainder operator, modulus</span>
+result = firstNumber % secondNumber
+
+<span style="color: #008000"># print the result (convert int -&gt; str)</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;The answer is &quot;</span>, result)
+</pre>
+				</div>
+
+			</p>
+
+			<p>intro_4.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Determines if a number entered by the user is even or odd&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># you will never stop using this technique once you&#39;ve learned it!</span>
+<span style="color: #008000"># it&#39;s really powerful</span>
+
+<span style="color: #008000"># get user input</span>
+x = int(input(<span style="color: #a31515">&quot;A number to check for odd/even: &quot;</span>))
+
+<span style="color: #008000"># use modulus to get the remainder when divided by 2</span>
+<span style="color: #008000"># every even number by definition can be split by 2</span>
+result = x % 2
+
+<span style="color: #008000"># we could use an if statement here but we haven&#39;t learned that yet!</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;result: &quot;</span>, result, <span style="color: #a31515">&quot;\nIf the result is 0, then the number is even. If it is 1, the number is odd.&quot;</span>)
+</pre>
+				</div>
+			</p>
+
+			<p>intro_5.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Gets a number from the user, and returns a string</span>
+<span style="color: #a31515">    of the next three multiples of that number multiplied by three&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># get user input</span>
+x = int(input(<span style="color: #a31515">&quot;Enter a number: &quot;</span>))
+
+<span style="color: #008000"># just being verbose to be as clear as possible</span>
+<span style="color: #008000"># is that a contradiction?</span>
+x1 = x * 3
+x2 = x * 3 * 3
+x3 = x * 3 * 3 * 3
+
+<span style="color: #008000"># print formatting is crucial</span>
+<span style="color: #008000"># prints items in order, with a space in between automatically</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;Multiples of&quot;</span>, x, <span style="color: #a31515">&quot;:&quot;</span>, x1, <span style="color: #a31515">&quot;,&quot;</span>, x2, <span style="color: #a31515">&quot;,&quot;</span>, x3, <span style="color: #a31515">&quot;!&quot;</span>)
+</pre>
+				</div>
+			</p>
+			<p>intro_challenge.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Read in two numbers from the user,</span>
+<span style="color: #a31515">    and swap the contents of these numbers &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># get two numbers from the user</span>
+num1 = int(input(<span style="color: #a31515">&quot;First number = &quot;</span>))
+num2 = int(input(<span style="color: #a31515">&quot;Second number = &quot;</span>))
+
+<span style="color: #008000"># we need to hold the contents of the first number</span>
+temp = num1
+
+<span style="color: #008000"># go ahead and swap the first number</span>
+num1 = num2
+
+<span style="color: #008000"># retrieve our stored value of the first number</span>
+num2 = temp
+
+<span style="color: #008000"># they are now swapped</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;Num1 is now:&quot;</span>, num1, <span style="color: #a31515">&quot;\nNum2 is now:&quot;</span>, num2)
+
+
+<span style="color: #008000"># BONUS: You don&#39;t need to know this... but</span>
+<span style="color: #008000"># a fancier way of doing this (and efficient, but rather low level)</span>
+
+<span style="color: #008000"># let&#39;s swap them back without using temp</span>
+
+num1 = num1 ^ num2
+num2 = num1 ^ num2
+num1 = num1 ^ num2
+
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;\nUsing XOR to swap them back...\nNum1 is now:&quot;</span>, num1, <span style="color: #a31515">&quot;\nNum2 is now:&quot;</span>, num2)
+</pre>
+				</div>
+			</p>
+
+
+
+
+
+			<a name="ws2"></a>
+			<a href="#ws2">
+				<h2>Workshop 2</h2>
+			</a>
+			<p>decisions_1.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Gets two numbers from the user and returns the larger number of the two.</span>
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:		outputs:		domain:</span>
+<span style="color: #a31515">1, 2		2			Integers greater than 0</span>
+<span style="color: #a31515">0, 0 		0			Integers that are equal (border case)</span>
+<span style="color: #a31515">-1, 1		1			Integers less than 0 &#39;&#39;&#39;</span>
+
+
+<span style="color: #008000"># Getting a couple of numbers from the user</span>
+num1 = int(input(<span style="color: #a31515">&quot;Enter a number:&quot;</span>))
+num2 = int(input(<span style="color: #a31515">&quot;Enter a number:&quot;</span>))
+
+<span style="color: #008000"># Here is our conditional...</span>
+<span style="color: #0000ff">if</span> num1 &gt; num2: <span style="color: #008000"># If the first number is greater than the second,</span>
+	<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;The larger number is&quot;</span>, num1) <span style="color: #008000"># then print this number</span>
+<span style="color: #0000ff">else</span>: <span style="color: #008000"># Otherwise... (notice we do not need to check the alternative condition)</span>
+	<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;The larger number is&quot;</span>, num2)
+</pre>
+				</div>
+			</p>
+			<p>decisions_2.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Gets a number from the user, and prints “yes” if that number is divisible by</span>
+<span style="color: #a31515"> 4 or 7, and “no” otherwise.</span>
+
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:		outputs:	domain:</span>
+<span style="color: #a31515">-7		&quot;yes&quot;		Negative factors</span>
+<span style="color: #a31515">1		&quot;no&quot;		Positive integers, nonfactors</span>
+<span style="color: #a31515">0		&quot;no&quot;		Zero (border case)</span>
+<span style="color: #a31515">4		&quot;yes&quot;		Positive integers, factors of 4</span>
+<span style="color: #a31515">7		&quot;yes&quot;		Positive integers, factors of 7</span>
+<span style="color: #a31515">28		&quot;yes&quot;		Positive integers, factors of both (border case) &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># Get input from the user</span>
+number = int(input(<span style="color: #a31515">&quot;Enter a number to check:&quot;</span>))
+
+<span style="color: #008000"># Conditionals</span>
+<span style="color: #0000ff">if</span> number % 7 == 0:
+	<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;yes, because it is divisible by 7&quot;</span>)
+<span style="color: #0000ff">elif</span> number % 4 == 0:
+	<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;yes,because it is divisible by 4&quot;</span>)
+<span style="color: #0000ff">else</span>:
+	<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;no, it is not divisible by either 4 or 7&quot;</span>)
+</pre>
+				</div>
+			</p>
+			<p>decisions_3.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Prints the absolute value of a number entered by the user.</span>
+
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:		outputs:	domain:</span>
+<span style="color: #a31515">-3		3		Negative integers</span>
+<span style="color: #a31515">0		0		Zero (border case)</span>
+<span style="color: #a31515">9		9		Positive integers &#39;&#39;&#39;</span>
+
+number = int(input(<span style="color: #a31515">&quot;Enter a number:&quot;</span>))
+
+<span style="color: #0000ff">if</span> number &lt; 0:
+	<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;The absolute value is&quot;</span>, number * -1)
+<span style="color: #0000ff">else</span>:
+	<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;The absolute value is&quot;</span>, number)
+</pre>
+				</div>
+			</p>
+			<p>decisions_4.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Write a program that takes two numbers and an operation from the user (+, -, *, /), then prints and performs that operation.</span>
+
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:			outputs:		domain:</span>
+<span style="color: #a31515">2, 1, +			3			addition (order does not matter)</span>
+<span style="color: #a31515">2, 1, -			1			subtraction (second from first)</span>
+<span style="color: #a31515">2, 1, *			2			multiplication (order does not matter)</span>
+<span style="color: #a31515">2, 1, /			2			division (first by second) &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># lets get some inputs</span>
+num1 = int(input(<span style="color: #a31515">&quot;Enter the first operand:&quot;</span>))
+num2 = int(input(<span style="color: #a31515">&quot;Enter the second operand:&quot;</span>))
+operator = input(<span style="color: #a31515">&quot;Enter the operator:&quot;</span>)
+
+<span style="color: #008000"># initialize the result to 0 (will be changed later)</span>
+result = 0
+
+<span style="color: #008000"># is it a plus?</span>
+<span style="color: #0000ff">if</span> operator == <span style="color: #a31515">&#39;+&#39;</span>:
+	result = num1 + num2
+<span style="color: #008000"># okay, it wasn&#39;t a plus, is it a minus?</span>
+<span style="color: #0000ff">elif</span> operator == <span style="color: #a31515">&#39;-&#39;</span>:
+	result = num1 - num2
+<span style="color: #008000"># it wasn&#39;t a plus or minus, is it a multiply?</span>
+<span style="color: #0000ff">elif</span> operator == <span style="color: #a31515">&#39;*&#39;</span>:
+	result = num1 * num2
+<span style="color: #008000"># it was none of those, so it must be division (careful assumption!)</span>
+<span style="color: #0000ff">else</span>:
+	result = num1 / num2
+
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;We perform the operation:&quot;</span>, num1, operator, num2, <span style="color: #a31515">&quot;=&quot;</span>, result)
+</pre>
+				</div>
+			</p>
+			<p>decisions_challenge.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Imagine we have a grid with a width and height that have been stored in memory. Each</span>
+<span style="color: #a31515">	tile on the grid is numbered, starting at tile 1 in the top left corner. Write a</span>
+<span style="color: #a31515">	program that, given a tile number, returns “edge” or “inside” depending on whether or</span>
+<span style="color: #a31515">	not the tile is at the edge of the grid or not.</span>
+
+<span style="color: #a31515">Test Suite: too big to put in here, just draw it!</span>
+<span style="color: #a31515">width: 5, height: 6</span>
+<span style="color: #a31515">		1	2	3	4	5</span>
+<span style="color: #a31515">		6	7	8	9	10</span>
+<span style="color: #a31515">		11	12	13	14	15</span>
+<span style="color: #a31515">		16	17	18	19	20</span>
+<span style="color: #a31515">		21	22	23	24	25</span>
+<span style="color: #a31515">		26	27	28	29	30</span>
+<span style="color: #a31515">For instance, 7 is inside, while 20 is edge &#39;&#39;&#39;</span>
+
+height = int(input(<span style="color: #a31515">&quot;The height of the array?&quot;</span>))
+width = int(input(<span style="color: #a31515">&quot;The width of the array?&quot;</span>))
+tile = int(input(<span style="color: #a31515">&quot;Enter a tile value:&quot;</span>))
+
+<span style="color: #008000"># well, let&#39;s calculate the tile&#39;s position first</span>
+<span style="color: #008000"># the row number</span>
+tileRow = (tile - 1) // width + 1
+<span style="color: #008000"># the column number</span>
+tileColumn = (tile - 1) % width + 1
+<span style="color: #008000"># if the above formulas do not make sense, plug in some numbers</span>
+
+<span style="color: #008000"># if it&#39;s on the first or last row, or the first or last column</span>
+<span style="color: #008000"># it&#39;s an edge</span>
+<span style="color: #0000ff">if</span> tileRow == 1 <span style="color: #0000ff">or</span> tileRow == height <span style="color: #0000ff">or</span> tileColumn == 1 <span style="color: #0000ff">or</span> tileColumn == width:
+	<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;What an edgy tile!&quot;</span>)
+<span style="color: #0000ff">else</span>:
+	<span style="color: #0000ff">print</span>(<span style="color: #a31515">&quot;This is an inside tile&quot;</span>)
+</pre>
+				</div>
+			</p>
+			<p>looping_1.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Write a loop that prints all odd integers from 0 to a user picked limit.</span>
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:		output:		domain:</span>
+<span style="color: #a31515">3		1 3 		Positive Integers</span>
+<span style="color: #a31515">0					Zero (border case)</span>
+<span style="color: #a31515">-5					We won&#39;t deal with these either, lol &#39;&#39;&#39;</span>
+
+
+<span style="color: #008000"># Getting a number from the user</span>
+num = int(input(<span style="color: #a31515">&quot;Enter a number:&quot;</span>))
+
+<span style="color: #008000"># Start at 1, step by 2, go until just below (num + 1)</span>
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, num + 1, 2):
+	<span style="color: #0000ff">print</span>(i)
+
+<span style="color: #a31515">&#39;&#39;&#39; A more naive solution:</span>
+<span style="color: #a31515">for i in num:</span>
+<span style="color: #a31515">	if i % 2 == 1:</span>
+<span style="color: #a31515">		print(i) &#39;&#39;&#39;</span>
+</pre>
+				</div>
+			</p>
+			<p>looping_2.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39; Write a loop that returns the sum of the next ten numbers of a seed number.</span>
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:		output:		domain:</span>
+<span style="color: #a31515">4		99 		Positive Integers</span>
+<span style="color: #a31515">0		55		Zero (border case)</span>
+<span style="color: #a31515">-5		0		Negative numbers &#39;&#39;&#39;</span>
+
+
+<span style="color: #008000"># Getting a number from the user</span>
+num = int(input(<span style="color: #a31515">&quot;Enter a number:&quot;</span>))
+
+sum = 0
+
+<span style="color: #008000"># Start at number, go until ten more than number</span>
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(num, num + 11):
+	sum += i
+	
+<span style="color: #0000ff">print</span>(sum)
+</pre>
+				</div>
+			</p>
+			<p>looping_3.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Write a loop that prints out every natural number that is divisible by 7 and less than 30.</span>
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:		output:				domain:</span>
+<span style="color: #a31515">none		0 7 14 21 28 			divisible by 7 and less than 30&#39;&#39;&#39;</span>
+
+
+<span style="color: #008000"># don&#39;t need any input, which makes this practically a calculator</span>
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0, 30):
+	<span style="color: #0000ff">if</span> i % 7 == 0:
+		<span style="color: #0000ff">print</span>(i)
+</pre>
+				</div>
+			</p>
+			<p>looping_challenge.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Write a loop that prints out the Fibonacci number entered by the user.</span>
+<span style="color: #a31515">This is the OEIS sequence # A000045</span>
+<span style="color: #a31515">Test Suite:</span>
+<span style="color: #a31515">inputs:		output:				domain:</span>
+<span style="color: #a31515">3		0 1 1 				third term of Fibonacci sequence</span>
+<span style="color: #a31515">0						zeroth term as we define it, is null&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># get user input</span>
+term = int(input(<span style="color: #a31515">&quot;Enter a term:&quot;</span>))
+
+<span style="color: #008000"># initial conditions</span>
+a = 0
+b = 1
+
+<span style="color: #008000"># iterate over sequence until term-th term</span>
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0, term):
+	<span style="color: #0000ff">print</span>(a)
+	
+	<span style="color: #008000"># a is the next term</span>
+	<span style="color: #008000"># this is definition of fibonacci: F(n) = (n-1) + (n-2)</span>
+	a = a + b
+	<span style="color: #008000"># swap the terms (remember this?)</span>
+	a, b = b, a
+	<span style="color: #a31515">&#39;&#39;&#39;</span>
+<span style="color: #a31515">	you can also swap them like this:</span>
+<span style="color: #a31515">	c = a</span>
+<span style="color: #a31515">	a = b</span>
+<span style="color: #a31515">	b = c</span>
+<span style="color: #a31515">	</span>
+<span style="color: #a31515">	OR:</span>
+<span style="color: #a31515">	a = a ^ b</span>
+<span style="color: #a31515">	b = a ^ b</span>
+<span style="color: #a31515">	a = a ^ b</span>
+<span style="color: #a31515">	&#39;&#39;&#39;</span>
+</pre>
+				</div>
+			</p>
+
+
+
+
+			<a name="ws3"></a>
+			<a href="#ws3">
+				<h2>Workshop 3</h2>
+			</a>
+			<p>funcs_1.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Use the print formatter to print π (3.141592653589793) to the 8th decimal.</span>
+
+<span style="color: #a31515">There is only one test case:</span>
+<span style="color: #a31515">output:</span>
+<span style="color: #a31515">3.14159265 &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># going to use Python&#39;s math library</span>
+<span style="color: #0000ff">import</span> math
+
+<span style="color: #008000"># easy enough</span>
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;{:1.8f}&#39;</span>.format(math.pi))
+</pre>
+				</div>
+			</p>
+			<p>funcs_2.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Write a function that returns two given strings in alphabetical order.</span>
+<span style="color: #a31515">Test suite:</span>
+<span style="color: #a31515">input:				output:				domain:</span>
+<span style="color: #a31515">&quot;hi&quot;, &quot;man&quot;			&quot;hi man&quot;			ordered</span>
+<span style="color: #a31515">&quot;zz&quot;, &quot;aa&quot;			&quot;aa zz&quot;				unordered &#39;&#39;&#39;</span>
+
+<span style="color: #008000"># think about how we compare characters and their hidden ascii value!</span>
+<span style="color: #0000ff">def</span> alphabetizeMe(string1, string2):
+    <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0, len(string1)):
+    	<span style="color: #0000ff">if</span> string1[i] &lt; string2[i]:
+    		<span style="color: #0000ff">return</span> <span style="color: #a31515">&#39;{0} {1}&#39;</span>.format(string1, string2)
+    	<span style="color: #0000ff">elif</span> string2[i] &lt; string1[i]:
+    		<span style="color: #0000ff">return</span> <span style="color: #a31515">&#39;{0} {1}&#39;</span>.format(string2, string1)
+
+<span style="color: #008000"># it&#39;s possible that there is a more elegant solution</span>
+<span style="color: #0000ff">print</span>(alphabetizeMe(<span style="color: #a31515">&#39;rocks&#39;</span>, <span style="color: #a31515">&#39;oneal&#39;</span>))
+</pre>
+				</div>
+			</p>
+			<p>funcs_3.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Write a function that sings the song &quot;99 Bottles of Beer&quot; with n number of bottles to start&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># we implement this iteratively</span>
+<span style="color: #0000ff">def</span> singBottles(bottles):
+	<span style="color: #0000ff">for</span> n <span style="color: #0000ff">in</span> range(bottles, -1, -1):
+		<span style="color: #0000ff">if</span> n == 0:
+			<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;{:^100}&#39;</span>.format(<span style="color: #a31515">&#39;No more bottles of beer on the wall, no more bottles of beer.&#39;</span>))
+			<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;{:^100}&#39;</span>.format(<span style="color: #a31515">&#39;Go to the store and buy some more, {0} bottles of beer on the wall.&#39;</span>.format(bottles)))
+		<span style="color: #0000ff">else</span>:
+			<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;{:^100}&#39;</span>.format(<span style="color: #a31515">&#39;{0} bottles of beer on the wall, {0} bottles of beer. &#39;</span>.format(n, n - 1)))
+			<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;{:^100}&#39;</span>.format(<span style="color: #a31515">&#39;Take one down and pass it around, {1} bottles of beer on the wall.&#39;</span>.format(n, n - 1)))
+					  
+
+<span style="color: #008000"># recursively!</span>
+<span style="color: #0000ff">def</span> recSingBottles(bottles):
+	<span style="color: #0000ff">if</span> bottles == 0:
+		<span style="color: #0000ff">return</span> <span style="color: #a31515">&#39;\nNo more bottles of beer on the wall, no more bottles of beer.&#39;</span>.format(bottles)
+	<span style="color: #0000ff">return</span> <span style="color: #a31515">&#39;\n{0} bottles of beer on the wall, {0} bottles of beer. &#39;</span> \
+		   <span style="color: #a31515">&#39;\nTake one down and pass it around, {1} bottles of beer on the wall.&#39;</span>.format(bottles, bottles - 1) \
+		   + recSingBottles(bottles - 1)
+	
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;Iterative implementation:&#39;</span>)
+singBottles(3)
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;\n\nRecursive implementation (any differences?):\n&#39;</span>, recSingBottles(3))
+</pre>
+				</div>
+			</p>
+			<p>funcs_challenge.py
+				<!-- HTML generated using hilite.me -->
+				<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+					<pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;Write a function that determines whether a given string </span>
+<span style="color: #a31515">   is a palindrome (can be read the same forwards and backwards)</span>
+<span style="color: #a31515">   </span>
+<span style="color: #a31515">   Test suite:</span>
+<span style="color: #a31515">   input:				output:				domain:</span>
+<span style="color: #a31515">   &quot;redivider&quot;				True				palindomes</span>
+<span style="color: #a31515">   &quot;onealio&quot;				False				non-palindromes   &#39;&#39;&#39;</span>
+
+<span style="color: #0000ff">def</span> isPalindrome(testString):
+	result = <span style="color: #a31515">&#39;&#39;</span>
+	<span style="color: #008000"># careful about structure of loop</span>
+	<span style="color: #0000ff">for</span> n <span style="color: #0000ff">in</span> range(len(testString) -1, -1, -1):
+		result += testString[n]
+	<span style="color: #0000ff">return</span> testString == result
+	
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;is racecar a palindrome?&#39;</span>, isPalindrome(<span style="color: #a31515">&#39;racecar&#39;</span>))
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;is Niagara, O Roar Again! a palindome?&#39;</span>, isPalindrome(<span style="color: #a31515">&#39;niagaraoroaragain&#39;</span>))
+<span style="color: #0000ff">print</span>(<span style="color: #a31515">&#39;is hello a palindrome?&#39;</span>, isPalindrome(<span style="color: #a31515">&#39;hello&#39;</span>))
+</pre>
+				</div>
+			</p>
+
+
+
+
+
+			<a name="ws4"></a>
+			<a href="#ws4">
+				<h2>Workshop 4</h2>
+			</a>
+			<p>file_io.py</p>
+			<!-- HTML generated using hilite.me -->
+			<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+				<pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">from</span> Student <span style="color: #0000ff">import</span> *
+
+<span style="color: #008000"># open file for reading and writing</span>
+<span style="color: #a31515">&#39;&#39;&#39;</span>
+<span style="color: #a31515">my_file = open(&quot;data.txt&quot;)</span>
+<span style="color: #a31515">my_data = my_file.read()</span>
+<span style="color: #a31515">print(my_data)</span>
+<span style="color: #a31515">my_file.close()</span>
+<span style="color: #a31515">&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># less error prone, using &quot;with&quot; keyword</span>
+<span style="color: #a31515">&#39;&#39;&#39;</span>
+<span style="color: #a31515">with open(&#39;data.txt&#39;, &#39;r+&#39;) as file:</span>
+<span style="color: #a31515">    data = []</span>
+<span style="color: #a31515">    for i in file:</span>
+<span style="color: #a31515">        data.append(i)</span>
+
+<span style="color: #a31515">print(data)</span>
+<span style="color: #a31515">&#39;&#39;&#39;</span>
+
+<span style="color: #008000"># dead easy</span>
+
+data = open(<span style="color: #a31515">&#39;data.txt&#39;</span>).read().splitlines()
+students = []
+<span style="color: #0000ff">for</span> line <span style="color: #0000ff">in</span> data:
+    info = line.rsplit(<span style="color: #a31515">&#39; &#39;</span>, 2)
+    current_student = Student(info[0], info[1], info[2])
+    students.append(current_student)
+
+<span style="color: #0000ff">for</span> student <span style="color: #0000ff">in</span> students:
+    <span style="color: #0000ff">print</span>(student.get_classification())
+</pre>
+			</div>
+			<div></div>
+			<p>Student.py</p>
+			<!-- HTML generated using hilite.me -->
+			<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+				<pre style="margin: 0; line-height: 125%">CURRENT_YEAR = 2017
+
+<span style="color: #0000ff">class</span> <span style="color: #2b91af">Student</span>:    
+    <span style="color: #0000ff">def</span> __init__(self, name = <span style="color: #a31515">&quot;Foo&quot;</span>, class_year = 1901, school = <span style="color: #a31515">&quot;Texas A&amp;M&quot;</span>):
+        self.name = name
+        self.class_year = class_year
+        self.school = school
+    
+    <span style="color: #0000ff">def</span> get_classification(self):
+        age = int(self.class_year) - CURRENT_YEAR
+        switch = {
+         -1: <span style="color: #a31515">&quot;Senior&quot;</span>,
+          0: <span style="color: #a31515">&quot;Senior&quot;</span>,
+          1: <span style="color: #a31515">&quot;Junior/Senior&quot;</span>,
+          2: <span style="color: #a31515">&quot;Sophomore/Junior&quot;</span>,
+          3: <span style="color: #a31515">&quot;Freshman/Sophomore&quot;</span>,
+          4: <span style="color: #a31515">&quot;Freshman&quot;</span>
+        }
+    
+        <span style="color: #0000ff">return</span> self.name + <span style="color: #a31515">&quot; is a &quot;</span> + switch.get(age, <span style="color: #a31515">&quot;invalid age&quot;</span>) \
+                         + <span style="color: #a31515">&quot; at &quot;</span> + self.school
+
+    <span style="color: #0000ff">def</span> __str__(self):
+        <span style="color: #0000ff">return</span> self.name + <span style="color: #a31515">&quot;, class of &quot;</span> + str(self.class_year) \
+                         + <span style="color: #a31515">&quot;, attending &quot;</span> + self.school
+</pre>
+			</div>
+			<div></div>
+			<p>data.txt</p>
+			<!-- HTML generated using hilite.me -->
+			<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+				<pre style="margin: 0; line-height: 125%">Oneal 2019 TAMU
+William 2018 TAMU
+Stephanie 2018 TAMU
+Charles 2020 SHSU
+Hana 2016 UH
+</pre>
+			</div>
+
+
+		</div>
+	</section>
+
+
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<div class="flex">
+				<div class="copyright">
+					&copy; Oneal Abdulrahim
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/skel.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

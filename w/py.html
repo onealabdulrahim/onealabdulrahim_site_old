@@ -2,48 +2,48 @@
 <html>
 
 <head>
-	<title>O'Nealio: Python Workshop Code</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="../assets/css/main.css" />
+  <title>O'Nealio: Python Workshop Code</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
 
 
-	<link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
-	<link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
-	<link rel="manifest" href="../assets/icons/manifest.json">
-	<link rel="mask-icon" href="../assets/icons/safari-pinned-tab.svg" color="#700000">
-	<link rel="shortcut icon" href="../assets/icons/favicon.ico">
-	<meta name="msapplication-config" content="../assets/icons/browserconfig.xml">
-	<meta name="theme-color" content="#444444">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="../assets/icons/manifest.json">
+  <link rel="mask-icon" href="../assets/icons/safari-pinned-tab.svg" color="#700000">
+  <link rel="shortcut icon" href="../assets/icons/favicon.ico">
+  <meta name="msapplication-config" content="../assets/icons/browserconfig.xml">
+  <meta name="theme-color" content="#444444">
 </head>
 
 <body class="subpage">
 
-	<!-- Header -->
-	<header id="header">
-		<div class="inner">
-			<a href="../index.html" class="logo">The O'Nealio Blog</a>
-			<nav id="nav">
-				<a href="../HighNoon/HighNoon.html">High Noon</a>
-				<a href="workshops.html">Workshops</a>
-				<a href="../p/updates.html">Blog Updates</a>
-				<a href="../contact.html">Contact</a>
-			</nav>
-			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-		</div>
-	</header>
+  <!-- Header -->
+  <header id="header">
+    <div class="inner">
+      <a href="../index.html" class="logo">The O'Nealio Blog</a>
+      <nav id="nav">
+        <a href="../p/ieee-tamu.html">IEEE TAMU</a>
+        <a href="workshops.html">Workshops</a>
+        <a href="../p/updates.html">Blog Updates</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+    </div>
+  </header>
 
-	<section id="main" class="wrapper">
-		<div class="inner">
-			<header class="align-center">
-				<h2>Python Workshop Solutions</h2>
-				<p>Last updated: 10 April 2017</p>
-			</header>
-			<h2>Element.py</h2>
-			<!-- HTML generated using hilite.me -->
-			<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-				<pre style="margin: 0; line-height: 125%"><span style="color: #DD4422">&#39;&#39;&#39; This module represents object oriented structure in Python. The Element</span>
+  <section id="main" class="wrapper">
+    <div class="inner">
+      <header class="align-center">
+        <h2>Python Workshop Solutions</h2>
+        <p>Last updated: 10 April 2017</p>
+      </header>
+      <h2>Element.py</h2>
+      <!-- HTML generated using hilite.me -->
+      <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+        <pre style="margin: 0; line-height: 125%"><span style="color: #DD4422">&#39;&#39;&#39; This module represents object oriented structure in Python. The Element</span>
 <span style="color: #DD4422">    class is the smallest unit of matter, with methods that assist with</span>
 <span style="color: #DD4422">    its string and integer representations. &#39;&#39;&#39;</span>
 
@@ -84,13 +84,13 @@
   <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__repr__</span>(<span style="color: #007020">self</span>):
     <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;{0}: Atomic #{1}, Mass {2} g/mol&quot;</span><span style="color: #333333">.</span>format(<span style="color: #007020">self</span><span style="color: #333333">.</span>symbol, <span style="color: #007020">self</span><span style="color: #333333">.</span>atno, <span style="color: #007020">self</span><span style="color: #333333">.</span>mass)
 </pre>
-			</div>
+      </div>
 
-			<br>
-			<h2>element_data.py</h2>
-			<!-- HTML generated using hilite.me -->
-			<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-				<pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">Element</span> <span style="color: #008800; font-weight: bold">import</span> Element
+      <br>
+      <h2>element_data.py</h2>
+      <!-- HTML generated using hilite.me -->
+      <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+        <pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">Element</span> <span style="color: #008800; font-weight: bold">import</span> Element
 
 elements <span style="color: #333333">=</span> {
 
@@ -210,12 +210,12 @@ elements <span style="color: #333333">=</span> {
     <span style="background-color: #fff0f0">&quot;Ununquadium&quot;</span>: Element(<span style="color: #0000DD; font-weight: bold">114</span>, <span style="background-color: #fff0f0">&quot;Uuq&quot;</span>, <span style="color: #6600EE; font-weight: bold">289.0</span>),
     <span style="background-color: #fff0f0">&quot;Ununhexium&quot;</span>: Element(<span style="color: #0000DD; font-weight: bold">116</span>, <span style="background-color: #fff0f0">&quot;Uuh&quot;</span>, <span style="color: #007020">None</span>)}
 </pre>
-			</div>
-			<br>
-			<h2>main.py</h2>
-			<!-- HTML generated using hilite.me -->
-			<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-				<pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">element_data</span> <span style="color: #008800; font-weight: bold">import</span> elements
+      </div>
+      <br>
+      <h2>main.py</h2>
+      <!-- HTML generated using hilite.me -->
+      <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+        <pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">element_data</span> <span style="color: #008800; font-weight: bold">import</span> elements
 
 <span style="color: #008800; font-weight: bold">while</span> <span style="color: #007020">True</span>:
     user_input <span style="color: #333333">=</span> <span style="color: #007020">input</span>(<span style="background-color: #fff0f0">&quot;Element: &quot;</span>)
@@ -226,28 +226,28 @@ elements <span style="color: #333333">=</span> {
     <span style="color: #008800; font-weight: bold">else</span>:
         <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Not a valid input! Please try again.&quot;</span>)
 </pre>
-			</div>
+      </div>
 
-	</section>
+  </section>
 
 
 
-	<!-- Footer -->
-	<footer id="footer">
-		<div class="inner">
-			<div class="flex">
-				<div class="copyright">
-					&copy; Oneal Abdulrahim
-				</div>
-			</div>
-		</div>
-	</footer>
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="inner">
+      <div class="flex">
+        <div class="copyright">
+          &copy; Oneal Abdulrahim
+        </div>
+      </div>
+    </div>
+  </footer>
 
-	<!-- Scripts -->
-	<script src="../assets/js/jquery.min.js"></script>
-	<script src="../assets/js/skel.min.js"></script>
-	<script src="../assets/js/util.js"></script>
-	<script src="../assets/js/main.js"></script>
+  <!-- Scripts -->
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/skel.min.js"></script>
+  <script src="../assets/js/util.js"></script>
+  <script src="../assets/js/main.js"></script>
 
 </body>
 

@@ -1,0 +1,113 @@
+<!doctype html>
+<!--Purpose and function: to demonstrate using HTML the behavior of Langton's Ant, a cellular automaton.
+                          The "ant" is an orange square, and moves according to specific rules. More info:
+                          www.onealio.com-->
+<html>
+
+<head>
+    <title>Langton's Ant</title>
+    <meta charset='utf-8' />
+</head>
+
+<body>
+    <canvas height='720' width='1280' id='mycanvas'></canvas>
+    <script>
+        var canvas = document.getElementById("mycanvas");
+        ctx = canvas.getContext('2d');
+
+        /* height and width of canvas */
+        var height = 720;
+        var width = 1280;
+
+
+        /* Create new empty 2D array */
+        var array = new Array(width);
+        for (var i = 0; i < width; i++) {
+            array[i] = new Array(width);
+        }
+
+        /* directional variables */
+        var RIGHT = "right";
+        var LEFT = "left";
+        var UP = "up";
+        var DOWN = "down";
+
+        /* Sizes, starting points, timing */
+        var squareSize = 25;
+        var x = width / 2;
+        var y = height / 2;
+        var direction = DOWN;
+        var interval = 25; //milliseconds
+
+
+
+        /* RULES 
+            - At a white square, turn 90° right, change the color of the square,
+              move forward one unit
+            - At a black square, turn 90° left, change the color of the square,
+              move forward one unit
+        */
+
+
+        /* Run this code every "interval" milliseconds */
+        setInterval(function() {
+
+            /* Check array to determine what direction to turn */
+            if (array[x][y] === 0) {
+                if (direction === UP) {
+                    direction = RIGHT;
+                } else if (direction === LEFT) {
+                    direction = UP;
+                } else if (direction === DOWN) {
+                    direction = LEFT;
+                } else {
+                    direction = DOWN;
+                }
+            } else {
+                if (direction === UP) {
+                    direction = LEFT;
+                } else if (direction === LEFT) {
+                    direction = DOWN;
+                } else if (direction === DOWN) {
+                    direction = RIGHT;
+                } else {
+                    direction = UP;
+                }
+            }
+
+
+            /* Changing the color of the square */
+            if (array[x][y] == 0) {
+                ctx.fillStyle = "#777777";
+                ctx.fillRect(x, y + squareSize, squareSize, squareSize);
+
+                /* Record that rect has been filled */
+                array[x][y] = 1;
+            } else {
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(x, y + squareSize, squareSize, squareSize);
+                array[x][y] = 0;
+            }
+
+
+            /* Move forward one unit */
+            if (direction === RIGHT) {
+                x += squareSize;
+            } else if (direction === UP) {
+                y += squareSize;
+            } else if (direction === LEFT) {
+                x -= squareSize;
+            } else {
+                y -= squareSize;
+            }
+
+
+            /* Square representing the ant is maroon */
+            ctx.fillStyle = "#770000";
+            ctx.fillRect(x, y + squareSize, squareSize, squareSize);
+
+        }, interval)
+    </script>
+</body>
+
+</html>

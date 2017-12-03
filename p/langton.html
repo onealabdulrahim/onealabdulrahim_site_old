@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>O'Nealio: Langton's Ant</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="../assets/icons/manifest.json">
+    <link rel="mask-icon" href="../assets/icons/safari-pinned-tab.svg" color="#700000">
+    <link rel="shortcut icon" href="../assets/icons/favicon.ico">
+    <meta name="msapplication-config" content="../assets/icons/browserconfig.xml">
+    <meta name="theme-color" content="#444444">
+</head>
+
+<body class="subpage">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a href="../index.html" class="logo">Oneal Abdulrahim</a>
+            <nav id="nav">
+                
+                <a href="../w/workshops.html">Workshops</a>
+                <a href="../course/courses.html">Courses & Projects</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+        </div>
+    </header>
+
+    <section id="main" class="wrapper">
+        <div class="inner">
+            <header class="align-center">
+                <h2>Langton's Ant</h2>
+                <p>Old blog post. Original post date: Monday, September 21, 2015</p>
+                <p><a href="langtonsant.html">DEMO</a></p>
+            </header>
+            <div align="left">
+                <div class="post-body entry-content" id="post-body-4669707186974630269" itemprop="description articleBody">
+                    <br> Alongside the many developments in the growing field of computer science, especially with those in the twentieth century, researchers used <a href="https://en.wikipedia.org/wiki/Turing_machine">Turing machines</a> to emulate the
+                    behavior of computer logic. These strict, procedural programs were contrasted with research in artificial life, or how computer programs or logical steps could relate to everyday systems and processes. You might have heard of the Game
+                    of Life by John Conway, a popular 2D <a href="http://mathworld.wolfram.com/CellularAutomaton.html">cellular automaton</a>. One of these Turing machines, Langton's ant, is particularly interesting due to its simple set of rules but
+                    rather complex and emergent behavior. It is a cellular automaton, or more basically, a grid of black or white cells, that features a hypothetical ant and its movement patterns.<br>
+                    <br> This ant has strict rules to its movement, and starts on one cell facing any direction. Then, depending on the color of the cell that the ant sits on, it can do one of two things, following these rules:<br>
+                    <br>
+                    <ul>
+                        <li><span style="background-color: white; font-family: inherit; line-height: 19.2px;">If the cell the ant is on is black, the cell changes to a white cell and the ant turns left;</span></li>
+                        <li><span style="background-color: white; font-family: inherit; line-height: 19.2px;">If the cell is white, the cell changes to black cell and the ant turns right;</span></li>
+                        <li><span style="background-color: white; font-family: inherit; line-height: 19.2px;">The ant then moves forward to the next cell, and repeats the procedure.</span></li>
+                    </ul>
+                    <div class="separator" style="clear: both; text-align: center;">
+                        <a href="http://mathworld.wolfram.com/images/gifs/langant.gif" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="http://mathworld.wolfram.com/images/gifs/langant.gif" border="0"></a>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="line-height: 19.2px;"><i>The ant in action, in the first few steps.</i></span></div>
+                    <div style="text-align: center;">
+                        <span style="line-height: 19.2px;"><i><br></i></span></div>
+                    <div style="text-align: center;">
+                        <div style="text-align: left;">
+                            <span style="line-height: 19.2px;">The rules are straightforward, but starting at a large number of steps, close to 11,000, the ant exhibits a&nbsp;</span><span style="line-height: 19.2px; text-align: center;">pattern in its movement. It creates what is known as the "highway", a pretty but unexplained piece of its behavior.</span></div>
+                        <div class="separator" style="clear: both; text-align: center;">
+                            <a href="https://upload.wikimedia.org/wikipedia/commons/d/d3/LangtonsAnt.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/LangtonsAnt.png" width="320" height="320" border="0"></a>
+                        </div>
+                        <div class="separator" style="clear: both; text-align: center;">
+                            <i>The Highway as the ant continues its journey infinitely.</i></div>
+                        <div class="separator" style="clear: both; text-align: center;">
+                            <i><br></i></div>
+                        <div class="separator" style="clear: both; text-align: left;">
+                            This module has been used to further development and understanding of algorithms, and is a challenge for programmers to create, especially when involving multiple colors, not just a simple "on or off" for each cell. Here is my take on a JavaScript version,
+                            <a href="http://www.onealio.com/p/langtonsant.html">which is linked here</a>.</div>
+                        <div class="separator" style="clear: both; text-align: left;">
+                            <br></div>
+
+
+                        <div align="left">
+                            <!-- HTML generated using hilite.me -->
+                            <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #BC7A00">&lt;!doctype html&gt;</span>
+    <span style="color: #408080; font-style: italic">&lt;!--Purpose and function: to demonstrate using HTML the behavior of Langton&#39;s Ant, a cellular automaton.</span>
+    <span style="color: #408080; font-style: italic">                          The &quot;ant&quot; is an orange square, and moves according to specific rules. More info:</span>
+    <span style="color: #408080; font-style: italic">                          www.onealio.com--&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;html&gt;</span>
+    
+    <span style="color: #008000; font-weight: bold">&lt;head&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;title&gt;</span>Langton&#39;s Ant<span style="color: #008000; font-weight: bold">&lt;/title&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;meta</span> <span style="color: #7D9029">charset=</span><span style="color: #BA2121">&#39;utf-8&#39;</span> <span style="color: #008000; font-weight: bold">/&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/head&gt;</span>
+    
+    <span style="color: #008000; font-weight: bold">&lt;body&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;canvas</span> <span style="color: #7D9029">height=</span><span style="color: #BA2121">&#39;720&#39;</span> <span style="color: #7D9029">width=</span><span style="color: #BA2121">&#39;1280&#39;</span> <span style="color: #7D9029">id=</span><span style="color: #BA2121">&#39;mycanvas&#39;</span><span style="color: #008000; font-weight: bold">&gt;&lt;/canvas&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;script&gt;</span>
+            <span style="color: #008000; font-weight: bold">var</span> canvas <span style="color: #666666">=</span> <span style="color: #008000">document</span>.getElementById(<span style="color: #BA2121">&quot;mycanvas&quot;</span>);
+            ctx <span style="color: #666666">=</span> canvas.getContext(<span style="color: #BA2121">&#39;2d&#39;</span>);
+    
+            <span style="color: #408080; font-style: italic">/* height and width of canvas */</span>
+            <span style="color: #008000; font-weight: bold">var</span> height <span style="color: #666666">=</span> <span style="color: #666666">720</span>;
+            <span style="color: #008000; font-weight: bold">var</span> width <span style="color: #666666">=</span> <span style="color: #666666">1280</span>;
+    
+    
+            <span style="color: #408080; font-style: italic">/* Create new empty 2D array */</span>
+            <span style="color: #008000; font-weight: bold">var</span> array <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> <span style="color: #008000">Array</span>(width);
+            <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #008000; font-weight: bold">var</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> width; i<span style="color: #666666">++</span>) {
+                array[i] <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> <span style="color: #008000">Array</span>(width);
+            }
+    
+            <span style="color: #408080; font-style: italic">/* directional variables */</span>
+            <span style="color: #008000; font-weight: bold">var</span> RIGHT <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;right&quot;</span>;
+            <span style="color: #008000; font-weight: bold">var</span> LEFT <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;left&quot;</span>;
+            <span style="color: #008000; font-weight: bold">var</span> UP <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;up&quot;</span>;
+            <span style="color: #008000; font-weight: bold">var</span> DOWN <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;down&quot;</span>;
+    
+            <span style="color: #408080; font-style: italic">/* Sizes, starting points, timing */</span>
+            <span style="color: #008000; font-weight: bold">var</span> squareSize <span style="color: #666666">=</span> <span style="color: #666666">25</span>;
+            <span style="color: #008000; font-weight: bold">var</span> x <span style="color: #666666">=</span> width <span style="color: #666666">/</span> <span style="color: #666666">2</span>;
+            <span style="color: #008000; font-weight: bold">var</span> y <span style="color: #666666">=</span> height <span style="color: #666666">/</span> <span style="color: #666666">2</span>;
+            <span style="color: #008000; font-weight: bold">var</span> direction <span style="color: #666666">=</span> DOWN;
+            <span style="color: #008000; font-weight: bold">var</span> interval <span style="color: #666666">=</span> <span style="color: #666666">25</span>; <span style="color: #408080; font-style: italic">//milliseconds</span>
+    
+    
+    
+            <span style="color: #408080; font-style: italic">/* RULES </span>
+    <span style="color: #408080; font-style: italic">            - At a white square, turn 90° right, change the color of the square,</span>
+    <span style="color: #408080; font-style: italic">              move forward one unit</span>
+    <span style="color: #408080; font-style: italic">            - At a black square, turn 90° left, change the color of the square,</span>
+    <span style="color: #408080; font-style: italic">              move forward one unit</span>
+    <span style="color: #408080; font-style: italic">        */</span>
+    
+    
+            <span style="color: #408080; font-style: italic">/* Run this code every &quot;interval&quot; milliseconds */</span>
+            setInterval(<span style="color: #008000; font-weight: bold">function</span>() {
+    
+                <span style="color: #408080; font-style: italic">/* Check array to determine what direction to turn */</span>
+                <span style="color: #008000; font-weight: bold">if</span> (array[x][y] <span style="color: #666666">===</span> <span style="color: #666666">0</span>) {
+                    <span style="color: #008000; font-weight: bold">if</span> (direction <span style="color: #666666">===</span> UP) {
+                        direction <span style="color: #666666">=</span> RIGHT;
+                    } <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span> (direction <span style="color: #666666">===</span> LEFT) {
+                        direction <span style="color: #666666">=</span> UP;
+                    } <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span> (direction <span style="color: #666666">===</span> DOWN) {
+                        direction <span style="color: #666666">=</span> LEFT;
+                    } <span style="color: #008000; font-weight: bold">else</span> {
+                        direction <span style="color: #666666">=</span> DOWN;
+                    }
+                } <span style="color: #008000; font-weight: bold">else</span> {
+                    <span style="color: #008000; font-weight: bold">if</span> (direction <span style="color: #666666">===</span> UP) {
+                        direction <span style="color: #666666">=</span> LEFT;
+                    } <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span> (direction <span style="color: #666666">===</span> LEFT) {
+                        direction <span style="color: #666666">=</span> DOWN;
+                    } <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span> (direction <span style="color: #666666">===</span> DOWN) {
+                        direction <span style="color: #666666">=</span> RIGHT;
+                    } <span style="color: #008000; font-weight: bold">else</span> {
+                        direction <span style="color: #666666">=</span> UP;
+                    }
+                }
+    
+    
+                <span style="color: #408080; font-style: italic">/* Changing the color of the square */</span>
+                <span style="color: #008000; font-weight: bold">if</span> (array[x][y] <span style="color: #666666">==</span> <span style="color: #666666">0</span>) {
+                    ctx.fillStyle <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;#777777&quot;</span>;
+                    ctx.fillRect(x, y <span style="color: #666666">+</span> squareSize, squareSize, squareSize);
+    
+                    <span style="color: #408080; font-style: italic">/* Record that rect has been filled */</span>
+                    array[x][y] <span style="color: #666666">=</span> <span style="color: #666666">1</span>;
+                } <span style="color: #008000; font-weight: bold">else</span> {
+                    ctx.fillStyle <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;#ffffff&quot;</span>;
+                    ctx.fillRect(x, y <span style="color: #666666">+</span> squareSize, squareSize, squareSize);
+                    array[x][y] <span style="color: #666666">=</span> <span style="color: #666666">0</span>;
+                }
+    
+    
+                <span style="color: #408080; font-style: italic">/* Move forward one unit */</span>
+                <span style="color: #008000; font-weight: bold">if</span> (direction <span style="color: #666666">===</span> RIGHT) {
+                    x <span style="color: #666666">+=</span> squareSize;
+                } <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span> (direction <span style="color: #666666">===</span> UP) {
+                    y <span style="color: #666666">+=</span> squareSize;
+                } <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span> (direction <span style="color: #666666">===</span> LEFT) {
+                    x <span style="color: #666666">-=</span> squareSize;
+                } <span style="color: #008000; font-weight: bold">else</span> {
+                    y <span style="color: #666666">-=</span> squareSize;
+                }
+    
+    
+                <span style="color: #408080; font-style: italic">/* Square representing the ant is maroon */</span>
+                ctx.fillStyle <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;#770000&quot;</span>;
+                ctx.fillRect(x, y <span style="color: #666666">+</span> squareSize, squareSize, squareSize);
+    
+            }, interval)
+        <span style="color: #008000; font-weight: bold">&lt;/script&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
+    
+    <span style="color: #008000; font-weight: bold">&lt;/html&gt;</span>
+    </pre></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <b>Resources and Videos:</b><br>
+            <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Langton%27s_ant">Wikipedia on Langton's ant</a></li>
+                <li><a href="http://mathworld.wolfram.com/LangtonsAnt.html">Wolfram&nbsp;(who I stole the above .GIF from)&nbsp;on Langton's ant</a>&nbsp;</li>
+                <li><a href="https://www.youtube.com/watch?v=w6XQQhCgq5c">Multiple Langon ants (a colony!)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=NWBToaXK5T0">Numberphile on Langton's ant</a></li>
+                <li><a href="https://www.youtube.com/watch?v=oTssNuDEkSc">Numberphile extension on Langton's ant</a></li>
+                <li><a href="https://www.youtube.com/watch?v=R9Plq-D1gEk">Inventing the Game of Life (Conway explains)</a></li>
+            </ul>
+            <div style="clear: both;"></div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <div class="flex">
+                <div class="copyright">
+                    &copy; Oneal Abdulrahim
+                </div>
+                <div class="copyright" align="right"> <a href="mailto:oneal@onealio.com?subject=URGENT:Bug on website">Report bugs</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/skel.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>O'Nealio: OOP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="../assets/icons/manifest.json">
+    <link rel="mask-icon" href="../assets/icons/safari-pinned-tab.svg" color="#700000">
+    <link rel="shortcut icon" href="../assets/icons/favicon.ico">
+    <meta name="msapplication-config" content="../assets/icons/browserconfig.xml">
+    <meta name="theme-color" content="#444444">
+</head>
+
+<body class="subpage">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a href="../index.html" class="logo">Oneal Abdulrahim</a>
+            <nav id="nav">
+
+                <a href="../w/workshops.html">Workshops</a>
+                <a href="../course/courses.html">Courses & Projects</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+        </div>
+    </header>
+
+    <section id="main" class="wrapper">
+        <div class="inner">
+            <header class="align-center">
+                <h2>Shapes: Object-Oriented Java</h2>
+                <p>Reinventing the wheel to provide a concrete, full solution.</p>
+            </header>
+            <h2>Point.java</h2>
+            <div align="left">
+                <!-- HTML generated using hilite.me -->
+                <div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.Objects</span><span style="color: #666666">;</span>
+
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Point</span><span style="color: #666666">{</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">double</span> x<span style="color: #666666">;</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">double</span> y<span style="color: #666666">;</span>
+    
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #06287e">Point</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">(</span><span style="color: #40a070">0</span><span style="color: #666666">,</span> <span style="color: #40a070">0</span><span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #06287e">Point</span> <span style="color: #666666">(</span><span style="color: #902000">double</span> x<span style="color: #666666">,</span> <span style="color: #902000">double</span> y<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">x</span> <span style="color: #666666">=</span> x<span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">y</span> <span style="color: #666666">=</span> y<span style="color: #666666">;</span>
+        <span style="color: #666666">}</span>
+        
+        <span style="color: #60a0b0; font-style: italic">/**</span>
+    <span style="color: #60a0b0; font-style: italic">     * Finds a distance between two points over 2D coordinates</span>
+    <span style="color: #60a0b0; font-style: italic">     * @param a     The first point</span>
+    <span style="color: #60a0b0; font-style: italic">     * @param b     The second point</span>
+    <span style="color: #60a0b0; font-style: italic">     * @return      The distance between the points as a double</span>
+    <span style="color: #60a0b0; font-style: italic">     */</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">static</span> <span style="color: #902000">double</span> <span style="color: #06287e">distance</span><span style="color: #666666">(</span>Point a<span style="color: #666666">,</span> Point b<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">return</span> Math<span style="color: #666666">.</span><span style="color: #4070a0">sqrt</span><span style="color: #666666">(</span>Math<span style="color: #666666">.</span><span style="color: #4070a0">pow</span><span style="color: #666666">((</span>b<span style="color: #666666">.</span><span style="color: #4070a0">x</span> <span style="color: #666666">-</span> a<span style="color: #666666">.</span><span style="color: #4070a0">x</span><span style="color: #666666">),</span> <span style="color: #40a070">2</span><span style="color: #666666">)</span> <span style="color: #666666">+</span> Math<span style="color: #666666">.</span><span style="color: #4070a0">pow</span><span style="color: #666666">((</span>b<span style="color: #666666">.</span><span style="color: #4070a0">y</span> <span style="color: #666666">-</span> a<span style="color: #666666">.</span><span style="color: #4070a0">y</span><span style="color: #666666">),</span> <span style="color: #40a070">2</span><span style="color: #666666">));</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> String <span style="color: #06287e">toString</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            StringBuilder sb <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> StringBuilder<span style="color: #666666">();</span>
+            sb<span style="color: #666666">.</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;(&#39;</span><span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span>x<span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;, &quot;</span><span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span>y<span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;)&#39;</span><span style="color: #666666">);</span>
+            <span style="color: #007020; font-weight: bold">return</span> sb<span style="color: #666666">.</span><span style="color: #4070a0">toString</span><span style="color: #666666">();</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">boolean</span> <span style="color: #06287e">equals</span><span style="color: #666666">(</span>Object obj<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>obj <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">)</span>
+                <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">true</span><span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(!(</span>obj <span style="color: #007020; font-weight: bold">instanceof</span> Point<span style="color: #666666">))</span>
+                <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">false</span><span style="color: #666666">;</span>
+            
+            Point point <span style="color: #666666">=</span> <span style="color: #666666">(</span>Point<span style="color: #666666">)</span> obj<span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">return</span> <span style="color: #666666">(</span>point<span style="color: #666666">.</span><span style="color: #4070a0">x</span> <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">x</span><span style="color: #666666">)</span> <span style="color: #666666">&amp;&amp;</span> <span style="color: #666666">(</span>point<span style="color: #666666">.</span><span style="color: #4070a0">y</span> <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">y</span><span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">int</span> <span style="color: #06287e">hashCode</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">return</span> Objects<span style="color: #666666">.</span><span style="color: #4070a0">hash</span><span style="color: #666666">(</span>x<span style="color: #666666">,</span> y<span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    <span style="color: #666666">}</span>
+    </pre></div>
+
+            </div>
+
+            <h2>Shape.java</h2>
+            <div align="left">
+                <!-- HTML generated using hilite.me -->
+                <div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">abstract</span> <span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Shape</span> <span style="color: #007020; font-weight: bold">implements</span> Comparable<span style="color: #666666">&lt;</span>Shape<span style="color: #666666">&gt;{</span>
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">abstract</span> <span style="color: #902000">double</span> <span style="color: #06287e">area</span><span style="color: #666666">();</span>
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">abstract</span> Point <span style="color: #06287e">position</span><span style="color: #666666">();</span>
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">abstract</span> <span style="color: #902000">boolean</span> <span style="color: #06287e">equals</span><span style="color: #666666">(</span>Object obj<span style="color: #666666">);</span>
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">abstract</span> <span style="color: #902000">int</span> <span style="color: #06287e">hashCode</span><span style="color: #666666">();</span>
+    
+    <span style="color: #555555; font-weight: bold">@Override</span>
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">int</span> <span style="color: #06287e">compareTo</span><span style="color: #666666">(</span>Shape shape<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+        <span style="color: #007020; font-weight: bold">return</span> <span style="color: #666666">(</span><span style="color: #902000">int</span><span style="color: #666666">)</span> <span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">area</span><span style="color: #666666">()</span> <span style="color: #666666">-</span> shape<span style="color: #666666">.</span><span style="color: #4070a0">area</span><span style="color: #666666">());</span>
+    <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+</pre></div>
+
+            </div>
+
+            <h2>Triangle.java</h2>
+            <div align="left">
+                <!-- HTML generated using hilite.me -->
+                <div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.Objects</span><span style="color: #666666">;</span>
+
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Triangle</span> <span style="color: #007020; font-weight: bold">extends</span> Shape <span style="color: #666666">&gt;{</span>
+        <span style="color: #007020; font-weight: bold">private</span> <span style="color: #007020; font-weight: bold">final</span> Point A<span style="color: #666666">,</span> B<span style="color: #666666">,</span> C<span style="color: #666666">;</span> <span style="color: #60a0b0; font-style: italic">// points</span>
+        
+    
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #06287e">Triangle</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(),</span> <span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(),</span> <span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">());</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #06287e">Triangle</span><span style="color: #666666">(</span>Point a<span style="color: #666666">,</span> Point b<span style="color: #666666">,</span> Point c<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            A <span style="color: #666666">=</span> a<span style="color: #666666">;</span>
+            B <span style="color: #666666">=</span> b<span style="color: #666666">;</span>
+            C <span style="color: #666666">=</span> c<span style="color: #666666">;</span>
+        <span style="color: #666666">}</span>
+        
+        <span style="color: #60a0b0; font-style: italic">/**</span>
+    <span style="color: #60a0b0; font-style: italic">     * Implements the abstract area method from Shape, calculates the area</span>
+    <span style="color: #60a0b0; font-style: italic">     * of the triangle. Uses Heron&#39;s formula:</span>
+    <span style="color: #60a0b0; font-style: italic">     *      s = (a+b+c)/2</span>
+    <span style="color: #60a0b0; font-style: italic">     *      A = sqrt(s*(s-a)*(s-b)*(s-c)) </span>
+    <span style="color: #60a0b0; font-style: italic">     * where a, b, c are side lengths.</span>
+    <span style="color: #60a0b0; font-style: italic">     * @return The area of the triangle as a double</span>
+    <span style="color: #60a0b0; font-style: italic">     */</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">double</span> <span style="color: #06287e">area</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #902000">double</span><span style="color: #666666">[]</span> sides <span style="color: #666666">=</span> <span style="color: #666666">{</span>Point<span style="color: #666666">.</span><span style="color: #4070a0">distance</span><span style="color: #666666">(</span>A<span style="color: #666666">,</span> B<span style="color: #666666">),</span> Point<span style="color: #666666">.</span><span style="color: #4070a0">distance</span><span style="color: #666666">(</span>B<span style="color: #666666">,</span> C<span style="color: #666666">),</span> Point<span style="color: #666666">.</span><span style="color: #4070a0">distance</span><span style="color: #666666">(</span>A<span style="color: #666666">,</span> C<span style="color: #666666">)};</span> <span style="color: #60a0b0; font-style: italic">// 3 sides</span>
+            <span style="color: #60a0b0; font-style: italic">// Heron&#39;s formula</span>
+            
+            <span style="color: #902000">double</span> s <span style="color: #666666">=</span> <span style="color: #666666">(</span>sides<span style="color: #666666">[</span><span style="color: #40a070">0</span><span style="color: #666666">]</span> <span style="color: #666666">+</span> sides<span style="color: #666666">[</span><span style="color: #40a070">1</span><span style="color: #666666">]</span> <span style="color: #666666">+</span> sides<span style="color: #666666">[</span><span style="color: #40a070">2</span><span style="color: #666666">])</span> <span style="color: #666666">/</span> <span style="color: #40a070">2</span><span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">return</span> Math<span style="color: #666666">.</span><span style="color: #4070a0">sqrt</span><span style="color: #666666">(</span>s <span style="color: #666666">*</span> <span style="color: #666666">(</span>s <span style="color: #666666">-</span> sides<span style="color: #666666">[</span><span style="color: #40a070">0</span><span style="color: #666666">])</span> <span style="color: #666666">*</span> <span style="color: #666666">(</span>s <span style="color: #666666">-</span> sides<span style="color: #666666">[</span><span style="color: #40a070">1</span><span style="color: #666666">])</span> <span style="color: #666666">*</span> <span style="color: #666666">(</span>s <span style="color: #666666">-</span> sides<span style="color: #666666">[</span><span style="color: #40a070">2</span><span style="color: #666666">]));</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #60a0b0; font-style: italic">/**</span>
+    <span style="color: #60a0b0; font-style: italic">     * Implements the abtract position method from Shape, calculates the</span>
+    <span style="color: #60a0b0; font-style: italic">     * center point of the triangle (centroid), as recommended by the specs.</span>
+    <span style="color: #60a0b0; font-style: italic">     * @return The center point of the triangle as a Point object.</span>
+    <span style="color: #60a0b0; font-style: italic">     */</span>
+        <span style="color: #007020; font-weight: bold">public</span> Point <span style="color: #06287e">position</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #60a0b0; font-style: italic">// Centroid for a triangle</span>
+            <span style="color: #60a0b0; font-style: italic">// C = ((x1+x2+x3)/3 , (y1+y2+y3)/3)</span>
+            <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">new</span> <span style="color: #06287e">Point</span><span style="color: #666666">((</span>A<span style="color: #666666">.</span><span style="color: #4070a0">x</span> <span style="color: #666666">+</span> B<span style="color: #666666">.</span><span style="color: #4070a0">x</span> <span style="color: #666666">+</span> C<span style="color: #666666">.</span><span style="color: #4070a0">x</span><span style="color: #666666">)</span> <span style="color: #666666">/</span> <span style="color: #40a070">3</span><span style="color: #666666">,</span> <span style="color: #666666">(</span>A<span style="color: #666666">.</span><span style="color: #4070a0">y</span> <span style="color: #666666">+</span> B<span style="color: #666666">.</span><span style="color: #4070a0">y</span> <span style="color: #666666">+</span> C<span style="color: #666666">.</span><span style="color: #4070a0">y</span><span style="color: #666666">)</span> <span style="color: #666666">/</span> <span style="color: #40a070">3</span><span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> String <span style="color: #06287e">toString</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            StringBuilder sb <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> StringBuilder<span style="color: #666666">();</span>
+            sb<span style="color: #666666">.</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;Triangle &quot;</span><span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span>A<span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;-&quot;</span><span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span>B<span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;-&quot;</span><span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span>C<span style="color: #666666">);</span>
+            
+            <span style="color: #007020; font-weight: bold">return</span> sb<span style="color: #666666">.</span><span style="color: #4070a0">toString</span><span style="color: #666666">();</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">boolean</span> <span style="color: #06287e">equals</span><span style="color: #666666">(</span>Object obj<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>obj <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">)</span>
+                <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">true</span><span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(!(</span>obj <span style="color: #007020; font-weight: bold">instanceof</span> Triangle<span style="color: #666666">))</span>
+                <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">false</span><span style="color: #666666">;</span>
+            
+            Triangle triangle <span style="color: #666666">=</span> <span style="color: #666666">(</span>Triangle<span style="color: #666666">)</span> obj<span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">return</span> <span style="color: #666666">(</span>triangle<span style="color: #666666">.</span><span style="color: #4070a0">A</span> <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">A</span><span style="color: #666666">)</span>
+                <span style="color: #666666">&amp;&amp;</span> <span style="color: #666666">(</span>triangle<span style="color: #666666">.</span><span style="color: #4070a0">B</span> <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">B</span><span style="color: #666666">)</span>
+                <span style="color: #666666">&amp;&amp;</span> <span style="color: #666666">(</span>triangle<span style="color: #666666">.</span><span style="color: #4070a0">C</span> <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">C</span><span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">int</span> <span style="color: #06287e">hashCode</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">return</span> Objects<span style="color: #666666">.</span><span style="color: #4070a0">hash</span><span style="color: #666666">(</span>A<span style="color: #666666">,</span> B<span style="color: #666666">,</span> C<span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    <span style="color: #666666">}</span>
+    </pre></div>
+
+            </div>
+
+            <h2>Rectangle.java</h2>
+            <div align="left">
+                <!-- HTML generated using hilite.me -->
+                <div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.Objects</span><span style="color: #666666">;</span>
+
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Rectangle</span> <span style="color: #007020; font-weight: bold">extends</span> Shape <span style="color: #666666">{</span>
+        <span style="color: #007020; font-weight: bold">private</span> <span style="color: #007020; font-weight: bold">final</span> Point A<span style="color: #666666">,</span> B<span style="color: #666666">;</span> <span style="color: #60a0b0; font-style: italic">// top-left and bottom-right</span>
+        
+    
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #06287e">Rectangle</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(),</span> <span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">());</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #06287e">Rectangle</span><span style="color: #666666">(</span>Point a<span style="color: #666666">,</span> Point b<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            A <span style="color: #666666">=</span> a<span style="color: #666666">;</span>
+            B <span style="color: #666666">=</span> b<span style="color: #666666">;</span>
+        <span style="color: #666666">}</span>
+        
+        <span style="color: #60a0b0; font-style: italic">/**</span>
+    <span style="color: #60a0b0; font-style: italic">     * Implements the abstract area method from Shape, calculates the area</span>
+    <span style="color: #60a0b0; font-style: italic">     * of the rectangle.</span>
+    <span style="color: #60a0b0; font-style: italic">     *      A = a * b</span>
+    <span style="color: #60a0b0; font-style: italic">     * where a, b are side lengths</span>
+    <span style="color: #60a0b0; font-style: italic">     * @return The area of the rectangle as a double</span>
+    <span style="color: #60a0b0; font-style: italic">     */</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">double</span> <span style="color: #06287e">area</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #902000">double</span><span style="color: #666666">[]</span> sides <span style="color: #666666">=</span> <span style="color: #666666">{</span>Point<span style="color: #666666">.</span><span style="color: #4070a0">distance</span><span style="color: #666666">(</span>A<span style="color: #666666">,</span> <span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(</span>B<span style="color: #666666">.</span><span style="color: #4070a0">x</span><span style="color: #666666">,</span> A<span style="color: #666666">.</span><span style="color: #4070a0">y</span><span style="color: #666666">))</span> <span style="color: #60a0b0; font-style: italic">// l</span>
+                            <span style="color: #666666">,</span> Point<span style="color: #666666">.</span><span style="color: #4070a0">distance</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(</span>B<span style="color: #666666">.</span><span style="color: #4070a0">x</span><span style="color: #666666">,</span> A<span style="color: #666666">.</span><span style="color: #4070a0">y</span><span style="color: #666666">),</span> B<span style="color: #666666">)};</span> <span style="color: #60a0b0; font-style: italic">// w</span>
+            <span style="color: #007020; font-weight: bold">return</span> sides<span style="color: #666666">[</span><span style="color: #40a070">0</span><span style="color: #666666">]</span> <span style="color: #666666">*</span> sides<span style="color: #666666">[</span><span style="color: #40a070">1</span><span style="color: #666666">];</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #60a0b0; font-style: italic">/**</span>
+    <span style="color: #60a0b0; font-style: italic">     * Implements the abtract position method from Shape, calculates the</span>
+    <span style="color: #60a0b0; font-style: italic">     * center point of the Rectangle (centroid), as recommended by the specs.</span>
+    <span style="color: #60a0b0; font-style: italic">     * @return The center point of the Rectangle as a Point object.</span>
+    <span style="color: #60a0b0; font-style: italic">     */</span>
+        <span style="color: #007020; font-weight: bold">public</span> Point <span style="color: #06287e">position</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">new</span> <span style="color: #06287e">Point</span><span style="color: #666666">((</span>A<span style="color: #666666">.</span><span style="color: #4070a0">x</span> <span style="color: #666666">+</span> B<span style="color: #666666">.</span><span style="color: #4070a0">x</span><span style="color: #666666">)</span> <span style="color: #666666">/</span> <span style="color: #40a070">2</span><span style="color: #666666">,</span> <span style="color: #666666">(</span>A<span style="color: #666666">.</span><span style="color: #4070a0">y</span> <span style="color: #666666">+</span> B<span style="color: #666666">.</span><span style="color: #4070a0">y</span><span style="color: #666666">)</span> <span style="color: #666666">/</span> <span style="color: #40a070">2</span><span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> String <span style="color: #06287e">toString</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            StringBuilder sb <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> StringBuilder<span style="color: #666666">();</span>
+            sb<span style="color: #666666">.</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;Rectangle &quot;</span><span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span>A<span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;-&quot;</span><span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span>B<span style="color: #666666">);</span>
+            
+            <span style="color: #007020; font-weight: bold">return</span> sb<span style="color: #666666">.</span><span style="color: #4070a0">toString</span><span style="color: #666666">();</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">boolean</span> <span style="color: #06287e">equals</span><span style="color: #666666">(</span>Object obj<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>obj <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">)</span>
+                <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">true</span><span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(!(</span>obj <span style="color: #007020; font-weight: bold">instanceof</span> Rectangle<span style="color: #666666">))</span>
+                <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">false</span><span style="color: #666666">;</span>
+            
+            Rectangle rectangle <span style="color: #666666">=</span> <span style="color: #666666">(</span>Rectangle<span style="color: #666666">)</span> obj<span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">return</span> <span style="color: #666666">(</span>rectangle<span style="color: #666666">.</span><span style="color: #4070a0">A</span> <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">A</span><span style="color: #666666">)</span>
+                <span style="color: #666666">&amp;&amp;</span> <span style="color: #666666">(</span>rectangle<span style="color: #666666">.</span><span style="color: #4070a0">B</span> <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">B</span><span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">int</span> <span style="color: #06287e">hashCode</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">return</span> Objects<span style="color: #666666">.</span><span style="color: #4070a0">hash</span><span style="color: #666666">(</span>A<span style="color: #666666">,</span> B<span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    <span style="color: #666666">}</span>
+    </pre></div>
+
+            </div>
+
+            <h2>Circle.java</h2>
+            <div align="left">
+                <!-- HTML generated using hilite.me -->
+                <div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.Objects</span><span style="color: #666666">;</span>
+
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Circle</span> <span style="color: #007020; font-weight: bold">extends</span> Shape <span style="color: #666666">{</span>
+        <span style="color: #007020; font-weight: bold">private</span> <span style="color: #007020; font-weight: bold">final</span> Point C<span style="color: #666666">;</span> <span style="color: #60a0b0; font-style: italic">// center</span>
+        <span style="color: #007020; font-weight: bold">private</span> <span style="color: #007020; font-weight: bold">final</span> <span style="color: #902000">double</span> R<span style="color: #666666">;</span> <span style="color: #60a0b0; font-style: italic">// radius</span>
+        
+    
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #06287e">Circle</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(),</span> <span style="color: #40a070">1.0</span><span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #06287e">Circle</span><span style="color: #666666">(</span>Point c<span style="color: #666666">,</span> <span style="color: #902000">double</span> r<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">C</span> <span style="color: #666666">=</span> c<span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">R</span> <span style="color: #666666">=</span> r<span style="color: #666666">;</span>
+        <span style="color: #666666">}</span>
+        
+        <span style="color: #60a0b0; font-style: italic">/**</span>
+    <span style="color: #60a0b0; font-style: italic">     * Implements the abstract area method from Shape, calculates the area</span>
+    <span style="color: #60a0b0; font-style: italic">     * of the Circle.</span>
+    <span style="color: #60a0b0; font-style: italic">     *      A = π * R^2</span>
+    <span style="color: #60a0b0; font-style: italic">     * where R is the radius</span>
+    <span style="color: #60a0b0; font-style: italic">     * @return The area of the Circle as a double</span>
+    <span style="color: #60a0b0; font-style: italic">     */</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">double</span> <span style="color: #06287e">area</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">return</span> Math<span style="color: #666666">.</span><span style="color: #4070a0">PI</span> <span style="color: #666666">*</span> Math<span style="color: #666666">.</span><span style="color: #4070a0">pow</span><span style="color: #666666">(</span>R<span style="color: #666666">,</span> <span style="color: #40a070">2</span><span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #60a0b0; font-style: italic">/**</span>
+    <span style="color: #60a0b0; font-style: italic">     * Implements the abtract position method from Shape, returns the</span>
+    <span style="color: #60a0b0; font-style: italic">     * center point of the Circle (centroid).</span>
+    <span style="color: #60a0b0; font-style: italic">     * @return The center point of the Circle as a Point object.</span>
+    <span style="color: #60a0b0; font-style: italic">     */</span>
+        <span style="color: #007020; font-weight: bold">public</span> Point <span style="color: #06287e">position</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">C</span><span style="color: #666666">;</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> String <span style="color: #06287e">toString</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            StringBuilder sb <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> StringBuilder<span style="color: #666666">();</span>
+            sb<span style="color: #666666">.</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;Circle &quot;</span><span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span>C<span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;, radius = &quot;</span><span style="color: #666666">).</span><span style="color: #4070a0">append</span><span style="color: #666666">(</span>R<span style="color: #666666">);</span>
+            
+            <span style="color: #007020; font-weight: bold">return</span> sb<span style="color: #666666">.</span><span style="color: #4070a0">toString</span><span style="color: #666666">();</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">boolean</span> <span style="color: #06287e">equals</span><span style="color: #666666">(</span>Object obj<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>obj <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">)</span>
+                <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">true</span><span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(!(</span>obj <span style="color: #007020; font-weight: bold">instanceof</span> Circle<span style="color: #666666">))</span>
+                <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">false</span><span style="color: #666666">;</span>
+            
+            Circle circle <span style="color: #666666">=</span> <span style="color: #666666">(</span>Circle<span style="color: #666666">)</span> obj<span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">return</span> <span style="color: #666666">(</span>circle<span style="color: #666666">.</span><span style="color: #4070a0">C</span> <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">C</span><span style="color: #666666">)</span>
+                <span style="color: #666666">&amp;&amp;</span> <span style="color: #666666">(</span>circle<span style="color: #666666">.</span><span style="color: #4070a0">R</span> <span style="color: #666666">==</span> <span style="color: #007020; font-weight: bold">this</span><span style="color: #666666">.</span><span style="color: #4070a0">R</span><span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    
+        <span style="color: #555555; font-weight: bold">@Override</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">int</span> <span style="color: #06287e">hashCode</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+            <span style="color: #007020; font-weight: bold">return</span> Objects<span style="color: #666666">.</span><span style="color: #4070a0">hash</span><span style="color: #666666">(</span>C<span style="color: #666666">,</span> R<span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+    <span style="color: #666666">}</span>
+    </pre></div>
+
+            </div>
+
+            <h2>AreaCalculator.java</h2>
+            <div align="left">
+                <!-- HTML generated using hilite.me -->
+                <div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #60a0b0; font-style: italic">// Specs call for separate class with only one static method.</span>
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">AreaCalculator</span> <span style="color: #666666">{</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">static</span> <span style="color: #902000">double</span> <span style="color: #06287e">calculate</span><span style="color: #666666">(</span>Shape<span style="color: #666666">[]</span> shapes<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            <span style="color: #902000">double</span> result <span style="color: #666666">=</span> <span style="color: #40a070">0</span><span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">for</span> <span style="color: #666666">(</span>Shape s <span style="color: #666666">:</span> shapes<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+                result <span style="color: #666666">+=</span> s<span style="color: #666666">.</span><span style="color: #4070a0">area</span><span style="color: #666666">();</span>
+            <span style="color: #666666">}</span>
+            <span style="color: #007020; font-weight: bold">return</span> result<span style="color: #666666">;</span>
+        <span style="color: #666666">}</span>
+    <span style="color: #666666">}</span>
+    </pre></div>
+
+            </div>
+
+            <h2>Main.java</h2>
+            <div align="left">
+                <!-- HTML generated using hilite.me -->
+                <div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.Arrays</span><span style="color: #666666">;</span>
+    <span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.ArrayList</span><span style="color: #666666">;</span>
+    <span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">java.util.Scanner</span><span style="color: #666666">;</span>
+    
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Main</span> <span style="color: #666666">{</span>
+    
+        <span style="color: #60a0b0; font-style: italic">/**</span>
+    <span style="color: #60a0b0; font-style: italic">     * Takes command-line arguments and parses shapes, with no checks</span>
+    <span style="color: #60a0b0; font-style: italic">     * for malformed arguments. Assume all inputs are properly formed. </span>
+    <span style="color: #60a0b0; font-style: italic">     * </span>
+    <span style="color: #60a0b0; font-style: italic">     * Command line inputs are formed in the following way:</span>
+    <span style="color: #60a0b0; font-style: italic">     * All strings delimited by a single space</span>
+    <span style="color: #60a0b0; font-style: italic">     * </span>
+    <span style="color: #60a0b0; font-style: italic">     *      Circle:</span>
+    <span style="color: #60a0b0; font-style: italic">     *          &#39;c&#39; followed by x, y values for center, followed by radius value</span>
+    <span style="color: #60a0b0; font-style: italic">     *      Rectangle:</span>
+    <span style="color: #60a0b0; font-style: italic">     *          &#39;r&#39; followed by x1, y1, x2, y2 values for top-left and bottom-right</span>
+    <span style="color: #60a0b0; font-style: italic">     *      Triangle</span>
+    <span style="color: #60a0b0; font-style: italic">     *          &#39;t&#39; followed by 6 values, x1, y1, x2, ... , values for 3 points</span>
+    <span style="color: #60a0b0; font-style: italic">     * </span>
+    <span style="color: #60a0b0; font-style: italic">     * example:</span>
+    <span style="color: #60a0b0; font-style: italic">     * </span>
+    <span style="color: #60a0b0; font-style: italic">     * java Main &quot;c 1.0 0.2 4.4&quot; &quot;t 0.4 5.3 1.0 3.9 4.0 2.0&quot; &quot;r 3.0 -3.4 2.3 0.0&quot; &quot;c 0 0 10.&quot; </span>
+    <span style="color: #60a0b0; font-style: italic">     * </span>
+    <span style="color: #60a0b0; font-style: italic">     * @param s         String-array of input arguments</span>
+    <span style="color: #60a0b0; font-style: italic">     * @return result   Shape array with added instances</span>
+    <span style="color: #60a0b0; font-style: italic">     */</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">static</span> Shape<span style="color: #666666">[]</span> <span style="color: #06287e">parseInputs</span><span style="color: #666666">(</span>String<span style="color: #666666">[]</span> s<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            ArrayList<span style="color: #666666">&lt;</span>Shape<span style="color: #666666">&gt;</span> result <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> ArrayList<span style="color: #666666">&lt;</span>Shape<span style="color: #666666">&gt;();</span>
+            
+            <span style="color: #007020; font-weight: bold">for</span> <span style="color: #666666">(</span>String current <span style="color: #666666">:</span> s<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+                <span style="color: #007020; font-weight: bold">switch</span> <span style="color: #666666">(</span>current<span style="color: #666666">.</span><span style="color: #4070a0">charAt</span><span style="color: #666666">(</span><span style="color: #40a070">0</span><span style="color: #666666">))</span> <span style="color: #666666">{</span>
+                    <span style="color: #007020; font-weight: bold">case</span> <span style="color: #4070a0">&#39;c&#39;</span><span style="color: #666666">:</span> Scanner circle <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> Scanner<span style="color: #666666">(</span>current<span style="color: #666666">);</span>
+                              circle<span style="color: #666666">.</span><span style="color: #4070a0">next</span><span style="color: #666666">();</span> <span style="color: #60a0b0; font-style: italic">// skip the char</span>
+                              result<span style="color: #666666">.</span><span style="color: #4070a0">add</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> Circle<span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(</span>circle<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">()</span>
+                                                            <span style="color: #666666">,</span> circle<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">())</span>
+                                                  <span style="color: #666666">,</span> circle<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">()));</span>
+                              <span style="color: #007020; font-weight: bold">break</span><span style="color: #666666">;</span>
+    
+                    <span style="color: #007020; font-weight: bold">case</span> <span style="color: #4070a0">&#39;r&#39;</span><span style="color: #666666">:</span> Scanner rect <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> Scanner<span style="color: #666666">(</span>current<span style="color: #666666">);</span>
+                              rect<span style="color: #666666">.</span><span style="color: #4070a0">next</span><span style="color: #666666">();</span> <span style="color: #60a0b0; font-style: italic">// skip the char</span>
+                              result<span style="color: #666666">.</span><span style="color: #4070a0">add</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> Rectangle<span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(</span>rect<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">()</span>
+                                                               <span style="color: #666666">,</span> rect<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">())</span>
+                                                     <span style="color: #666666">,</span> <span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(</span>rect<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">()</span>
+                                                               <span style="color: #666666">,</span> rect<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">())));</span>
+                              <span style="color: #007020; font-weight: bold">break</span><span style="color: #666666">;</span>
+    
+                    <span style="color: #007020; font-weight: bold">case</span> <span style="color: #4070a0">&#39;t&#39;</span><span style="color: #666666">:</span> Scanner tri <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> Scanner<span style="color: #666666">(</span>current<span style="color: #666666">);</span>
+                              tri<span style="color: #666666">.</span><span style="color: #4070a0">next</span><span style="color: #666666">();</span> <span style="color: #60a0b0; font-style: italic">// skip the char</span>
+                              result<span style="color: #666666">.</span><span style="color: #4070a0">add</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> Triangle<span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(</span>tri<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">()</span>
+                                                              <span style="color: #666666">,</span> tri<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">())</span>
+                                                    <span style="color: #666666">,</span> <span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(</span>tri<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">()</span>
+                                                              <span style="color: #666666">,</span> tri<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">())</span>
+                                                    <span style="color: #666666">,</span> <span style="color: #007020; font-weight: bold">new</span> Point<span style="color: #666666">(</span>tri<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">()</span>
+                                                              <span style="color: #666666">,</span> tri<span style="color: #666666">.</span><span style="color: #4070a0">nextDouble</span><span style="color: #666666">())));</span>
+                              <span style="color: #007020; font-weight: bold">break</span><span style="color: #666666">;</span>
+                <span style="color: #666666">}</span>
+            <span style="color: #666666">}</span>
+    
+            <span style="color: #007020; font-weight: bold">return</span> result<span style="color: #666666">.</span><span style="color: #4070a0">toArray</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> Shape<span style="color: #666666">[</span>result<span style="color: #666666">.</span><span style="color: #4070a0">size</span><span style="color: #666666">()]);</span>
+        <span style="color: #666666">}</span>
+        <span style="color: #007020; font-weight: bold">public</span> <span style="color: #007020; font-weight: bold">static</span> <span style="color: #902000">void</span> <span style="color: #06287e">main</span><span style="color: #666666">(</span>String<span style="color: #666666">[]</span> args<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            Shape<span style="color: #666666">[]</span> shapes <span style="color: #666666">=</span> parseInputs<span style="color: #666666">(</span>args<span style="color: #666666">);</span>
+            <span style="color: #902000">double</span> area <span style="color: #666666">=</span> AreaCalculator<span style="color: #666666">.</span><span style="color: #4070a0">calculate</span><span style="color: #666666">(</span>shapes<span style="color: #666666">);</span>
+            System<span style="color: #666666">.</span><span style="color: #4070a0">out</span><span style="color: #666666">.</span><span style="color: #4070a0">printf</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;The total area for the %d objects is %.2f units squared\n\n\n&quot;</span>
+                            <span style="color: #666666">,</span> shapes<span style="color: #666666">.</span><span style="color: #4070a0">length</span><span style="color: #666666">,</span> area<span style="color: #666666">);</span>
+            
+            Arrays<span style="color: #666666">.</span><span style="color: #4070a0">sort</span><span style="color: #666666">(</span>shapes<span style="color: #666666">);</span>
+            <span style="color: #902000">int</span> count <span style="color: #666666">=</span> <span style="color: #40a070">0</span><span style="color: #666666">;</span>
+            <span style="color: #007020; font-weight: bold">for</span> <span style="color: #666666">(</span>Shape <span style="color: #002070; font-weight: bold">s:</span> shapes<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+                System<span style="color: #666666">.</span><span style="color: #4070a0">out</span><span style="color: #666666">.</span><span style="color: #4070a0">println</span><span style="color: #666666">(++</span>count <span style="color: #666666">+</span> <span style="color: #4070a0">&quot;) &quot;</span><span style="color: #666666">+</span>s<span style="color: #666666">+</span><span style="color: #4070a0">&quot;\t\t area=&quot;</span><span style="color: #666666">+</span>s<span style="color: #666666">.</span><span style="color: #4070a0">area</span><span style="color: #666666">());</span>
+            <span style="color: #666666">}</span>
+        <span style="color: #666666">}</span>
+    <span style="color: #666666">}</span>
+    </pre></div>
+
+            </div>
+
+
+            <p>Part of an assignment for CSCE 314: Programming Languages</p>
+
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <div class="flex">
+                <div class="copyright">
+                    &copy; Oneal Abdulrahim
+                </div>
+                <div class="copyright" align="right"> <a href="mailto:oneal@onealio.com?subject=URGENT:Bug on website">Report bugs</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/skel.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

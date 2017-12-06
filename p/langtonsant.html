@@ -10,14 +10,14 @@
 </head>
 
 <body>
-    <canvas height='1000' width='400' id='mycanvas'></canvas>
+    <canvas height='800' width='600' id='mycanvas'></canvas>
     <script>
         var canvas = document.getElementById("mycanvas");
         ctx = canvas.getContext('2d');
 
         /* height and width of canvas */
-        var height = 1000;
-        var width = 400;
+        var height = 800;
+        var width = 600;
 
 
         /* Create new empty 2D array */
@@ -33,11 +33,11 @@
         var DOWN = "down";
 
         /* Sizes, starting points, timing */
-        var squareSize = 25;
+        var squareSize = 6;
         var x = width / 2;
         var y = height / 2;
         var direction = DOWN;
-        var interval = 25; //milliseconds
+        var interval = 1; //milliseconds
 
 
 

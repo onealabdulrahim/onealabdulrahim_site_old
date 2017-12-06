@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>O'Nealio: ECEN 314</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="assets/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="assets/icons/manifest.json">
+    <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#700000">
+    <link rel="shortcut icon" href="assets/icons/favicon.ico">
+    <meta name="msapplication-config" content="assets/icons/browserconfig.xml">
+    <meta name="theme-color" content="#444444">
+</head>
+
+<body class="subpage">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a href="../index.html" class="logo">Oneal Abdulrahim</a>
+            <nav id="nav">
+                <a href="../w/workshops.html">Workshops</a>
+                <a href="../course/courses.html">Courses & Projects</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+        </div>
+    </header>
+
+    <section id="main" class="wrapper">
+
+        <div class="inner">
+            <header class="align-center">
+                <h2>ECEN 314: Signals and Systems</h2>
+                <p>Mathematical descriptions of signals & systems, along with LTI systems, Fourier, Laplace transforms. Summer 2017 @ Texas A&M University.</p>
+            </header>
+            <h3 class="align-center">Final MATLAB Project</h3>
+            </br>
+            <h2>Contents</h2>
+            <div>
+                <ul>
+                    <li><a href="#1">TITLE: SIGNALS &amp; SYSTEMS MATLAB PROJECT</a></li>
+                    <li><a href="#2">Assignment Description</a></li>
+                    <li><a href="#3">Preliminary Housekeeping</a></li>
+                    <li><a href="#4">Part I - Analyze &amp; Play Audio File</a></li>
+                    <li><a href="#5">PART II - Add Artificial Noise</a></li>
+                    <li><a href="#6">PART III - Filtering</a></li>
+                </ul>
+            </div>
+            <h2>TITLE: SIGNALS &amp; SYSTEMS MATLAB PROJECT
+                <a name="1"></a>
+            </h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #008000">% Oneal Abdulrahim</span>
+  <span style="color: #008000">% ECEN 314-300, Summer 2017</span>
+  <span style="color: #008000">% Due: Friday, August 4th</span>
+</pre></div>
+
+
+            </br>
+            <h2>Assignment Description
+                <a name="2"></a>
+            </h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000">%{</span>
+                <span style="color: #008000">    Communication systems are often subject to interference from a variety of</span>
+                <span style="color: #008000">    sources. In this project, you will use MATLAB to read a wav file, simulate</span>
+                <span style="color: #008000">    the effect of narrowband interference and process the distorted signal to</span>
+                <span style="color: #008000">    recover the original signal. You should write a MATLAB program that</span>
+                <span style="color: #008000">    performs the following functions:</span>
+                <span style="color: #008000">    </span>
+                <span style="color: #008000">        (25 points) Read a speech file which is available in wav format.</span>
+                <span style="color: #008000">                    The file anykey.wav is available for download.</span>
+                <span style="color: #008000">                    But I encourage you to find your own wav file on the</span>
+                <span style="color: #008000">                    internet or you can also create your own speech file if</span>
+                <span style="color: #008000">                    you prefer. Use wavread function in MATLAB to read the</span>
+                <span style="color: #008000">                    file. Play the sound file through the speakers and observe</span>
+                <span style="color: #008000">                    that you can hear the speech file. Plot the magnitude of</span>
+                <span style="color: #008000">                    the Fourier transform of the speech file.</span>
+                <span style="color: #008000">                    The x-axis should be in rad/s.</span>
+                <span style="color: #008000">        (25 points) Simulate the effect of interference. We will model the</span>
+                <span style="color: #008000">                    interference as being composed of 10 cosinusoid functions</span>
+                <span style="color: #008000">                    at frequencies 4500,4550,..,4950 Hz whose amplitudes are</span>
+                <span style="color: #008000">                    all Gaussian random variables with zero mean and variance</span>
+                <span style="color: #008000">                    1/10. Play this through the speakers and observe that you</span>
+                <span style="color: #008000">                    can see the effect of interference. Plot the magnitude</span>
+                <span style="color: #008000">                    of the Fourier transform of the speech file with</span>
+                <span style="color: #008000">                    interference. You should see that the interference is dominant.</span>
+                <span style="color: #008000">        (50 points) Design an LTI system to remove the interference by</span>
+                <span style="color: #008000">                    designing a filter that cuts off all frequencies greater</span>
+                <span style="color: #008000">                    than 4000 Hz. Process the received signal by passing it</span>
+                <span style="color: #008000">                    through a LTI system to mitigate the effect of interference.</span>
+                <span style="color: #008000">                    Play this through the speakers and observe that the effect</span>
+                <span style="color: #008000">                    of interference has been largely mitigated. Notice here</span>
+                <span style="color: #008000">                    that you are processing the received signal in the</span>
+                <span style="color: #008000">                    discrete-time domain. The conv function in MATLAB can be</span>
+                <span style="color: #008000">                    used to perform convolution. Another alternative is to use</span>
+                <span style="color: #008000">                    the filter command. Think about how you may have to</span>
+                <span style="color: #008000">                    truncate any impulse responses that are of infinite duration.</span>
+                <span style="color: #008000">                    Plot the magnitude of the Fourier transform of the</span>
+                <span style="color: #008000">                    processed signal as a function of w. The units for w should be rad/s.</span>
+                <span style="color: #008000">    %}</span>
+                </pre></div>
+
+            <h2>Preliminary Housekeeping
+                <a name="3"></a>
+            </h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">clear;clc;
+                </pre></div>
+            </br>
+            <h2>Part I - Analyze &amp; Play Audio File
+                <a name="4"></a>
+            </h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000">% Loading audio file and only using small snippet, from 01:47:30 to</span>
+<span style="color: #008000">% 01:49:45. The filename is Reeperbahn.mp3. Track is Reeperbahn by Pryda</span>
+INFO = audioinfo(<span style="color: #a31515">&#39;Reeperbahn.mp3&#39;</span>); <span style="color: #008000">% Loading track info</span>
+start_time = 107.5; <span style="color: #008000">% [s], @01:47:30</span>
+end_time = 109.75; <span style="color: #008000">% [s], @01:49:45</span>
+[y, Fs] = audioread(<span style="color: #a31515">&#39;Reeperbahn.mp3&#39;</span>, [(start_time * INFO.SampleRate) (end_time * INFO.SampleRate)]); <span style="color: #008000">% Fs = 44100 samples/second [Hz]</span>
+    
+<span style="color: #008000">%%%%% TEST %%%%%</span>
+<span style="color: #008000">%INFO = audioinfo(&#39;anykey.wav&#39;);</span>
+<span style="color: #008000">%[y, Fs] = audioread(&#39;anykey.wav&#39;);</span>
+    
+<span style="color: #008000">% Create object for playing through speakers</span>
+PLAYER = audioplayer(y, Fs);
+play(PLAYER); <span style="color: #008000">% Play current snip of track</span>
+    
+<span style="color: #008000">% Calculate FFT</span>
+N = 2^20; <span style="color: #008000">% TEST</span>
+<span style="color: #008000">%N = length(0:1/Fs:end_time - start_time - 1/Fs); % # of points in DTFT</span>
+Y = fftshift(fft(y, N) / length(y)); <span style="color: #008000">% FT w/ wav sampling rate</span>
+f = -Fs/2:Fs/N:Fs/2-Fs/N;
+    
+<span style="color: #008000">% Pretty plots</span>
+figure(<span style="color: #a31515">&#39;NumberTitle&#39;</span>, <span style="color: #a31515">&#39;off&#39;</span>, <span style="color: #a31515">&#39;Name&#39;</span>, <span style="color: #a31515">&#39;Part I: No Noise&#39;</span>);
+
+<span style="color: #008000">% Original Signal Sample Spectrum (Soundwaves)</span>
+subplot(2, 1, 1);
+plot(y, <span style="color: #a31515">&#39;b&#39;</span>);
+title(<span style="color: #a31515">&#39;Original Signal, y(t)&#39;</span>);
+xlabel(<span style="color: #a31515">&#39;Sample #&#39;</span>);
+ylabel(<span style="color: #a31515">&#39;Sample Value&#39;</span>); <span style="color: #008000">% Values are MATLAB normalized, y = [-1,1]</span>
+
+<span style="color: #008000">% Fourier Transformed Frequency Spectrum</span>
+subplot(2, 1, 2);
+plot(f&#39;, abs(Y), <span style="color: #a31515">&#39;b&#39;</span>); <span style="color: #008000">% magnitude of Y</span>
+title(<span style="color: #a31515">&#39;FFT Original Signal, Y(t)&#39;</span>);
+xlabel(<span style="color: #a31515">&#39;Frequency [Hz]&#39;</span>);
+ylabel(<span style="color: #a31515">&#39;|Y(t)| [V]&#39;</span>);
+</pre></div>
+
+            </br><img vspace="5" hspace="5" align="center" src="ecen314/InterferenceRejection_01.png" alt="">
+            </br>
+            <h2>PART II - Add Artificial Noise
+                <a name="5"></a>
+            </h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">pause(4); <span style="color: #008000">% pause for player</span>
+
+noise_mu = 0; <span style="color: #008000">% mean</span>
+noise_sigma = 1/10; <span style="color: #008000">% variance</span>
+
+y_noisy = y(:,1); <span style="color: #008000">% initialize noisy signal to original signal</span>
+A = noise_mu + noise_sigma.*randn(10,1); <span style="color: #008000">% random amplitudes</span>
+t = (1:length(y_noisy)) * 1/Fs; <span style="color: #008000">% seconds</span>
+
+<span style="color: #008000">% Introduce noise by 10 random signal addition</span>
+<span style="color: #0000ff">for</span> frequency = 4500:50:4950 <span style="color: #008000">% frequency range was given 4500 - 4950</span>
+    y_noisy = y_noisy + A((frequency - 4500) / 50 + 1) * cos(2 * pi * frequency * t&#39;);
+<span style="color: #0000ff">end</span>
+
+PLAYER = audioplayer(y_noisy, Fs);
+play(PLAYER); <span style="color: #008000">% Play current snip of track</span>
+
+<span style="color: #008000">% Calculate FFT</span>
+Y_noisy = fftshift(fft(y_noisy, N) / length(y_noisy)); <span style="color: #008000">% FT w/ wav sampling rate</span>
+
+<span style="color: #008000">% Pretty plots</span>
+figure(<span style="color: #a31515">&#39;NumberTitle&#39;</span>, <span style="color: #a31515">&#39;off&#39;</span>, <span style="color: #a31515">&#39;Name&#39;</span>, <span style="color: #a31515">&#39;Part II: Noisy&#39;</span>);
+
+<span style="color: #008000">% Noisy Signal Sample Spectrum (Soundwaves)</span>
+subplot(2, 1, 1);
+plot(y_noisy, <span style="color: #a31515">&#39;r&#39;</span>);
+title(<span style="color: #a31515">&#39;Noisy Signal, y_n(t)&#39;</span>);
+xlabel(<span style="color: #a31515">&#39;Sample #&#39;</span>);
+ylabel(<span style="color: #a31515">&#39;Sample Value&#39;</span>); <span style="color: #008000">% Values are MATLAB normalized, y = [-1,1]</span>
+
+<span style="color: #008000">% Fourier Transformed Frequency Spectrum</span>
+subplot(2, 1, 2);
+plot(f, abs(Y_noisy), <span style="color: #a31515">&#39;r&#39;</span>); <span style="color: #008000">% magnitude of Y</span>
+title(<span style="color: #a31515">&#39;FFT Noisy Signal, Y_n(t)&#39;</span>);	 	 
+xlabel(<span style="color: #a31515">&#39;Frequency [Hz]&#39;</span>);
+ylabel(<span style="color: #a31515">&#39;|Y(t)| [V]&#39;</span>);
+    </pre></div>
+
+            </br><img vspace="5" hspace="5" src="ecen314/InterferenceRejection_02.png" alt="">
+            </br>
+            <h2>PART III - Filtering
+                <a name="6"></a>
+            </h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">pause(4); <span style="color: #008000">% pause for player</span>
+                
+Fc = 4000; <span style="color: #008000">% Cut off frequency</span>
+
+<span style="color: #008000">% I did some research to find ways to make filters in MATLAB</span>
+<span style="color: #008000">% This one is low-pass Butterworth filter of order 25</span>
+[b,a] = butter(25, (Fc-500)/(Fs/2), <span style="color: #a31515">&#39;low&#39;</span>);
+y_filtered = filter(b,a,y_noisy); <span style="color: #008000">% Filtered signal</span>
+
+PLAYER = audioplayer(y_filtered, Fs);
+play(PLAYER); <span style="color: #008000">% Play current snip of track</span>
+
+<span style="color: #008000">% Calculate FFT</span>
+Y_filtered = fftshift(fft(y_filtered, N) / length(y_filtered)); <span style="color: #008000">% FT w/ wav sampling rate</span>
+
+<span style="color: #008000">% Pretty plots</span>
+figure(<span style="color: #a31515">&#39;NumberTitle&#39;</span>, <span style="color: #a31515">&#39;off&#39;</span>, <span style="color: #a31515">&#39;Name&#39;</span>, <span style="color: #a31515">&#39;Part III: Filtered&#39;</span>);
+
+<span style="color: #008000">% Noisy Signal Sample Spectrum (Soundwaves)</span>
+subplot(2, 1, 1);
+plot(y_filtered, <span style="color: #a31515">&#39;g&#39;</span>);
+title(<span style="color: #a31515">&#39;Filtered Signal, y_f(t)&#39;</span>);
+xlabel(<span style="color: #a31515">&#39;Sample #&#39;</span>);
+ylabel(<span style="color: #a31515">&#39;Sample Value&#39;</span>); <span style="color: #008000">% Values are MATLAB normalized, y = [-1,1]</span>
+
+<span style="color: #008000">% Fourier Transformed Frequency Spectrum</span>
+subplot(2, 1, 2);
+plot(f, abs(Y_filtered), <span style="color: #a31515">&#39;g&#39;</span>); <span style="color: #008000">% magnitude of Y</span>
+title(<span style="color: #a31515">&#39;FFT Filtered Signal, Y_f(t)&#39;</span>);	 	 
+xlabel(<span style="color: #a31515">&#39;Frequency [Hz]&#39;</span>);
+ylabel(<span style="color: #a31515">&#39;|Y(t)| [V]&#39;</span>);
+                </pre></div>
+            </br><img vspace="5" hspace="5" src="ecen314/InterferenceRejection_03.png" alt="">
+        </div>
+        </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <div class="flex">
+                <div class="copyright">
+                    &copy; Oneal Abdulrahim
+                </div>
+            </div>
+            <div class="copyright" align="right"> <a href="mailto:oneal@onealio.com?subject=URGENT:Bug on website">Report bugs</a></div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/skel.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

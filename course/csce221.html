@@ -29,7 +29,9 @@
                 <a href="../images.html">Portfolio</a>
                 <a href="../contact.html">Contact</a>
             </nav>
-            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            <a href="#navPanel" class="navPanelToggle">
+                <span class="fa fa-bars"></span>
+            </a>
         </div>
     </header>
 
@@ -37,10 +39,1129 @@
         <div class="inner">
             <header class="align-center">
                 <h2>CSCE 221: Data Structures & Algorithms</h2>
-                <p>A critical course on systematic input data organization and operations (algorithms) which can be performed on this data. Fall 2016 @ Texas A&M University.</p>
+                <p>A critical course on systematic input data organization and operations (algorithms) which can be performed
+                    on this data.
+                    <a href="https://bitbucket.org/onealabdulrahim/data-structures-csce221/">Repository.</a> Fall 2016 @ Texas A&M University.</p>
             </header>
-            <h2>C++ Implementation: Programming Assignments/Labs</h2>
-            <h2><a href="https://bitbucket.org/onealabdulrahim/data-structures-csce221/">Available on Bitbucket.</a></h2>
+            <h2>Programming Assignments/Labs</h2>
+            <table style="width:100%">
+                <tr>
+                    <th>C++ Implementation of Some Data Structures</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#Vector">Vector (Dynamic Array)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#LinkedList">Linked List</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#SkipList">Skip List</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#BinaryTree">BinaryTree</a>
+                    </td>
+                </tr>
+            </table>
+
+            </br>
+            <h2 id="Vector">vector.h</h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+                <pre style="margin: 0; line-height: 125%"><span style="color: #008000">/**</span>
+<span style="color: #008000">@Title A1: templated vector</span>
+<span style="color: #008000">@Author Oneal Abdulrahim</span>
+<span style="color: #008000">@Purpose To implement a vector class in C++</span>
+<span style="color: #008000">		 relative to the Array data structure</span>
+<span style="color: #008000">@Due Monday, September 12, 2016</span>
+<span style="color: #008000">@Files main.cpp	My_vec.cpp My_vec.h makefile</span>
+<span style="color: #008000">*/</span>
+
+<span style="color: #0000ff">#include &lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">class</span> <span style="color: #2b91af">T</span>&gt; <span style="color: #0000ff">class</span> <span style="color: #2b91af">My_vec</span> {
+	
+	<span style="color: #008000">//member variables</span>
+	<span style="color: #2b91af">int</span> size, capacity;
+	T *ptr;
+
+public:	
+	<span style="color: #008000">//member functions</span>
+	My_vec();
+	~My_vec();
+	My_vec(<span style="color: #0000ff">const</span> My_vec&lt;T&gt;&amp;);
+	My_vec&lt;T&gt;&amp; <span style="color: #0000ff">operator</span>=(<span style="color: #0000ff">const</span> My_vec&lt;T&gt;&amp;);
+	<span style="color: #2b91af">int</span> get_size() <span style="color: #0000ff">const</span>;
+	<span style="color: #2b91af">int</span> get_capacity() <span style="color: #0000ff">const</span>;
+	T&amp; <span style="color: #0000ff">operator</span>[](<span style="color: #2b91af">int</span>) <span style="color: #0000ff">const</span>;
+	T&amp; <span style="color: #0000ff">operator</span>[](<span style="color: #2b91af">int</span>);
+	<span style="color: #2b91af">bool</span> is_empty() <span style="color: #0000ff">const</span>;
+	T&amp; elem_at_rank(<span style="color: #2b91af">int</span>) <span style="color: #0000ff">const</span>;
+	<span style="color: #2b91af">void</span> insert_at_rank(<span style="color: #2b91af">int</span>, <span style="color: #0000ff">const</span> T&amp;);
+	<span style="color: #2b91af">void</span> replace_at_rank(<span style="color: #2b91af">int</span>, <span style="color: #0000ff">const</span> T&amp;);
+	<span style="color: #2b91af">void</span> remove_at_rank(<span style="color: #2b91af">int</span>);
+	
+};
+
+<span style="color: #008000">/// overload &lt;&lt;</span>
+<span style="color: #008000">/**</span>
+<span style="color: #008000">Prints vector nicely :) I â™¥ toString methods */</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+std::ostream&amp; <span style="color: #0000ff">operator</span>&lt;&lt;(std::ostream&amp; out, <span style="color: #0000ff">const</span> My_vec&lt;T&gt;&amp; vec) {
+	<span style="color: #0000ff">if</span> (!vec.is_empty()) {
+		<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; vec.get_size(); ++i) {
+			std::cout &lt;&lt; <span style="color: #a31515">&quot;\t[&quot;</span> &lt;&lt; i &lt;&lt; <span style="color: #a31515">&quot;] â–º &quot;</span> &lt;&lt; vec.elem_at_rank(i) &lt;&lt; endl;
+		}
+	} <span style="color: #0000ff">else</span> {
+		cout &lt;&lt; <span style="color: #a31515">&quot;My_vec is empty!&quot;</span> &lt;&lt; endl;
+	}
+}
+
+<span style="color: #008000">/// search max index</span>
+<span style="color: #008000">/**</span>
+<span style="color: #008000">Searches for the index of the greatest valued element, and in the case of T,</span>
+<span style="color: #008000">the greatest T value. This method relies on the validity of the &lt; comparison</span>
+
+<span style="color: #008000">@param v	the My_vec to operate on</span>
+<span style="color: #008000">@param size	the size of My_vec</span>
+<span style="color: #008000">@return	maximum	the index of the maxmimum value */</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+<span style="color: #2b91af">int</span> find_max_index(<span style="color: #0000ff">const</span> My_vec&lt;T&gt;&amp; v, <span style="color: #2b91af">int</span> size) {
+	<span style="color: #2b91af">int</span> maxmimum = 0; <span style="color: #008000">// we must start somewhere</span>
+	<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt; size; ++i) {
+		<span style="color: #0000ff">if</span> (v[maxmimum] &lt; v[i]) { <span style="color: #008000">// is current index larger than our maximum?</span>
+			maxmimum = i;
+		}
+	}
+	<span style="color: #0000ff">return</span> maxmimum;
+}
+
+<span style="color: #008000">/// sort ascending</span>
+<span style="color: #008000">/**</span>
+<span style="color: #008000">Sorts the given My_vec object using an implementation of Selection Sort.</span>
+<span style="color: #008000">This sort is costly and sad. Hopefully we will learn more about Big-O and</span>
+<span style="color: #008000">other sorts.</span>
+
+<span style="color: #008000">@param v	the My_vec to operate on */</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+<span style="color: #2b91af">void</span> sort_max(My_vec&lt;T&gt;&amp; vec) {
+	<span style="color: #008000">// iterate through items, find the maximum (we&#39;ve written this above)      </span>
+	<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; vec.get_size() / 2; ++i) {
+		<span style="color: #2b91af">int</span> maximum = find_max_index(vec, vec.get_size() - i);
+
+		<span style="color: #008000">// swap the max with its index &amp; value at size</span>
+		T temp = vec[vec.get_size() - 1 - i];
+		vec[vec.get_size() - 1 - i] = vec[maximum];
+		vec[maximum] = temp;
+	}
+}
+	
+</pre>
+            </div>
+            </br>
+            <h2>vector.cpp</h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+                <pre style="margin: 0; line-height: 125%"><span style="color: #008000">/**</span>
+    <span style="color: #008000">@Title A1: templated vector</span>
+    <span style="color: #008000">@Author Oneal Abdulrahim</span>
+    <span style="color: #008000">@Purpose To implement a vector class in C++</span>
+    <span style="color: #008000">		 relative to the Array data structure</span>
+    <span style="color: #008000">@Due Monday, September 12, 2016</span>
+    <span style="color: #008000">@Files main.cpp	My_vec.cpp My_vec.h makefile</span>
+    <span style="color: #008000">*/</span>
+    
+    <span style="color: #0000ff">#include &quot;My_vec.h&quot;</span>
+    <span style="color: #0000ff">#include &lt;iostream&gt;</span>
+    <span style="color: #0000ff">#include &lt;stdexcept&gt;</span>
+    <span style="color: #0000ff">#include &lt;cstring&gt;</span>
+    
+    <span style="color: #008000">/// default constructor</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Reserves memory for user data. */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    My_vec&lt;T&gt;::My_vec()
+        : size(0), 
+          capacity(10),
+          ptr(<span style="color: #0000ff">new</span> T[capacity]()) {}
+    
+    <span style="color: #008000">/// destructor</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Deallocates element data when My_vec goes out of scope,</span>
+    <span style="color: #008000">or when this method is called explicitly. */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    My_vec&lt;T&gt;::~My_vec() {
+        <span style="color: #0000ff">delete</span>[] ptr;
+    }
+    
+    <span style="color: #008000">/// copy constructor</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Allocates new My_vec object to the properties of the</span>
+    <span style="color: #008000">current one. Copies old data into new. Keeps both objects &amp; data in memory. </span>
+    <span style="color: #008000">@param vec	the object to copy from */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    My_vec&lt;T&gt;::My_vec(<span style="color: #0000ff">const</span> My_vec&lt;T&gt;&amp; vec)
+        : size {vec.get_size()},		<span style="color: #008000">// initialize to the new vector&#39;s values</span>
+          capacity {vec.get_capacity()},
+          ptr{<span style="color: #0000ff">new</span> T[vec.get_capacity()]}
+        {
+            <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt;= capacity; ++i) { <span style="color: #008000">// copy old elements to new vector</span>
+                ptr[i] = vec.ptr[i];	
+            }
+            
+        }
+    
+    <span style="color: #008000">/// copy-assignment</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Copy-assignment through operator &quot;=&quot; overload. The new elements are loaded</span>
+    <span style="color: #008000">to a temporary object. The current pointer to elements is deleted, then set</span>
+    <span style="color: #008000">to this temp object.</span>
+    
+    <span style="color: #008000">@param vec	the object to assign from */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    My_vec&lt;T&gt;&amp; My_vec&lt;T&gt;::<span style="color: #0000ff">operator</span>=(<span style="color: #0000ff">const</span> My_vec&lt;T&gt;&amp; vec) {
+        size = vec.get_size();
+        capacity = vec.get_capacity();
+        
+        <span style="color: #008000">// if it&#39;s an attempted self-assignment, return reference to this</span>
+        <span style="color: #0000ff">if</span> (<span style="color: #0000ff">this</span> == &amp;vec) {
+            <span style="color: #0000ff">return</span> *<span style="color: #0000ff">this</span>;
+        }
+        
+        <span style="color: #008000">// If we have enough space, there is no need for new allocation</span>
+        <span style="color: #0000ff">if</span> (vec.get_size() &lt;= capacity) {
+            <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; vec.get_size(); ++i) {
+                ptr[i] = vec.ptr[i]; <span style="color: #008000">// copy elements from vector</span>
+            }
+            capacity += size - vec.get_size();
+            size = vec.get_size();
+            <span style="color: #0000ff">return</span> *<span style="color: #0000ff">this</span>;
+        }
+        
+        T* temp = <span style="color: #0000ff">new</span> T[vec.get_capacity()]; <span style="color: #008000">// new space for new elements</span>
+        
+        <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt;= vec.get_capacity(); ++i) { <span style="color: #008000">// copy new elements</span>
+            temp[i] = vec.ptr[i];
+        }
+        
+        <span style="color: #0000ff">delete</span>[] ptr; <span style="color: #008000">// deallocate old space</span>
+        size = vec.get_size(); <span style="color: #008000">// set new size &amp; capacity</span>
+        capacity = vec.get_capacity();
+        ptr = temp; <span style="color: #008000">// set new element location</span>
+        
+        <span style="color: #0000ff">return</span> *<span style="color: #0000ff">this</span>; <span style="color: #008000">// return self-reference</span>
+    }
+    
+    <span style="color: #008000">/// size getter</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Returns the current size of My_vec (how many elements it is holding)</span>
+    
+    <span style="color: #008000">@return size	The size data member */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    <span style="color: #2b91af">int</span> My_vec&lt;T&gt;::get_size() <span style="color: #0000ff">const</span> {
+        <span style="color: #0000ff">return</span> size;
+    }
+    
+    <span style="color: #008000">/// capacity getter</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Returns the current capcaity of My_vec (how many elements it can hold)</span>
+    
+    <span style="color: #008000">@return capacity	The capacity data member */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    <span style="color: #2b91af">int</span> My_vec&lt;T&gt;::get_capacity() <span style="color: #0000ff">const</span> {
+        <span style="color: #0000ff">return</span> capacity;
+    }
+    
+    <span style="color: #008000">/// access operator (const)</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Overloading the [] operator to ensure access to elements is direct</span>
+    
+    <span style="color: #008000">@param i	the index of the desired element	</span>
+    <span style="color: #008000">@return elem_at_rank(i)	call to member function */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    T&amp; My_vec&lt;T&gt;::<span style="color: #0000ff">operator</span>[](<span style="color: #2b91af">int</span> i) <span style="color: #0000ff">const</span> {
+        <span style="color: #0000ff">return</span> elem_at_rank(i);
+    }
+    
+    <span style="color: #008000">/// access operator</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Overloading the [] operator to ensure access to elements is direct</span>
+    
+    <span style="color: #008000">@param i	the index of the desired element	</span>
+    <span style="color: #008000">@return elem_at_rank(i)	call to member function */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    T&amp; My_vec&lt;T&gt;::<span style="color: #0000ff">operator</span>[](<span style="color: #2b91af">int</span> i) {
+        <span style="color: #0000ff">return</span> elem_at_rank(i);
+    }
+    
+    <span style="color: #008000">/// is empty</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Verifies if the current My_vec has no elements in it</span>
+    
+    <span style="color: #008000">@return	true if size is 0 */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    <span style="color: #2b91af">bool</span> My_vec&lt;T&gt;::is_empty() <span style="color: #0000ff">const</span> {
+        <span style="color: #0000ff">return</span> size == 0;
+    }
+    
+    <span style="color: #008000">/// access</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Finds the element of My_vec at index.</span>
+    
+    <span style="color: #008000">@param r	the index of the desired element</span>
+    <span style="color: #008000">@return 	the element at index r */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    T&amp; My_vec&lt;T&gt;::elem_at_rank(<span style="color: #2b91af">int</span> r) <span style="color: #0000ff">const</span> {
+        <span style="color: #0000ff">return</span> ptr[r]; <span style="color: #008000">// cheap &amp; easy</span>
+    }
+    
+    <span style="color: #008000">/// insert element</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Places an element at given index. Moves all greater indexed elements by +1.</span>
+    <span style="color: #008000">Generally, this is most costly if inserting near the beginning of My_vec</span>
+    
+    <span style="color: #008000">@param r	the index to insert at</span>
+    <span style="color: #008000">@param elem	the element to insert */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    <span style="color: #2b91af">void</span> My_vec&lt;T&gt;::insert_at_rank(<span style="color: #2b91af">int</span> r, <span style="color: #0000ff">const</span> T&amp; elem) {
+        <span style="color: #0000ff">if</span> (r &lt; 0) {
+            <span style="color: #0000ff">throw</span> std::out_of_range(<span style="color: #a31515">&quot;The index must be positive!&quot;</span>);
+        } 
+        
+        <span style="color: #0000ff">if</span> (r &gt;= size) { <span style="color: #008000">// if we cannot fit, expand the vector</span>
+            <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = size; i &lt;= r; ++i) {
+                T* empty = <span style="color: #0000ff">new</span> T();
+                ptr[i] = *empty;
+                <span style="color: #0000ff">delete</span> empty;
+            }
+            size = r; 
+            
+            <span style="color: #0000ff">while</span> (size &gt; capacity) {
+                capacity *= 2;	<span style="color: #008000">// if we&#39;re at capacity, double it</span>
+            }
+            
+            T* temp = <span style="color: #0000ff">new</span> T[capacity];
+            
+            <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; size; ++i) {
+                <span style="color: #0000ff">if</span> (i &lt; size) {
+                    temp[i] = ptr[i];
+                } <span style="color: #0000ff">else</span> {
+                    T* empty = <span style="color: #0000ff">new</span> T();
+                    temp[i] = *empty;
+                    <span style="color: #0000ff">delete</span> empty;
+                }
+            }
+            
+            <span style="color: #0000ff">delete</span>[] ptr; <span style="color: #008000">// deallocate old memory</span>
+            ptr = temp; <span style="color: #008000">// set new memory</span>
+        }
+        
+        <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = size; i &gt; r; --i) { <span style="color: #008000">// push forward data to make room</span>
+            ptr[i] = ptr[i - 1];
+        }
+        
+        ++size;
+        ptr[r] = elem; <span style="color: #008000">// finish insertion</span>
+    }
+    
+    <span style="color: #008000">/// replace element</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Replaces an element at given index. If an out of bounds index is provided,</span>
+    <span style="color: #008000">this method simply inserts this element at given index using above method.</span>
+    
+    <span style="color: #008000">@param r	the index to replace at</span>
+    <span style="color: #008000">@param elem	the element to insert */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    <span style="color: #2b91af">void</span> My_vec&lt;T&gt;::replace_at_rank(<span style="color: #2b91af">int</span> r, <span style="color: #0000ff">const</span> T&amp; elem) {
+        <span style="color: #0000ff">if</span> (r &gt; size) {  <span style="color: #008000">// will throw error if cannot fit</span>
+            insert_at_rank(r, elem); <span style="color: #008000">// ...out of bounds indices</span>
+        } <span style="color: #0000ff">else</span> {
+            ptr[r] = elem; <span style="color: #008000">// if inbounds, simply reassign the value at that index</span>
+        }
+    
+    }
+    
+    <span style="color: #008000">/// remove element</span>
+    <span style="color: #008000">/**</span>
+    <span style="color: #008000">Removes element at given index by copying all elements starting by overriding r.</span>
+    
+    <span style="color: #008000">@param r	the index to remove */</span>
+    <span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt;
+    <span style="color: #2b91af">void</span> My_vec&lt;T&gt;::remove_at_rank(<span style="color: #2b91af">int</span> r) {
+        <span style="color: #0000ff">if</span> (r &gt; capacity) {
+            <span style="color: #0000ff">throw</span> std::invalid_argument(<span style="color: #a31515">&quot;Cannot remove outside of My_vec!&quot;</span>);
+        } <span style="color: #0000ff">else</span> {
+            <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = r; i &lt; capacity; ++i) { <span style="color: #008000">// pushing all index down</span>
+                ptr[i] = ptr[i+1];
+            }
+            --size;
+        }
+    }
+    </pre>
+            </div>
+
+
+            <h2 id="LinkedList">DoublyLinkedList.h</h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+                <pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;cstdlib&gt;</span>
+<span style="color: #0000ff">#include &lt;iostream&gt;</span>
+<span style="color: #0000ff">#include &lt;stdexcept&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; <span style="color: #0000ff">class</span> <span style="color: #2b91af">DoublyLinkedList</span>;
+
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; <span style="color: #0000ff">class</span> <span style="color: #2b91af">DListNode</span> {
+    private:
+		T obj;
+		DListNode&lt;T&gt; *prev, *next;
+		<span style="color: #0000ff">friend</span> <span style="color: #0000ff">class</span> <span style="color: #2b91af">DoublyLinkedList</span>&lt;T&gt;;
+		public:
+		DListNode ( DListNode&lt;T&gt; *p = NULL, DListNode&lt;T&gt; *n = NULL)
+			: prev(p), next(n) {}
+			DListNode ( T e, DListNode&lt;T&gt; *p = NULL, DListNode&lt;T&gt; *n = NULL)
+			: obj(e), prev(p), next(n) {}
+		T getElem() <span style="color: #0000ff">const</span> { <span style="color: #0000ff">return</span> obj; }
+		DListNode&lt;T&gt;* getNext() <span style="color: #0000ff">const</span> { <span style="color: #0000ff">return</span> next;} 
+		DListNode&lt;T&gt;* getPrev() <span style="color: #0000ff">const</span> { <span style="color: #0000ff">return</span> prev;}
+};
+
+<span style="color: #008000">// doubly linked list</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; <span style="color: #0000ff">class</span> <span style="color: #2b91af">DoublyLinkedList</span> {
+    protected:
+		DListNode&lt;T&gt; header, trailer;
+    public:
+		<span style="color: #008000">// constructor</span>
+		DoublyLinkedList() : header(0), trailer(0) {header.next = &amp;trailer; trailer.prev = &amp;header;}
+		DoublyLinkedList(DoublyLinkedList&lt;T&gt;&amp; dll); <span style="color: #008000">// copy constructor</span>
+		~DoublyLinkedList(); <span style="color: #008000">// destructor</span>
+		DoublyLinkedList&amp; <span style="color: #0000ff">operator</span>=(DoublyLinkedList&lt;T&gt;&amp; dll); <span style="color: #008000">//copy assignment operator</span>
+		<span style="color: #008000">// return the pointer to the first node</span>
+		DListNode&lt;T&gt; *getFirst() <span style="color: #0000ff">const</span> { <span style="color: #0000ff">return</span> header.next;}
+		<span style="color: #008000">// return the pointer to the trailer</span>
+		DListNode&lt;T&gt; *getAfterLast() { <span style="color: #0000ff">return</span> &amp;trailer;}
+		<span style="color: #008000">// return if the list is empty</span>
+		<span style="color: #2b91af">bool</span> isEmpty() <span style="color: #0000ff">const</span> { <span style="color: #0000ff">return</span> header.next == &amp;trailer; }
+		T first() <span style="color: #0000ff">const</span>; <span style="color: #008000">// return the first object </span>
+		T last() <span style="color: #0000ff">const</span>; <span style="color: #008000">// return the last object </span>
+		<span style="color: #2b91af">void</span> insertFirst(T newobj); <span style="color: #008000">// insert to the first of the list</span>
+		T removeFirst(); <span style="color: #008000">// remove the first node</span>
+		<span style="color: #2b91af">void</span> insertLast(T newobj); <span style="color: #008000">// insert to the last of the list</span>
+		T removeLast(); <span style="color: #008000">// remove the last node</span>
+};
+
+<span style="color: #008000">// output operator</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; ostream&amp; <span style="color: #0000ff">operator</span>&lt;&lt;(ostream&amp; out,DoublyLinkedList&lt;T&gt;&amp; dll);
+
+<span style="color: #008000">// extend range_error from &lt;stdexcept&gt;</span>
+<span style="color: #0000ff">struct</span> EmptyDLinkedListException : std::range_error {
+    <span style="color: #0000ff">explicit</span> EmptyDLinkedListException(<span style="color: #2b91af">char</span> <span style="color: #0000ff">const</span>* msg=NULL): range_error(msg) {}
+};
+
+<span style="color: #008000">//-----------------------------------------------------------------------------</span>
+
+<span style="color: #008000">// copy constructor </span>
+<span style="color: #008000">// time complexity O(n)</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; DoublyLinkedList&lt;T&gt;::DoublyLinkedList(DoublyLinkedList&lt;T&gt;&amp; dll) {
+    <span style="color: #008000">// Initialize the list</span>
+	header.next = &amp;trailer; trailer.prev = &amp;header;
+  
+	<span style="color: #008000">// Properly start with the first node of dll</span>
+	DListNode&lt;T&gt;* current = dll.getFirst();
+	header = *current;
+	
+	<span style="color: #008000">// Copy from dll</span>
+	<span style="color: #0000ff">while</span>(current-&gt;getNext() != NULL) {
+		insertLast(current-&gt;getElem());
+		current = current-&gt;getNext(); <span style="color: #008000">//iterate</span>
+	}
+	
+	<span style="color: #008000">// Properly terminate with the final node of dll</span>
+	trailer = *current;
+	trailer.prev = current-&gt;getPrev();
+}
+
+<span style="color: #008000">// assignment operator</span>
+<span style="color: #008000">// time complexity O(n)</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; DoublyLinkedList&lt;T&gt;&amp; DoublyLinkedList&lt;T&gt;::<span style="color: #0000ff">operator</span>=(DoublyLinkedList&lt;T&gt;&amp; dll) {
+
+    <span style="color: #008000">// Delete this list</span>
+	<span style="color: #0000ff">delete</span> <span style="color: #0000ff">this</span>; <span style="color: #008000">// haHAA</span>
+	
+	<span style="color: #008000">// Initialize the list</span>
+	header.next = &amp;trailer; trailer.prev = &amp;header;
+  
+	<span style="color: #008000">// Properly start with the first node of dll</span>
+	DListNode&lt;T&gt;* current = dll.getFirst();
+	header = *current;
+	
+	<span style="color: #008000">// Copy from dll</span>
+	<span style="color: #0000ff">while</span>(current-&gt;getNext() != NULL) {
+		insertLast(current-&gt;getElem());
+		current = current-&gt;getNext(); <span style="color: #008000">//iterate</span>
+	}
+	
+	<span style="color: #008000">// Properly terminate with the final node of dll</span>
+	trailer = *current;
+	trailer.prev = current-&gt;getPrev();
+}
+
+<span style="color: #008000">// insert the object to the first of the linked list</span>
+<span style="color: #008000">// time complexity O(1)</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; <span style="color: #2b91af">void</span> DoublyLinkedList&lt;T&gt;::insertFirst(T newobj) {
+    DListNode&lt;T&gt; *newNode = <span style="color: #0000ff">new</span> DListNode&lt;T&gt;(newobj, &amp;header, header.next);
+    header.next-&gt;prev = newNode;
+    header.next = newNode;
+}
+
+<span style="color: #008000">// insert the object to the last of the linked list</span>
+<span style="color: #008000">// time complexity O(1)</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; <span style="color: #2b91af">void</span> DoublyLinkedList&lt;T&gt;::insertLast(T newobj) {
+    DListNode&lt;T&gt; *newNode = <span style="color: #0000ff">new</span> DListNode&lt;T&gt;(newobj, trailer.prev,&amp;trailer);
+    trailer.prev-&gt;next = newNode;
+    trailer.prev = newNode;
+}
+
+<span style="color: #008000">// remove the first object of the list</span>
+<span style="color: #008000">// time complexity O(1)</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; T DoublyLinkedList&lt;T&gt;::removeFirst() {
+    <span style="color: #0000ff">if</span> (isEmpty())
+        <span style="color: #0000ff">throw</span> EmptyDLinkedListException(<span style="color: #a31515">&quot;Empty Doubly Linked List&quot;</span>);
+    DListNode&lt;T&gt; *node = header.next;
+    node-&gt;next-&gt;prev = &amp;header;
+    header.next = node-&gt;next;
+    T obj = node-&gt;obj;
+    <span style="color: #0000ff">delete</span> node;
+    <span style="color: #0000ff">return</span> obj;
+}
+
+<span style="color: #008000">// remove the last object of the list</span>
+<span style="color: #008000">// time complexity O(1)</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; T DoublyLinkedList&lt;T&gt;::removeLast() {
+    <span style="color: #0000ff">if</span> (isEmpty())
+        <span style="color: #0000ff">throw</span> EmptyDLinkedListException(<span style="color: #a31515">&quot;Empty Doubly Linked List&quot;</span>);
+    DListNode&lt;T&gt; *node = trailer.prev;
+    node-&gt;prev-&gt;next = &amp;trailer;
+    trailer.prev = node-&gt;prev;
+    T obj = node-&gt;obj;
+    <span style="color: #0000ff">delete</span> node;
+    <span style="color: #0000ff">return</span> obj;
+}
+
+<span style="color: #008000">// destructor</span>
+<span style="color: #008000">// time complexity O(n)</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; DoublyLinkedList&lt;T&gt;::~DoublyLinkedList() {
+    DListNode&lt;T&gt; *prev_node, *node = header.next;
+    <span style="color: #0000ff">while</span> (node != &amp;trailer)
+    {
+        prev_node = node;
+        node = node-&gt;next;
+        <span style="color: #0000ff">delete</span> prev_node;
+    }
+    header.next = &amp;trailer;
+    trailer.prev = &amp;header;
+}
+
+<span style="color: #008000">// return the first object</span>
+<span style="color: #008000">// time complexity O(1)</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; T DoublyLinkedList&lt;T&gt;::first() <span style="color: #0000ff">const</span> {
+    <span style="color: #0000ff">if</span> (isEmpty())
+        <span style="color: #0000ff">throw</span> EmptyDLinkedListException(<span style="color: #a31515">&quot;Empty Doubly Linked List&quot;</span>);
+    <span style="color: #0000ff">return</span> header.next-&gt;obj;
+}
+
+<span style="color: #008000">// return the last object</span>
+<span style="color: #008000">// time complexity O(1)</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; T DoublyLinkedList&lt;T&gt;::last() <span style="color: #0000ff">const</span> {
+    <span style="color: #0000ff">if</span> (isEmpty())
+        <span style="color: #0000ff">throw</span> EmptyDLinkedListException(<span style="color: #a31515">&quot;Empty Doubly Linked List&quot;</span>);
+    <span style="color: #0000ff">return</span> trailer.prev-&gt;obj;
+}
+
+<span style="color: #008000">// return the list length</span>
+<span style="color: #008000">// time complexity O(n)</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; <span style="color: #2b91af">int</span> DoublyLinkedListLength(DoublyLinkedList&lt;T&gt;&amp; dll) {
+    DListNode&lt;T&gt; *current = dll.getFirst();
+    <span style="color: #2b91af">int</span> count = 0;
+    <span style="color: #0000ff">while</span>(current != dll.getAfterLast())
+    {
+        count++;
+        current = current-&gt;getNext(); <span style="color: #008000">//iterate</span>
+    }
+    <span style="color: #0000ff">return</span> count;
+}
+
+<span style="color: #008000">// output operator</span>
+<span style="color: #008000">// time complexity O(n) but it looks BEAUTIFUL</span>
+<span style="color: #0000ff">template</span> &lt;<span style="color: #0000ff">typename</span> T&gt; ostream&amp; <span style="color: #0000ff">operator</span>&lt;&lt;(ostream&amp; out, DoublyLinkedList&lt;T&gt;&amp; dll) {
+    DListNode&lt;T&gt;* current = dll.getFirst();
+	cout &lt;&lt; <span style="color: #a31515">&quot; â† &quot;</span> &lt;&lt; current-&gt;getElem() &lt;&lt; <span style="color: #a31515">&quot; â†” &quot;</span>;
+	
+	<span style="color: #0000ff">while</span> (current-&gt;getNext() != NULL) {
+		cout &lt;&lt; current-&gt;getElem() &lt;&lt; <span style="color: #a31515">&quot; â†” &quot;</span>;
+		current = current-&gt;getNext(); <span style="color: #008000">//iterate</span>
+	}
+	
+	cout &lt;&lt; current-&gt;getElem() &lt;&lt; <span style="color: #a31515">&quot; â†’ &quot;</span>;
+	
+  <span style="color: #0000ff">return</span> out;
+}
+</pre>
+            </div>
+            </br>
+            <h2 id="SkipList">SkipList.cpp</h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+                <pre style="margin: 0; line-height: 125%"><span style="color: #008000">// from the man himself ftp://ftp.cs.umd.edu/pub/skipLists/skiplists.pdf</span>
+
+<span style="color: #0000ff">#include &lt;vector&gt;</span>
+<span style="color: #0000ff">#include &lt;random&gt;</span>
+<span style="color: #0000ff">#include &lt;algorithm&gt;</span>
+<span style="color: #0000ff">#include &lt;limits&gt;</span>
+<span style="color: #0000ff">#include &lt;fstream&gt;</span>
+<span style="color: #0000ff">#include &lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> MAX_LEVEL = 64; <span style="color: #008000">// global</span>
+
+<span style="color: #0000ff">struct</span> Node {
+	<span style="color: #2b91af">int</span> data; <span style="color: #008000">// integer data</span>
+	vector&lt;Node*&gt; next; <span style="color: #008000">// vector of pointers to each level&#39;s right node</span>
+						 <span style="color: #008000">// the length of this vector is the max height of node</span>
+						 <span style="color: #008000">// the index indicates the current level</span>
+	<span style="color: #2b91af">int</span> search_cost;
+	Node(<span style="color: #2b91af">int</span> data) : data(data) {
+		<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; MAX_LEVEL; ++i) {
+			next.push_back(nullptr);
+		}
+	}
+};
+
+<span style="color: #0000ff">struct</span> SkipList {
+	Node* first;
+	Node* last;
+	<span style="color: #2b91af">int</span> node_count;
+	<span style="color: #2b91af">int</span> level_count;
+	<span style="color: #2b91af">int</span> search_cost;
+	
+	<span style="color: #008000">/// default constructor</span>
+	SkipList() {
+		node_count = 0;
+		level_count = 1;
+		search_cost = 0;
+		first = <span style="color: #0000ff">new</span> Node(numeric_limits&lt;<span style="color: #2b91af">int</span>&gt;::min());
+		Node* last = <span style="color: #0000ff">new</span> Node(numeric_limits&lt;<span style="color: #2b91af">int</span>&gt;::max());
+		<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; MAX_LEVEL; ++i) {
+			first -&gt; next[i] = last;
+		}
+	}
+	
+	<span style="color: #008000">/// flip a coin until tails</span>
+	<span style="color: #008000">/**</span>
+<span style="color: #008000">	This method counts and returns the number of heads flipped</span>
+<span style="color: #008000">	until tails was achieved.</span>
+<span style="color: #008000">	@return	result	count of heads before 1 tails*/</span>
+	<span style="color: #2b91af">int</span> get_random_level() {
+		<span style="color: #2b91af">int</span> result = 1;
+		<span style="color: #0000ff">while</span> ((<span style="color: #2b91af">double</span>) rand() / RAND_MAX &lt; 0.5) {
+			++result;
+		}
+		<span style="color: #0000ff">return</span> result; <span style="color: #008000">// guaranteed below max?</span>
+	}
+	
+	<span style="color: #008000">/// search</span>
+	<span style="color: #008000">/**</span>
+<span style="color: #008000">	Searches for a particular node data value and returns the first node</span>
+<span style="color: #008000">	which contains this value. (In the default iteration algorithm of SkipList)</span>
+<span style="color: #008000">	@param	data	The value to search for</span>
+<span style="color: #008000">	@return 		The node which holds the value */</span>
+	Node* search(<span style="color: #2b91af">int</span> data) {
+		search_cost = 0;
+		<span style="color: #2b91af">int</span>&amp; cost = search_cost;
+		<span style="color: #008000">// good checks</span>
+		<span style="color: #0000ff">if</span> (data == numeric_limits&lt;<span style="color: #2b91af">int</span>&gt;::min()) {
+			<span style="color: #0000ff">return</span> first;
+		}
+		
+		<span style="color: #0000ff">if</span> (data == numeric_limits&lt;<span style="color: #2b91af">int</span>&gt;::max()) {
+			<span style="color: #0000ff">return</span> last;
+		}
+		
+		<span style="color: #008000">// start at the beginning of the skip list</span>
+		Node* current = first;
+		<span style="color: #2b91af">int</span> level = level_count;
+		<span style="color: #008000">// continue as long as there is something to search for</span>
+		<span style="color: #0000ff">while</span> (current -&gt; next[level]) {
+			<span style="color: #008000">// if the next number is too small, move forward to the right</span>
+			<span style="color: #0000ff">if</span> (current -&gt; next[level] -&gt; data &lt; data) {
+				++cost;
+				current = current -&gt; next[level];
+			<span style="color: #008000">// if the next number is a match, return this pointer to node</span>
+			} <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (current -&gt; next[level] -&gt; data == data) {
+				<span style="color: #0000ff">return</span> current -&gt; next[level];
+			<span style="color: #008000">// otherwise, if the next number is too big, &quot;drop down&quot;</span>
+			} <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (current -&gt; next[level] -&gt; data &gt; data) {
+				++cost;
+				--level;
+			}
+		}
+		<span style="color: #0000ff">return</span> nullptr; <span style="color: #008000">// never reached</span>
+	}
+	
+	<span style="color: #008000">/// insert</span>
+	<span style="color: #008000">/**</span>
+<span style="color: #008000">	Inserts a node with data value into proper place in a randomized # of levels</span>
+<span style="color: #008000">	@param	data	The value to search for */</span>
+	<span style="color: #2b91af">void</span> insert(<span style="color: #2b91af">int</span> data) {
+		<span style="color: #008000">// printing information</span>
+		<span style="color: #2b91af">int</span> comp_count = 0;		
+		
+		<span style="color: #008000">// start at the beginning node</span>
+		Node* current = first;
+		vector&lt;Node*&gt; updater(MAX_LEVEL); <span style="color: #008000">// holds nodes &quot;to be updated&quot; (see below)</span>
+		<span style="color: #008000">// capture the nodes whose next pointers need to be updated</span>
+		<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = MAX_LEVEL - 1; i &gt;= 0; --i) {
+			<span style="color: #008000">// iterator to find value up to current data</span>
+			<span style="color: #008000">// we assume no duplicates!</span>
+			<span style="color: #0000ff">while</span> (current -&gt; next[i] &amp;&amp; current -&gt; next[i] -&gt; data &lt; data) {
+				++comp_count;
+				current = current -&gt; next[i];
+			}
+			<span style="color: #008000">// in fact, the index of &quot;updater&quot; is the current level next pointer</span>
+			<span style="color: #008000">// 		which requires updating</span>
+			updater[i] = current;
+		}
+		
+		<span style="color: #2b91af">int</span> new_level = get_random_level(); <span style="color: #008000">// PRNG for level count</span>
+		current = <span style="color: #0000ff">new</span> Node(data); <span style="color: #008000">// recycle variable to hold new pointer to Node</span>
+		
+		<span style="color: #0000ff">if</span> (new_level &gt; level_count) { <span style="color: #008000">// max level that we have any data</span>
+			level_count = new_level; <span style="color: #008000">// will assist with printing later</span>
+		}
+		
+		<span style="color: #008000">// finally, perform the pointer updates</span>
+		<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; new_level; ++i) {
+			<span style="color: #008000">// on a particular level, x will point to old pointer&#39;s next</span>
+			current -&gt; next[i] = updater[i] -&gt; next[i];
+			<span style="color: #008000">// and the old pointer&#39;s next is now current</span>
+			updater[i] -&gt; next[i] = current;
+			
+			<span style="color: #008000">// familiar insertion? i&#39;m thinkin singly linked list! :)</span>
+		}
+		
+		cout &lt;&lt; <span style="color: #a31515">&quot;Adding &quot;</span> &lt;&lt; data &lt;&lt; <span style="color: #a31515">&quot; to level: &quot;</span> &lt;&lt; new_level &lt;&lt; <span style="color: #a31515">&quot;, &quot;</span>
+			 &lt;&lt; comp_count &lt;&lt; <span style="color: #a31515">&quot; comparisons&quot;</span> &lt;&lt; endl;
+		++node_count; <span style="color: #008000">// keep track of how many nodes we have</span>
+	}
+	
+	<span style="color: #008000">/// removal</span>
+	<span style="color: #008000">/**</span>
+<span style="color: #008000">	Removes a node with data value &amp; fixes pointers to account for it</span>
+<span style="color: #008000">	@param	data	The value of the node to remove*/</span>
+	<span style="color: #2b91af">void</span> remove(<span style="color: #2b91af">int</span> data) {
+		<span style="color: #2b91af">int</span> comp_count = 0;
+		Node* current = first; <span style="color: #008000">// start at the top</span>
+		vector&lt;Node*&gt; updater(MAX_LEVEL); <span style="color: #008000">// keep track of nodes that require updating</span>
+		<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = level_count; i &gt;= 0; --i) {
+			<span style="color: #0000ff">while</span> (current -&gt; next[i] -&gt; data &lt; data) { <span style="color: #008000">// keep iterating</span>
+				++comp_count;
+				current = current -&gt; next[i];
+			}
+			updater[i] = current; <span style="color: #008000">// place the rightmost reached node in updater</span>
+		}
+		
+		current = current -&gt; next[0]; <span style="color: #008000">// move forward so we&#39;re on the desired node</span>
+		
+		<span style="color: #0000ff">if</span> (current -&gt; data == data) { <span style="color: #008000">// if in fact, we made it</span>
+			<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; level_count; ++i) { <span style="color: #008000">// iterate through the next pointers</span>
+				<span style="color: #0000ff">if</span> (updater[i] -&gt; next[i] != current) {
+					<span style="color: #0000ff">break</span>;
+				}
+				updater[i] -&gt; next[i] = current -&gt; next[i]; <span style="color: #008000">// reallocate next, just like SLL</span>
+			}
+			<span style="color: #0000ff">delete</span> current; <span style="color: #008000">// free pointer/memory</span>
+			<span style="color: #0000ff">while</span> (level_count &gt; 1 &amp;&amp; first -&gt; next[level_count] -&gt; data == numeric_limits&lt;<span style="color: #2b91af">int</span>&gt;::max()) {
+				--level_count; <span style="color: #008000">// manage levels for better printing</span>
+			}
+		}
+		<span style="color: #0000ff">if</span> (node_count &lt;= 16) {
+			cout &lt;&lt; <span style="color: #a31515">&quot;#comps for removing: &quot;</span> &lt;&lt; data &lt;&lt; <span style="color: #a31515">&quot;: &quot;</span> &lt;&lt; comp_count &lt;&lt; endl;
+		}
+		--node_count;
+	}
+	
+	<span style="color: #2b91af">int</span> set_search_cost(<span style="color: #2b91af">int</span> data) {
+		Node* current = search(data);
+		current -&gt; search_cost = search_cost;
+		<span style="color: #0000ff">return</span> search_cost;
+	}
+	
+};
+
+ostream&amp; <span style="color: #0000ff">operator</span>&lt;&lt;(ostream&amp; out, <span style="color: #0000ff">const</span> SkipList&amp; sl) {
+	out &lt;&lt; <span style="color: #a31515">&quot;Levels: &quot;</span> &lt;&lt; sl.level_count &lt;&lt; endl;
+	<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = sl.level_count; i &gt;= 0; --i) {
+		Node* current = sl.first;
+		<span style="color: #0000ff">while</span> (current -&gt; next[i]) {
+			<span style="color: #0000ff">if</span> (current -&gt; data == numeric_limits&lt;<span style="color: #2b91af">int</span>&gt;::min()) {
+				out &lt;&lt; <span style="color: #a31515">&quot;-âˆž&quot;</span> &lt;&lt; <span style="color: #a31515">&quot; â€”â€” &quot;</span>;
+			} <span style="color: #0000ff">else</span> {
+				out &lt;&lt; current -&gt; data &lt;&lt; <span style="color: #a31515">&quot; â€”â€” &quot;</span>;
+			}
+			current = current -&gt; next[i];
+		}
+		out &lt;&lt; <span style="color: #a31515">&quot;âˆž&quot;</span> &lt;&lt; endl;
+	}
+}
+
+<span style="color: #008000">/// File IO</span>
+<span style="color: #008000">/* Reads a file for integers, returns a vector of ints with data.</span>
+<span style="color: #008000">@param filename		The name of the file to parse */</span>
+vector&lt;<span style="color: #2b91af">int</span>&gt; read_file(string filename) {
+	ifstream input;
+	input.open(filename);
+	string int_data;
+	
+	vector&lt;<span style="color: #2b91af">int</span>&gt; result;
+	
+	<span style="color: #0000ff">if</span> (input.is_open()) {
+		<span style="color: #0000ff">while</span> (input &gt;&gt; int_data) {
+			result.push_back(stoi(int_data));
+		}
+	}
+	
+	<span style="color: #0000ff">return</span> result;
+}
+
+<span style="color: #2b91af">int</span> main() {
+	srand(time(NULL));
+	
+	cout &lt;&lt; <span style="color: #a31515">&quot;Enter a file name to parse (eg. \&quot;3p\&quot;): &quot;</span>;
+	string filename = <span style="color: #a31515">&quot;&quot;</span>;
+	cin &gt;&gt; filename;
+	SkipList sl;
+	
+	<span style="color: #008000">// make vector of ints to hold data from file</span>
+	<span style="color: #008000">// get data from file, load into vector one by one int</span>
+	vector&lt;<span style="color: #2b91af">int</span>&gt; file = read_file(<span style="color: #a31515">&quot;test_files/&quot;</span> + filename);
+	
+	<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; file.size(); ++i) {
+		sl.insert(file[i]);
+	}
+	<span style="color: #2b91af">int</span> costs = 0;
+	<span style="color: #008000">// once we got everything in there, then calc search costs</span>
+	<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; file.size(); ++i) {
+		costs += sl.set_search_cost(file[i]);
+	}
+	
+	<span style="color: #0000ff">if</span> (sl.node_count &lt;= 16) {
+		cout &lt;&lt; sl;
+	}	
+	
+	cout &lt;&lt; <span style="color: #a31515">&quot;\n\nAverage insert cost: &quot;</span> &lt;&lt; costs / sl.node_count &lt;&lt; endl
+		 &lt;&lt; <span style="color: #a31515">&quot;Average delete cost: &quot;</span> &lt;&lt; costs / sl.node_count &lt;&lt; endl &lt;&lt; endl &lt;&lt; endl;
+	
+	
+	<span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt; file.size(); ++i) {
+		sl.remove(file[i]);
+	}
+	
+	
+}
+</pre>
+            </div>
+
+            </br>
+            <h2 id="BinaryTree">BinaryNode.h</h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+                <pre style="margin: 0; line-height: 125%"><span style="color: #008000">// Class declaration for BinaryNode, a tree node object which holds</span>
+<span style="color: #008000">// pointers to its left and right child, as well as a data &amp; search cost</span>
+<span style="color: #008000">// integer properties.</span>
+<span style="color: #0000ff">struct</span> BinaryNode {
+	BinaryNode* left;
+	BinaryNode* right;
+	<span style="color: #2b91af">int</span> data;
+	<span style="color: #2b91af">int</span> search_cost;
+	
+	BinaryNode();
+	BinaryNode(<span style="color: #2b91af">int</span>);
+	<span style="color: #2b91af">int</span> depth(BinaryNode*);
+};
+</pre>
+            </div>
+
+            </br>
+            <h2>BinaryNode.cpp</h2>
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+                <pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+    <span style="color: #0000ff">#include &lt;stdexcept&gt;</span>
+    <span style="color: #0000ff">#include &quot;BinaryNode.h&quot;</span>
+    <span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+    
+    <span style="color: #008000">// default constructor</span>
+    BinaryNode::BinaryNode() {
+        data = -1;
+        search_cost = 0;
+        left = NULL;
+        right = NULL;
+    }
+    
+    <span style="color: #008000">// constructor</span>
+    BinaryNode::BinaryNode(<span style="color: #2b91af">int</span> data) : data(data) {
+        left = NULL;
+        right = NULL;
+    }
+    
+    <span style="color: #008000">// calculates the depth of a BinaryNode</span>
+    <span style="color: #2b91af">int</span> BinaryNode::depth(BinaryNode* r) {
+        <span style="color: #0000ff">if</span> (r == NULL) {
+            <span style="color: #0000ff">return</span> 0;
+        } <span style="color: #0000ff">else</span> {
+            <span style="color: #2b91af">int</span> left_depth = depth(r -&gt; left);
+            <span style="color: #2b91af">int</span> right_depth = depth(r -&gt; right);
+            
+            <span style="color: #008000">// if the right tree depth is greater</span>
+            <span style="color: #0000ff">if</span> (left_depth &lt; right_depth) {
+                <span style="color: #0000ff">return</span> right_depth + 1; <span style="color: #008000">// return right depth + 1</span>
+            }
+            <span style="color: #0000ff">return</span> left_depth + 1; <span style="color: #008000">// otherwise return left depth  + 1</span>
+        }
+    }
+    </pre>
+            </div>
+
+            </br>
+            <h2>BinaryTree.h</h2>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008000">// Class declarations for BinaryTree object, which organizes BinaryNode objects</span>
+    <span style="color: #0000ff">struct</span> BinaryTree {
+        BinaryNode* root;
+        <span style="color: #2b91af">int</span> average_cost = 0;
+        <span style="color: #2b91af">int</span> node_count = 0;
+        std::vector&lt;BinaryNode*&gt; nodes;
+        
+        BinaryTree();
+        <span style="color: #2b91af">void</span> set_costs(BinaryNode*);
+        <span style="color: #2b91af">void</span> set_vector(BinaryNode*);
+        BinaryNode* insert(<span style="color: #2b91af">int</span>, BinaryNode*);
+        BinaryNode* find_min(BinaryNode*);
+        BinaryNode* remove_min(BinaryNode*);
+        BinaryNode* remove(<span style="color: #2b91af">int</span>, BinaryNode*);
+        <span style="color: #2b91af">void</span> print_preOrder(BinaryNode*);
+        <span style="color: #2b91af">void</span> print_inOrder(BinaryNode*);
+        <span style="color: #2b91af">void</span> print_postOrder(BinaryNode*);
+    };
+    
+    std::ostream&amp; <span style="color: #0000ff">operator</span>&lt;&lt;(std::ostream&amp;, <span style="color: #0000ff">const</span> BinaryTree&amp;);
+    
+    <span style="color: #0000ff">struct</span> EmptyTreeException {};
+    </pre></div>
+    
+</br><h2>BinaryTree.cpp</h2>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+    <span style="color: #0000ff">#include &lt;fstream&gt;</span>
+    <span style="color: #0000ff">#include &lt;sstream&gt;</span>
+    <span style="color: #0000ff">#include &lt;queue&gt;</span>
+    <span style="color: #0000ff">#include &quot;BinaryNode.h&quot;</span>
+    <span style="color: #0000ff">#include &quot;BinaryTree.h&quot;</span>
+    <span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+    
+    <span style="color: #008000">// constructor ensures null root node initialization</span>
+    BinaryTree::BinaryTree() {root = NULL;}
+    
+    <span style="color: #008000">/// Search Cost Calculation</span>
+    <span style="color: #008000">/* Uses in-order traversal to visit every node and calculate its depth</span>
+    <span style="color: #008000">subtracted from the root&#39;s depth. This gives how &quot;deep&quot; it is in the</span>
+    <span style="color: #008000">tree.</span>
+    <span style="color: #008000">This algorithm is recursive, similar to traversal operation.</span>
+    <span style="color: #008000">After tree creation, call this to set all proper search costs.</span>
+    <span style="color: #008000">@param r 	The currently visited node */</span>
+    <span style="color: #2b91af">void</span> BinaryTree::set_costs(BinaryNode* r) {
+        <span style="color: #0000ff">if</span> (r == NULL) { <span style="color: #008000">// base case</span>
+            <span style="color: #0000ff">return</span>;
+        }
+        set_costs(r -&gt; left);
+        <span style="color: #008000">// search cost is how high the tree is minus how many nodes we have left</span>
+        r -&gt; search_cost = (root -&gt; depth(root)) - (r -&gt; depth(r)) + 1;
+        average_cost += r -&gt; search_cost;
+        set_costs(r -&gt; right);
+    }
+    
+    <span style="color: #008000">/// Loading Vector of Nodes</span>
+    <span style="color: #008000">/* Uses in-order traversal to visit every node and insert it into a vector.</span>
+    <span style="color: #008000">This algorithm is recursive, similar to traversal operation.</span>
+    <span style="color: #008000">@param r 	The currently visited node */</span>
+    <span style="color: #2b91af">void</span> BinaryTree::set_vector(BinaryNode* r) {
+        <span style="color: #0000ff">if</span> (r == NULL) { <span style="color: #008000">// base case</span>
+            nodes.push_back(<span style="color: #0000ff">new</span> BinaryNode());
+            <span style="color: #0000ff">return</span>;
+        }
+        set_vector(r -&gt; left);
+        <span style="color: #008000">// search cost is how high the tree is minus how many nodes we have left</span>
+        nodes.push_back(r);
+        set_vector(r -&gt; right);
+    }
+    
+    <span style="color: #008000">/// Insert to tree</span>
+    <span style="color: #008000">// inserts data in relation to a node</span>
+    BinaryNode* BinaryTree::insert(<span style="color: #2b91af">int</span> data, BinaryNode* r) {
+        <span style="color: #0000ff">if</span> (r == NULL) {
+            BinaryNode* temp = <span style="color: #0000ff">new</span> BinaryNode(data);
+            ++node_count; <span style="color: #008000">// since we are adding a new node</span>
+            temp -&gt; search_cost++;
+            <span style="color: #0000ff">return</span> temp;
+        }
+        
+        <span style="color: #0000ff">if</span> (data &lt; r -&gt; data) {
+            r -&gt; left = insert(data, r -&gt; left); <span style="color: #008000">// go left to keep things in order</span>
+        } <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (data &gt; r -&gt; data) {
+            r -&gt; right = insert(data, r -&gt; right); <span style="color: #008000">// otherwise go right</span>
+        }
+        
+        r -&gt; search_cost++;
+        
+        <span style="color: #0000ff">return</span> r;
+    }
+    
+    <span style="color: #008000">/// finds minimum node</span>
+    BinaryNode* BinaryTree::find_min(BinaryNode *t) {
+        <span style="color: #0000ff">while</span> (t -&gt; left != NULL) t = t-&gt;left;
+        <span style="color: #0000ff">return</span> t;
+    }
+    
+    <span style="color: #008000">/// remove minimum</span>
+    <span style="color: #008000">/* Removes the minimum node by recursively looking for leftmost node.</span>
+    <span style="color: #008000">Since this node has no left child, we bypass this by calling right.</span>
+    <span style="color: #008000">@param r	currently visited node */</span>
+    BinaryNode* BinaryTree::remove_min(BinaryNode *r) {
+        <span style="color: #0000ff">if</span> (r -&gt; left != NULL) {
+            r -&gt; left = remove_min(r -&gt; left);
+        } <span style="color: #0000ff">else</span> {
+            BinaryNode *temp = r;
+            r = r -&gt; right;
+            <span style="color: #0000ff">delete</span> temp;
+        }
+        <span style="color: #0000ff">return</span> r;
+    }
+    
+    <span style="color: #008000">/// node removal</span>
+    BinaryNode* BinaryTree::remove(<span style="color: #2b91af">int</span> x, BinaryNode *r) {
+        <span style="color: #0000ff">if</span> (x &lt; r -&gt; data)
+            r -&gt; left = remove(x, r -&gt; left);
+        <span style="color: #0000ff">else</span> if (x &gt; r -&gt; data)
+            r -&gt; right = remove(x, r -&gt; right);
+        <span style="color: #0000ff">else</span> if (r -&gt; left != NULL &amp;&amp; r -&gt; right != NULL) {
+            <span style="color: #008000">// item x is found; r has two children</span>
+            r -&gt; data = find_min(r -&gt; right) -&gt; data;
+            r -&gt; right = remove_min(r -&gt; right);
+        } <span style="color: #0000ff">else</span> { <span style="color: #008000">//r has only one child</span>
+            BinaryNode *temp = r;
+            r = (r -&gt; left != NULL) ? r -&gt; left : r -&gt; right;
+            <span style="color: #0000ff">delete</span> temp;
+        }
+        <span style="color: #0000ff">return</span> r;
+    }
+    
+    
+    <span style="color: #008000">/// PREORDER TRAVERSAL</span>
+    <span style="color: #008000">/* Visit the root node first, then its left children, then its right.</span>
+    <span style="color: #008000">This algorithm is recursive, with base case if current node object is null</span>
+    <span style="color: #008000">@param r	The particular root node */</span>
+    <span style="color: #2b91af">void</span> BinaryTree::print_preOrder(BinaryNode* r) {
+        <span style="color: #0000ff">if</span> (r == NULL) { <span style="color: #008000">// base case</span>
+            <span style="color: #0000ff">return</span>;
+        }
+        cout &lt;&lt; r -&gt; data &lt;&lt; <span style="color: #a31515">&quot;[&quot;</span> &lt;&lt; r -&gt; search_cost &lt;&lt; <span style="color: #a31515">&quot;] &quot;</span>;
+        print_preOrder(r -&gt; left);
+        print_preOrder(r -&gt; right);
+    }
+    
+    <span style="color: #008000">/// INORDER TRAVERSAL</span>
+    <span style="color: #008000">/* Visit the left children, then the root, then its right children.</span>
+    <span style="color: #008000">This algorithm is recursive, with base case if current node object is null</span>
+    <span style="color: #008000">@param r	The particular root node */</span>
+    <span style="color: #2b91af">void</span> BinaryTree::print_inOrder(BinaryNode* r) {
+        <span style="color: #0000ff">if</span> (r == NULL) { <span style="color: #008000">// base case</span>
+            <span style="color: #0000ff">return</span>;
+        }
+        print_inOrder(r -&gt; left);
+        cout &lt;&lt; r -&gt; data &lt;&lt; <span style="color: #a31515">&quot;[&quot;</span> &lt;&lt; r -&gt; search_cost &lt;&lt; <span style="color: #a31515">&quot;] &quot;</span>;
+        print_inOrder(r -&gt; right);
+    }
+    
+    <span style="color: #008000">/// POSTORDER TRAVERSAL</span>
+    <span style="color: #008000">/* Visit the right children, then the right children, then the root.</span>
+    <span style="color: #008000">This algorithm is recursive, with base case if current node object is null</span>
+    <span style="color: #008000">@param r	The particular root node */</span>
+    <span style="color: #2b91af">void</span> BinaryTree::print_postOrder(BinaryNode* r) {
+        <span style="color: #0000ff">if</span> (r == NULL) { <span style="color: #008000">// base case</span>
+            <span style="color: #0000ff">return</span>;
+        }
+        print_postOrder(r -&gt; left);
+        print_postOrder(r -&gt; right);
+        cout &lt;&lt; r -&gt; data &lt;&lt; <span style="color: #a31515">&quot;[&quot;</span> &lt;&lt; r -&gt; search_cost &lt;&lt; <span style="color: #a31515">&quot;] &quot;</span>;
+    }
+    
+    
+    <span style="color: #008000">/// Level Order Print Helper</span>
+    <span style="color: #008000">/* Uses queue to print binary node to a string. */</span>
+    ostream&amp; <span style="color: #0000ff">operator</span>&lt;&lt;(std::ostream&amp; os, <span style="color: #0000ff">const</span> BinaryTree&amp; tree) {
+        
+        <span style="color: #0000ff">if</span> (tree.root == NULL)  <span style="color: #0000ff">return</span> os;
+        
+        <span style="color: #008000">// push root to queue</span>
+        queue&lt;BinaryNode*&gt; q;
+        q.push(tree.root);
+     
+        <span style="color: #0000ff">while</span> (1) {
+            <span style="color: #2b91af">int</span> count = q.size();
+            <span style="color: #0000ff">if</span> (count == 0)
+                <span style="color: #0000ff">break</span>;
+            
+            <span style="color: #008000">// as long as we have something in queue</span>
+            <span style="color: #0000ff">while</span> (count &gt; 0) {
+                BinaryNode* temp = q.front();
+                <span style="color: #008000">// if the node is empty, print X</span>
+                <span style="color: #0000ff">if</span> (temp == NULL) {
+                    os &lt;&lt; <span style="color: #a31515">&quot;X &quot;</span>;
+                } <span style="color: #0000ff">else</span> { <span style="color: #008000">// else print the data </span>
+                    os &lt;&lt; temp -&gt; data &lt;&lt; <span style="color: #a31515">&quot; &quot;</span>;
+                }
+                
+                <span style="color: #008000">// take the front node out</span>
+                q.pop();
+                <span style="color: #008000">// check the children</span>
+                <span style="color: #0000ff">if</span> (temp != NULL) {
+                    <span style="color: #0000ff">if</span> (temp -&gt; left != NULL) {
+                    q.push(temp -&gt; left);
+                    } <span style="color: #0000ff">else</span> {
+                        BinaryNode* node = NULL;
+                        q.push(node);
+                    }
+                    <span style="color: #0000ff">if</span> (temp -&gt; right != NULL) {
+                        q.push(temp -&gt; right);
+                    } <span style="color: #0000ff">else</span> {
+                        BinaryNode* node = NULL;
+                        q.push(node);
+                    }
+                }
+                count--;
+            }
+            os &lt;&lt; endl;
+        }
+        <span style="color: #0000ff">return</span> os;
+    }
+    </pre></div>
+    
+</br>    
         </div>
     </section>
 
@@ -54,7 +1175,9 @@
                     &copy; Oneal Abdulrahim
                 </div>
             </div>
-            <div class="copyright" align="right"> <a href="mailto:oneal@onealio.com?subject=URGENT:Bug on website">Report bugs</a></div>
+            <div class="copyright" align="right">
+                <a href="mailto:oneal@onealio.com?subject=URGENT:Bug on website">Report bugs</a>
+            </div>
         </div>
     </footer>
 
